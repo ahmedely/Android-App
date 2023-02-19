@@ -16,6 +16,7 @@ try:
       print("Sound detected")
     else:
       print("No sound")
+      
     if getMove==0:
       print("Movement not detected")
       sleep(2)
@@ -23,3 +24,9 @@ try:
     else:
       print("Motion detected")
       sleep(2)
+      if counter==7:
+        print("ALERT!")
+      else:
+        counter=counter+1
+except KeyboardInterrupt:
+  GPIO.cleanup()
