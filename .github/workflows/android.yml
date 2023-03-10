@@ -19,6 +19,10 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: gradle
-
+        
+    - name: Look for gradlew
+      run: find / -type f -name "gradlew"
+    - name: Change wrapper permissions
+      run: chmod +x ./gradlew
     - name: Build with Gradle
       run: ./gradlew build
