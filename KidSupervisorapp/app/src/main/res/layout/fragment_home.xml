@@ -1,160 +1,149 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".HomeFragment">
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="Kid\nSupervisor"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_24sdp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
+    tools:context=".HomeFragment"
+    tools:layout_editor_absoluteX="3dp"
+    tools:layout_editor_absoluteY="-66dp">
+
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/pageName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:gravity="center"
-        android:text="Planning"
+        android:text="PROFILE INFO"
         android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp"
+        android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.25" />
+        app:layout_constraintTop_toTopOf="parent" />
 
-
-    <LinearLayout
+    <TextView
+        android:id="@+id/weightText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4">
+        android:layout_marginTop="8dp"
+        android:text="Weight:"
+        app:layout_constraintStart_toStartOf="@+id/nameText"
+        app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
-        <ImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/pointing" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="10h to 12h"
-            android:layout_gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_16sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/nameText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="28dp"
+        android:layout_marginTop="20dp"
+        android:text="Name:"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.46">
+        app:layout_constraintTop_toBottomOf="@+id/pageName" />
 
-        <ImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/pointing" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="12h to 14h"
-            android:layout_gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_16sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/ageText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.52">
+        android:layout_marginTop="8dp"
+        android:text="Age:"
+        app:layout_constraintStart_toStartOf="@+id/nameText"
+        app:layout_constraintTop_toBottomOf="@+id/weightText" />
 
-        <ImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/pointing" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="14h to 16h"
-            android:layout_gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_16sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
-    <LinearLayout
+    <TextView
+        android:id="@+id/lengthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:text="Length:"
+        app:layout_constraintStart_toStartOf="@+id/ageText"
+        app:layout_constraintTop_toBottomOf="@+id/ageText" />
+
+
+    <TextView
+        android:id="@+id/scheduleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sleep schedules:"
+        app:layout_constraintStart_toStartOf="@+id/lengthText"
+        app:layout_constraintTop_toBottomOf="@+id/lengthText" />
+
+    <TextView
+        android:id="@+id/schd5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/schd4"
+        app:layout_constraintTop_toBottomOf="@+id/schd4" />
+
+    <TextView
+        android:id="@+id/errorTxt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Max schedules reached"
+        android:textColor="#F44336"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/schd5"
+        app:layout_constraintHorizontal_bias="0.454"
+        app:layout_constraintStart_toStartOf="@+id/schd5"
+        app:layout_constraintTop_toBottomOf="@+id/schd5" />
+
+    <TextView
+        android:id="@+id/schd4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/schd3"
+        app:layout_constraintTop_toBottomOf="@+id/schd3" />
+
+    <TextView
+        android:id="@+id/schd3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/schd2"
+        app:layout_constraintTop_toBottomOf="@+id/schd2" />
+
+    <TextView
+        android:id="@+id/schd2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="@+id/schd1"
+        app:layout_constraintTop_toBottomOf="@+id/schd1" />
+
+    <TextView
+        android:id="@+id/schd1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:textSize="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/addSchedule"
+        app:layout_constraintStart_toEndOf="@+id/removeSchedule"
+        app:layout_constraintTop_toTopOf="@+id/removeSchedule" />
+
+    <Button
+        android:id="@+id/removeSchedule"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="20dp"
+        android:text="-"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58">
+        app:layout_constraintTop_toBottomOf="@+id/scheduleText" />
 
-        <ImageView
-            android:layout_width="@dimen/_24sdp"
-            android:layout_height="@dimen/_24sdp"
-            android:layout_gravity="center_vertical"
-            android:src="@drawable/pointing" />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:maxLines="1"
-            android:text="16h to 18h"
-            android:layout_gravity="center_vertical"
-            android:paddingHorizontal="@dimen/_16sdp"
-            android:singleLine="true"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
+    <Button
+        android:id="@+id/addSchedule"
+        android:layout_width="44dp"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:text="+"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/removeSchedule" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
