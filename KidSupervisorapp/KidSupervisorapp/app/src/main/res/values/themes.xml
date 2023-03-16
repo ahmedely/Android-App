@@ -1,0 +1,52 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.KidSupervisor" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        <!-- Customize your theme here. -->
+    </style>
+
+
+    <style name="lighttheme" parent="Theme.KidSupervisor">
+        <item name="backgroundColor">#f9fafd</item>
+        <item name="navig_Color">@color/white</item>
+        <item name="ic_home">@drawable/ic_home</item>
+        <item name="ic_camera">@drawable/ic_camera</item>
+        <item name="ic_graphic">@drawable/ic_graphic_eq</item>
+        <item name="ic_setting">@drawable/ic_settings</item>
+        <item name="txtColor">@color/black</item>
+        <item name="ic_mail">@drawable/ic_mail</item>
+        <item name="ic_lock">@drawable/ic_lock</item>
+        <item name="ic_eye">@drawable/ic_eye</item>
+        <item name="ic_pointing">@drawable/pointing</item>
+        <item name="hide">@drawable/hide</item>
+        <item name="ic_account">@drawable/ic_account</item>
+
+    </style>
+
+
+    <style name="darktheme" parent="Theme.KidSupervisor">
+        <item name="backgroundColor">@color/black</item>
+        <item name="navig_Color">#404040</item>
+        <item name="ic_home">@drawable/ic_home_dark</item>
+        <item name="ic_camera">@drawable/ic_camera_dark</item>
+        <item name="ic_graphic">@drawable/ic_graphic_dark</item>
+        <item name="ic_setting">@drawable/ic_setting_dark</item>
+        <item name="txtColor">@color/white</item>
+        <item name="ic_mail">@drawable/ic_mail_dark</item>
+        <item name="ic_lock">@drawable/ic_lock_dark</item>
+        <item name="ic_eye">@drawable/ic_eye_dark</item>
+        <item name="ic_pointing">@drawable/pointing_dark</item>
+        <item name="hide">@drawable/hide</item>
+        <item name="ic_account">@drawable/ic_account_drak</item>
+
+    </style>
+</resources>
