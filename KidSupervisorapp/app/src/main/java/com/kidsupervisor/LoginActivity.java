@@ -45,14 +45,22 @@ public class LoginActivity extends AppCompatActivity {
 
             }
         });
-        binding.newAccountTextViw.setOnClickListener(new View.OnClickListener() {
+        binding.newAccountTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, SignupActivity.class));
                 finish();
             }
         });
+        binding.forgotPasswordView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(LoginActivity.this, ResetPasswordActivity.class));
+                finish();
+            }
+        });
     }
+
     private void signIn(String email, String password) {
         auth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
             @Override
