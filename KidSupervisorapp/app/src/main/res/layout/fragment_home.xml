@@ -10,140 +10,106 @@
 
 
     <TextView
-        android:id="@+id/pageName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:gravity="center"
-        android:text="PROFILE INFO"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
         android:id="@+id/weightText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Weight:"
-        app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/nameText" />
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/weightText2"
+        app:layout_constraintTop_toBottomOf="@+id/weightText2" />
 
     <TextView
-        android:id="@+id/nameText"
+        android:id="@+id/weightText2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="20dp"
-        android:text="Name:"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/pageName" />
-
-    <TextView
-        android:id="@+id/ageText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
         android:text="Age:"
-        app:layout_constraintStart_toStartOf="@+id/nameText"
-        app:layout_constraintTop_toBottomOf="@+id/weightText" />
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/lengthText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
         android:text="Length:"
-        app:layout_constraintStart_toStartOf="@+id/ageText"
-        app:layout_constraintTop_toBottomOf="@+id/ageText" />
-
+        android:textColor="@color/black"
+        app:layout_constraintStart_toStartOf="@+id/weightText"
+        app:layout_constraintTop_toBottomOf="@+id/weightText" />
 
     <TextView
         android:id="@+id/scheduleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
         android:text="Sleep schedules:"
+        android:textColor="@color/black"
+        android:textStyle="bold|italic"
         app:layout_constraintStart_toStartOf="@+id/lengthText"
         app:layout_constraintTop_toBottomOf="@+id/lengthText" />
 
-    <TextView
-        android:id="@+id/schd5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/schd4"
-        app:layout_constraintTop_toBottomOf="@+id/schd4" />
-
-    <TextView
-        android:id="@+id/errorTxt"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:text="Max schedules reached"
-        android:textColor="#F44336"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/schd5"
-        app:layout_constraintHorizontal_bias="0.454"
-        app:layout_constraintStart_toStartOf="@+id/schd5"
-        app:layout_constraintTop_toBottomOf="@+id/schd5" />
-
-    <TextView
-        android:id="@+id/schd4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/schd3"
-        app:layout_constraintTop_toBottomOf="@+id/schd3" />
-
-    <TextView
-        android:id="@+id/schd3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/schd2"
-        app:layout_constraintTop_toBottomOf="@+id/schd2" />
-
-    <TextView
-        android:id="@+id/schd2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        app:layout_constraintStart_toStartOf="@+id/schd1"
-        app:layout_constraintTop_toBottomOf="@+id/schd1" />
-
-    <TextView
-        android:id="@+id/schd1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:textSize="20dp"
-        app:layout_constraintEnd_toStartOf="@+id/addSchedule"
-        app:layout_constraintStart_toEndOf="@+id/removeSchedule"
-        app:layout_constraintTop_toTopOf="@+id/removeSchedule" />
-
-    <Button
-        android:id="@+id/removeSchedule"
-        android:layout_width="44dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="20dp"
-        android:text="-"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/scheduleText" />
-
     <Button
         android:id="@+id/addSchedule"
-        android:layout_width="44dp"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
-        android:text="+"
+        android:layout_width="89dp"
+        android:layout_height="42dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="60dp"
+        android:text="ADD"
+        app:layout_constraintStart_toEndOf="@+id/list"
+        app:layout_constraintTop_toTopOf="@+id/list" />
+
+    <Button
+        android:id="@+id/modifyBtn"
+        android:layout_width="89dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:text="MODIFY"
+        app:layout_constraintStart_toEndOf="@+id/list"
+        app:layout_constraintTop_toBottomOf="@+id/addSchedule" />
+
+    <Button
+        android:id="@+id/rmBtn"
+        android:layout_width="89dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="5dp"
+        android:text="DELETE"
+        app:layout_constraintStart_toEndOf="@+id/list"
+        app:layout_constraintTop_toBottomOf="@+id/modifyBtn" />
+
+    <ListView
+        android:id="@+id/list"
+        android:layout_width="209dp"
+        android:layout_height="284dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintStart_toStartOf="@+id/scheduleText"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleText" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/logoPic"
+        android:layout_width="91dp"
+        android:layout_height="82dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_babies"
+        app:fabSize="normal"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/removeSchedule" />
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="175dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="@+id/logoPic"
+        app:layout_constraintStart_toStartOf="@+id/logoPic"
+        android:textAlignment="center"
+        app:layout_constraintTop_toBottomOf="@+id/logoPic" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
