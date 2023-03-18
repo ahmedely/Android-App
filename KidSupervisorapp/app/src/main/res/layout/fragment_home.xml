@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".HomeFragment"
+    android:background="?attr/backgroundColor"
     tools:layout_editor_absoluteX="3dp"
     tools:layout_editor_absoluteY="-66dp">
 
@@ -16,7 +17,7 @@
         android:layout_marginTop="16dp"
         android:gravity="center"
         android:text="PROFILE INFO"
-        android:textColor="@color/black"
+        android:textColor="?attr/txtColor"
         android:textSize="24sp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -29,6 +30,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Weight:"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/nameText"
         app:layout_constraintTop_toBottomOf="@+id/nameText" />
 
@@ -39,6 +41,7 @@
         android:layout_marginStart="28dp"
         android:layout_marginTop="20dp"
         android:text="Name:"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pageName" />
 
@@ -48,6 +51,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="Age:"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/nameText"
         app:layout_constraintTop_toBottomOf="@+id/weightText" />
 
@@ -56,6 +60,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Length:"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/ageText"
         app:layout_constraintTop_toBottomOf="@+id/ageText" />
 
@@ -65,6 +70,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Sleep schedules:"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/lengthText"
         app:layout_constraintTop_toBottomOf="@+id/lengthText" />
 
@@ -74,6 +80,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/schd4"
         app:layout_constraintTop_toBottomOf="@+id/schd4" />
 
@@ -83,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:text="Max schedules reached"
-        android:textColor="#F44336"
+        android:textColor="?attr/txtColor"
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="@+id/schd5"
         app:layout_constraintHorizontal_bias="0.454"
@@ -96,6 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/schd3"
         app:layout_constraintTop_toBottomOf="@+id/schd3" />
 
@@ -105,6 +113,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/schd2"
         app:layout_constraintTop_toBottomOf="@+id/schd2" />
 
@@ -114,6 +123,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
+        android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/schd1"
         app:layout_constraintTop_toBottomOf="@+id/schd1" />
 
@@ -123,6 +133,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:textSize="20dp"
+        android:textColor="?attr/txtColor"
         app:layout_constraintEnd_toStartOf="@+id/addSchedule"
         app:layout_constraintStart_toEndOf="@+id/removeSchedule"
         app:layout_constraintTop_toTopOf="@+id/removeSchedule" />

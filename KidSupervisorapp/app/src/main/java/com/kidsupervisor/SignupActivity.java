@@ -1,20 +1,21 @@
 package com.kidsupervisor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.kidsupervisor.databinding.ActivityMainBinding;
 import com.kidsupervisor.databinding.ActivitySignupBinding;
 
 public class SignupActivity extends AppCompatActivity {
@@ -28,12 +29,83 @@ public class SignupActivity extends AppCompatActivity {
     private TextView txtPassword;
     private TextView txtConfirmPassword;
     private FirebaseAuth auth;
+    Pref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pref = new Pref(this);
+        if (!pref.getBoolean("Switch")) {
+            setTheme(R.style.lighttheme);
+        } else {
+            setTheme(R.style.darktheme);
+        }
         binding = ActivitySignupBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+
+        binding.hideshow.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
+                    binding.password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                    if (!pref.getBoolean("Switch")) {
+
+                        binding.hideshow.setImageResource(R.drawable.hide);
+                        binding.hideshow.setImageTintList(getResources().getColorStateList(R.color.black));
+                    } else {
+                        binding.hideshow.setImageResource(R.drawable.hide);
+                        binding.hideshow.setImageTintList(getResources().getColorStateList(R.color.white));
+                    }
+
+
+                } else {
+
+                    if (!pref.getBoolean("Switch")) {
+                        binding.hideshow.setImageResource(R.drawable.ic_eye);
+                    } else {
+                        binding.hideshow.setImageResource(R.drawable.ic_eye_dark);
+
+
+                    }
+                    binding.password.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                binding.password.setSelection(binding.password.length());
+            }
+        });
+        binding.hideshow1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (binding.confirmPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
+                    binding.confirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+
+                    if (!pref.getBoolean("Switch")) {
+
+                        binding.hideshow1.setImageResource(R.drawable.hide);
+                        binding.hideshow1.setImageTintList(getResources().getColorStateList(R.color.black));
+                    } else {
+                        binding.hideshow1.setImageResource(R.drawable.hide);
+                        binding.hideshow1.setImageTintList(getResources().getColorStateList(R.color.white));
+                    }
+
+
+                } else {
+
+                    if (!pref.getBoolean("Switch")) {
+
+                        binding.hideshow1.setImageResource(R.drawable.ic_eye);
+                    } else {
+                        binding.hideshow1.setImageResource(R.drawable.ic_eye_dark);
+
+
+                    }
+                    binding.confirmPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                }
+                binding.confirmPassword.setSelection(binding.confirmPassword.length());
+            }
+        });
+
 
         auth = FirebaseAuth.getInstance();
         System.out.println(auth);
@@ -50,7 +122,8 @@ public class SignupActivity extends AppCompatActivity {
                 email = txtEmail.getText().toString();
                 password = txtPassword.getText().toString();
                 confirmPassword = txtConfirmPassword.getText().toString();
-                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) || TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
+                if (TextUtils.isEmpty(name) || TextUtils.isEmpty(email) ||
+                        TextUtils.isEmpty(password) || TextUtils.isEmpty(confirmPassword)) {
                     Toast.makeText(SignupActivity.this, "Must complete everything", Toast.LENGTH_SHORT).show();
                 } else if (!confirmPassword.equals(password)) {
                     Toast.makeText(SignupActivity.this, "Passwords don t match", Toast.LENGTH_SHORT).show();
@@ -69,6 +142,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
     private void signUp(String email, String password) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
