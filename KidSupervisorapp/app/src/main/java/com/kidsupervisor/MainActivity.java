@@ -1,7 +1,9 @@
 package com.kidsupervisor;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.PopupMenu;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +18,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
     ActivityMainBinding binding;
 
+    Pref pref;
 
     private final Fragment homeFragment = new HomeFragment();
     private final Fragment camraFragment = new CameraFragment();
@@ -28,9 +31,14 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        pref = new Pref(this);
+        if (!pref.getBoolean("Switch")) {
+            setTheme(R.style.lighttheme);
+        } else {
+            setTheme(R.style.darktheme);
+        }
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
-
 
         fragmentManager.beginTransaction().add(R.id.fragmentLayout, settingsFragment, "4").hide(settingsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragmentLayout, statsFragment, "3").hide(statsFragment).commit();
