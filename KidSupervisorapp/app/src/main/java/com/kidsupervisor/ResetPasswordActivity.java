@@ -1,8 +1,5 @@
 package com.kidsupervisor;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -10,11 +7,11 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
 public class ResetPasswordActivity extends AppCompatActivity {
@@ -22,14 +19,25 @@ public class ResetPasswordActivity extends AppCompatActivity {
     private Button btnResetPassword;
     private TextView txtEmail;
     private String email;
-
+    Pref pref;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+        pref = new Pref(this);
+
+        if (!pref.getBoolean("Switch")) {
+            setTheme(R.style.lighttheme);
+        } else {
+            setTheme(R.style.darktheme);
+        }
         setContentView(R.layout.activity_reset_password);
         auth = FirebaseAuth.getInstance();
         btnResetPassword = findViewById(R.id.btnResetPassword);
         txtEmail = findViewById(R.id.txtEmail);
+
+
         btnResetPassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

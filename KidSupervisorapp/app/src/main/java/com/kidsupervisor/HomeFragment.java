@@ -12,23 +12,34 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.ListView;
+import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
 
-import java.util.Calendar;
+import java.util.ArrayList;
 import java.util.Locale;
 
 
-public class HomeFragment extends Fragment implements TimePickerDialog.OnTimeSetListener{
+public class HomeFragment extends Fragment {
 
-    private Button addBtn, rmBtn;
+    private Button addBtn, rmBtn, modifyBtn;
 
-    //5 schedules max
-    short activated=1;
-    private TextView schedule1, schedule2, schedule3, schedule4, schedule5;
-    private TextView error;
-    boolean firstTime=true;
+    int nmb_of_schedules = 1;
+    ListView listView;
+
+    Spinner spinner;
+    private ArrayList<String> myArr,myArr2;
+    private ArrayAdapter<String> adapter,adapter2;
+    private int hrs, min;
+
+    String currentValue="";
+    int lastClicked=-1;
+    boolean is_first=true;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -39,187 +50,145 @@ public class HomeFragment extends Fragment implements TimePickerDialog.OnTimeSet
         super.onViewCreated(view, savedInstanceState);
 
         addBtn = view.findViewById(R.id.addSchedule);
-        rmBtn = view.findViewById(R.id.removeSchedule);
-        schedule1 = view.findViewById(R.id.schd1);
-        schedule2 = view.findViewById(R.id.schd2);
-        schedule3 = view.findViewById(R.id.schd3);
-        schedule4 = view.findViewById(R.id.schd4);
-        schedule5 = view.findViewById(R.id.schd5);
-        error=view.findViewById(R.id.errorTxt);
-
-        error.setVisibility(View.GONE);
-        schedule1.setVisibility(View.GONE);
-        schedule2.setVisibility(View.GONE);
-        schedule3.setVisibility(View.GONE);
-        schedule4.setVisibility(View.GONE);
-        schedule5.setVisibility(View.GONE);
+        rmBtn = view.findViewById(R.id.rmBtn);
+        spinner=view.findViewById(R.id.spinner);
+        modifyBtn = view.findViewById(R.id.modifyBtn);
+        listView = view.findViewById(R.id.list);
 
 
+        myArr = new ArrayList<>();
+        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, myArr);
+        listView.setAdapter(adapter);
+
+
+        myArr2=new ArrayList<>();
+        myArr2.add("Add a kid");
+        myArr2.add("abdoullah");
+        myArr2.add("ayadi");
+        myArr2.add("ayadi2");
+        myArr2.add("ayadi3");
+
+        adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, myArr2);
+        spinner.setAdapter(adapter2);
+
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                if(myArr2.get(i).equals("Add a kid")) {
+                    DialogFragment registerKid = new DialogFragment(){
+                    @Override
+                    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
+                        return inflater.inflate(R.layout.activity_kid_info, container, false);
+                    }
+                };
+                //    registerKid.show(getParentFragmentManager(), "Register");
+                 //add kid
+                    //   myArr2.add(0,);
+                    adapter2.notifyDataSetChanged();
+                }
+                else{
+                    //show data for correct kid
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                //save last clicked
+                lastClicked=position;
+            }
+        });
+        modifyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (lastClicked == -1 || lastClicked == -2) {
+                    Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    showTimePicker();
+                    lastClicked=-1;
+                }
+            }
+        });
         addBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (schedule5.getVisibility() == View.VISIBLE) {
-                    error.setVisibility(View.VISIBLE);
-                }
-                else {
-
-                    error.setVisibility(View.GONE);
-                    showTimePickerDialog();
-                    showNewSchedule();
-                    showTimePickerDialog();
-                    showNewSchedule();
-                }
+                lastClicked=-2;
+                showTimePicker();
             }
         });
 
         rmBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                if (schedule5.getVisibility() == View.VISIBLE) {
-                    schedule5.setVisibility(View.GONE);
-                    schedule5.setEnabled(false);
-
-                } else if (schedule4.getVisibility() == View.VISIBLE) {
-                    schedule4.setVisibility(View.GONE);
-                    schedule4.setEnabled(false);
-
-                } else if (schedule3.getVisibility() == View.VISIBLE) {
-                    schedule3.setVisibility(View.GONE);
-                    schedule3.setEnabled(false);
-
-                } else if (schedule2.getVisibility() == View.VISIBLE) {
-                    schedule2.setVisibility(View.GONE);
-                    schedule2.setEnabled(false);
-
-                } else if (schedule1.getVisibility() == View.VISIBLE) {
-                    schedule1.setVisibility(View.GONE);
-                    schedule1.setEnabled(false);
+            public void onClick(View view){
+                    if (lastClicked == -1 || lastClicked == -2) {
+                        Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+                    } else {
+                       // Toast.makeText(getContext(), Integer.toString(lastClicked), Toast.LENGTH_SHORT).show();
+                        myArr.remove(lastClicked);
+                        adapter.notifyDataSetChanged();
+                        lastClicked=-1;
+                        nmb_of_schedules--;
+                    }
                 }
-            }
         });
 
     }
 
-    private void showTimePickerDialog() {
-        Calendar calendar = Calendar.getInstance();
-        int hour = calendar.get(Calendar.HOUR_OF_DAY);
-        int minute = calendar.get(Calendar.MINUTE);
 
-        TimePickerDialog timePickerDialog = new TimePickerDialog(
-                requireContext(),
-                this,
-                hour,
-                minute,
-                true
-        );
-        timePickerDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
+    private void showTimePicker() {
+        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+
             @Override
-            public void onCancel(DialogInterface dialogInterface) {
+            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+                hrs = hourOfDay;
+                min = minute;
 
-                if (schedule5.getVisibility() == View.VISIBLE) {
-                    schedule5.setVisibility(View.GONE);
-                    schedule5.setEnabled(false);
+                if(is_first==true) {
 
-                } else if (schedule4.getVisibility() == View.VISIBLE) {
-                    schedule4.setVisibility(View.GONE);
-                    schedule4.setEnabled(false);
+                    if(lastClicked==-2) {
+                        currentValue=Integer.toString(nmb_of_schedules) + ". ";
+                        currentValue +=String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+                    }
+                    else{
+                        currentValue=Integer.toString(lastClicked+1) + ". ";
+                        currentValue +=String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+                    }
+                    is_first=false;
+                    showTimePicker();
+                }
+                else {
+                    currentValue +=" ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+                    if(lastClicked==-2) {
+                        myArr.add(currentValue);
+                        nmb_of_schedules++;
+                    }
+                    else{
+                        myArr.set(lastClicked,currentValue);
+                    }
+                    adapter.notifyDataSetChanged();
+                    is_first = true;
+                }
+            }
+        }, hrs, min, true);
 
-                } else if (schedule3.getVisibility() == View.VISIBLE) {
-                    schedule3.setVisibility(View.GONE);
-                    schedule3.setEnabled(false);
-
-                } else if (schedule2.getVisibility() == View.VISIBLE) {
-                    schedule2.setVisibility(View.GONE);
-                    schedule2.setEnabled(false);
-
-                } else if (schedule1.getVisibility() == View.VISIBLE) {
-                    schedule1.setVisibility(View.GONE);
-                    schedule1.setEnabled(false);
+        timePickerDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                if (which == DialogInterface.BUTTON_NEGATIVE) {
+                    dialog.dismiss();
+                    lastClicked=-1;
+                    is_first=true;
                 }
             }
         });
+
         timePickerDialog.show();
-    }
-    @Override
-    public void onTimeSet(TimePicker timePicker, int hourOfDay, int minute) {
-        String timeString = String.format(Locale.getDefault(), "%02d:%02d", hourOfDay, minute);
 
-        if(activated==1) {
-            System.out.println(firstTime);
-            if (firstTime == true) {
-                schedule1.setText(timeString);
-                firstTime=false;
-            }
-            else {
-                schedule1.setText("➊ " + schedule1.getText().toString() + " ➤ " + timeString);
-                schedule1.setVisibility(View.VISIBLE);
-                schedule1.setEnabled(true);
-                firstTime=true;
-            }
-        }
-        else if(activated==2){
-            if(firstTime==true) {
-                schedule2.setText(timeString);
-                firstTime = false;
-            }
-            else{
-                schedule2.setText("➋ " + schedule2.getText().toString() + " ➤ " + timeString);
-                schedule2.setVisibility(View.VISIBLE);
-                schedule2.setEnabled(true);
-                firstTime=true;
-            }
-        }
-        else if(activated==3){
-            if(firstTime==true) {
-                schedule3.setText(timeString);
-                firstTime = false;
-            }
-            else{
-                schedule3.setText("➌ "+schedule3.getText().toString()+ " ➤ " + timeString);
-                schedule3.setVisibility(View.VISIBLE);
-                schedule3.setEnabled(true);
-                firstTime=true;
-            }
-        }
-        else if(activated==4) {
-            if (firstTime == true){
-                schedule4.setText(timeString);
-                firstTime = false;
-            }
-            else{
-                schedule4.setText("➍ " + schedule4.getText().toString()+ " ➤ " + timeString);
-                schedule4.setVisibility(View.VISIBLE);
-                schedule4.setEnabled(true);
-                firstTime=true;
-            }
-        }
-        else if(activated==5){
-            if(firstTime==true) {
-                schedule5.setText(timeString);
-                firstTime = false;
-            }
-            else {
-                schedule5.setText("➎ "+schedule5.getText().toString()+ " ➤ " + timeString);
-                schedule5.setVisibility(View.VISIBLE);
-                schedule5.setEnabled(true);
-                firstTime=true;
-            }
-        }
-    }
-
-    public void showNewSchedule(){
-
-        if (schedule1.getVisibility() != View.VISIBLE) {
-            activated=1;
-        } else if (schedule2.getVisibility() != View.VISIBLE) {
-            activated=2;
-        } else if (schedule3.getVisibility() != View.VISIBLE) {
-            activated=3;
-        } else if (schedule4.getVisibility() != View.VISIBLE) {
-            activated=4;
-        } else if (schedule5.getVisibility() != View.VISIBLE) {
-            activated=5;
-        }
     }
 }
