@@ -6,7 +6,6 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -16,9 +15,17 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+import com.google.gson.Gson;
 
 import java.util.ArrayList;
 import java.util.Locale;
@@ -26,116 +33,159 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private Button addBtn, rmBtn, modifyBtn;
-
+    private Button btnAddSchedule, btnDeleteSchedule, btnModifySchedule;
+    private Button btnAddKid;
+    private User user;
     int nmb_of_schedules = 1;
-    ListView listView;
-
-    Spinner spinner;
-    private ArrayList<String> myArr,myArr2;
-    private ArrayAdapter<String> adapter,adapter2;
+    ListView scheduleList;
+    ListView kidsListView;
+    private ArrayList<String> kidsList, schedulesList;
+    private ArrayAdapter<String> adapter, adapter2;
     private int hrs, min;
-
-    String currentValue="";
-    int lastClicked=-1;
-    boolean is_first=true;
+    private DatabaseReference databaseRef;
+    private String currentValue = "";
+    private int lastClicked = -1;
+    boolean is_first = true;
+    private FirebaseService firebaseService;
+    private FirebaseAuth auth;
+    private Bundle bundle; // Used to share variable between activities/fragments
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_home, container, false);
+
+        View v = inflater.inflate(R.layout.fragment_home, container, false);
+
+
+        return v;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        bundle = new Bundle();
+        firebaseService = new FirebaseService(getContext());
+        auth = FirebaseAuth.getInstance();
+        user = new User();
+        schedulesList = new ArrayList<>();
+        kidsList = new ArrayList<>();
 
-        addBtn = view.findViewById(R.id.addSchedule);
-        rmBtn = view.findViewById(R.id.rmBtn);
-        spinner=view.findViewById(R.id.spinner);
-        modifyBtn = view.findViewById(R.id.modifyBtn);
-        listView = view.findViewById(R.id.list);
+        kidsListView = view.findViewById(R.id.kidsList);
+        btnAddSchedule = view.findViewById(R.id.btnAddSchedule);
+        btnDeleteSchedule = view.findViewById(R.id.btnDeleteSchedule);
+        btnModifySchedule = view.findViewById(R.id.btnModifySchedule);
+        scheduleList = view.findViewById(R.id.scheduleList);
+        btnAddKid = view.findViewById(R.id.btnAddKid);
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
 
-
-        myArr = new ArrayList<>();
-        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, myArr);
-        listView.setAdapter(adapter);
-
-
-        myArr2=new ArrayList<>();
-        myArr2.add("Add a kid");
-        myArr2.add("abdoullah");
-        myArr2.add("ayadi");
-        myArr2.add("ayadi2");
-        myArr2.add("ayadi3");
-
-        adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, myArr2);
-        spinner.setAdapter(adapter2);
-
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if(myArr2.get(i).equals("Add a kid")) {
-                    DialogFragment registerKid = new DialogFragment(){
-                    @Override
-                    public View onCreateView (LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
-                        return inflater.inflate(R.layout.activity_kid_info, container, false);
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                user.getKids().clear();
+                if (snapshot.exists()) {
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        if (dataSnapshot.getKey().equals(auth.getUid())) {
+                            System.out.println("ID : " + dataSnapshot.child("id").getValue().toString());
+                            user.setId(dataSnapshot.child("id").getValue().toString());
+                            user.setFullName(dataSnapshot.child("fullName").getValue().toString());
+                            user.setEmail(dataSnapshot.child("email").getValue().toString());
+                            user.setSelectedKid(dataSnapshot.child("selectedKid").getValue().toString());
+                            for (DataSnapshot kidSnapshot : dataSnapshot.child("kids").getChildren()) {
+                                Kid kid = new Kid();
+                                kid.setId(kidSnapshot.child("id").getValue().toString());
+                                kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
+                                kid.setAge(kidSnapshot.child("age").getValue().toString());
+                                kid.setWeight(kidSnapshot.child("weight").getValue().toString());
+                                kid.setHeight(kidSnapshot.child("height").getValue().toString());
+                                user.addKid(kid);
+                            }
+                        }
                     }
-                };
-                //    registerKid.show(getParentFragmentManager(), "Register");
-                 //add kid
-                    //   myArr2.add(0,);
-                    adapter2.notifyDataSetChanged();
                 }
-                else{
-                    //show data for correct kid
+                kidsList.removeAll(schedulesList);
+                kidsList = new ArrayList<>();
+                for (Kid kid : user.getKids()) {
+                    kidsList.add(kid.getFullName());
                 }
+                adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, kidsList);
+                kidsListView.setAdapter(adapter2);
             }
 
+
             @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
+            public void onCancelled(@NonNull DatabaseError error) {
 
             }
         });
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+
+        adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, schedulesList);
+        scheduleList.setAdapter(adapter);
+
+
+        btnAddKid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                KidInfoActivity dialogFragment = new KidInfoActivity();
+                bundle.putBoolean("edit", false);
+                bundle.putString("kid", null);
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+
+            }
+        });
+
+
+        kidsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                KidInfoActivity dialogFragment = new KidInfoActivity();
+                Gson gson = new Gson();
+                String kid = gson.toJson(user.getKids().get(i));
+                bundle.putString("kid", kid); // Stores kid to be displayed in dialogFragment
+                bundle.putBoolean("edit", true); // Stores Boolean to know if edit button should be visible
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+            }
+        });
+        scheduleList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 //save last clicked
-                lastClicked=position;
+                lastClicked = position;
             }
         });
-        modifyBtn.setOnClickListener(new View.OnClickListener() {
+        btnModifySchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (lastClicked == -1 || lastClicked == -2) {
                     Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
-                }
-                else {
+                } else {
                     showTimePicker();
-                    lastClicked=-1;
+                    lastClicked = -1;
                 }
             }
         });
-        addBtn.setOnClickListener(new View.OnClickListener() {
+        btnAddSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lastClicked=-2;
+                lastClicked = -2;
                 showTimePicker();
             }
         });
 
-        rmBtn.setOnClickListener(new View.OnClickListener() {
+        btnDeleteSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view){
-                    if (lastClicked == -1 || lastClicked == -2) {
-                        Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
-                    } else {
-                       // Toast.makeText(getContext(), Integer.toString(lastClicked), Toast.LENGTH_SHORT).show();
-                        myArr.remove(lastClicked);
-                        adapter.notifyDataSetChanged();
-                        lastClicked=-1;
-                        nmb_of_schedules--;
-                    }
+            public void onClick(View view) {
+                if (lastClicked == -1 || lastClicked == -2) {
+                    Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
+                } else {
+                    // Toast.makeText(getContext(), Integer.toString(lastClicked), Toast.LENGTH_SHORT).show();
+                    schedulesList.remove(lastClicked);
+                    adapter.notifyDataSetChanged();
+                    lastClicked = -1;
+                    nmb_of_schedules--;
                 }
+            }
         });
 
     }
@@ -149,27 +199,24 @@ public class HomeFragment extends Fragment {
                 hrs = hourOfDay;
                 min = minute;
 
-                if(is_first==true) {
+                if (is_first == true) {
 
-                    if(lastClicked==-2) {
-                        currentValue=Integer.toString(nmb_of_schedules) + ". ";
-                        currentValue +=String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+                    if (lastClicked == -2) {
+                        currentValue = Integer.toString(nmb_of_schedules) + ". ";
+                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+                    } else {
+                        currentValue = Integer.toString(lastClicked + 1) + ". ";
+                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
                     }
-                    else{
-                        currentValue=Integer.toString(lastClicked+1) + ". ";
-                        currentValue +=String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-                    }
-                    is_first=false;
+                    is_first = false;
                     showTimePicker();
-                }
-                else {
-                    currentValue +=" ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-                    if(lastClicked==-2) {
-                        myArr.add(currentValue);
+                } else {
+                    currentValue += " ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+                    if (lastClicked == -2) {
+                        schedulesList.add(currentValue);
                         nmb_of_schedules++;
-                    }
-                    else{
-                        myArr.set(lastClicked,currentValue);
+                    } else {
+                        schedulesList.set(lastClicked, currentValue);
                     }
                     adapter.notifyDataSetChanged();
                     is_first = true;
@@ -182,13 +229,11 @@ public class HomeFragment extends Fragment {
             public void onClick(DialogInterface dialog, int which) {
                 if (which == DialogInterface.BUTTON_NEGATIVE) {
                     dialog.dismiss();
-                    lastClicked=-1;
-                    is_first=true;
+                    lastClicked = -1;
+                    is_first = true;
                 }
             }
         });
-
         timePickerDialog.show();
-
     }
 }
