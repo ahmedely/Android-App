@@ -1,14 +1,18 @@
 package com.kidsupervisor;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
@@ -50,13 +54,30 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         fragmentManager.beginTransaction().add(R.id.fragmentLayout, camraFragment, "2").hide(camraFragment).commit();
         fragmentManager.beginTransaction().add(R.id.fragmentLayout, homeFragment, "1").commit();
 
-
+        // Go to Camera fragment on Notification click
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(this);
         Bundle extras = getIntent().getExtras();
         if (extras != null) {
             if (extras.containsKey("menuFragment")) {
                 binding.bottomNavigationView.setSelectedItemId(R.id.camera);
+                AlertDialog.Builder builder;
+                builder = new AlertDialog.Builder(this);
+                builder.setTitle("Alert!");
+                builder.setMessage("Is your Baby awake ?");
+                builder.setCancelable(true);
+                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
 
+                    }
+                });
+                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+
+                    }
+                });
+                builder.show();
             }
         }
 
@@ -103,14 +124,34 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     }
 
     // Go to Camera fragment on Notification click
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            if (extras.containsKey("menuFragment")) {
-                binding.bottomNavigationView.setSelectedItemId(R.id.camera);
-            }
-        }
-    }
+//    @Override
+//    protected void onNewIntent(Intent intent) {
+//        super.onNewIntent(intent);
+//        Bundle extras = intent.getExtras();
+//        if (extras != null) {
+//            if (extras.containsKey("menuFragment")) {
+//               // binding.bottomNavigationView.setSelectedItemId(R.id.camera);
+//                System.out.println("HELLO");
+//                Toast.makeText(this, "HELLo", Toast.LENGTH_SHORT).show();
+//                AlertDialog.Builder builder;
+//                builder = new AlertDialog.Builder(this);
+//                builder.setTitle("Alert!");
+//                builder.setMessage("Is your Baby awake ?");
+//                builder.setCancelable(true);
+//                builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                    }
+//                });
+//                builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                    @Override
+//                    public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                    }
+//                });
+//                builder.show();
+//            }
+//        }
+//    }
 }
