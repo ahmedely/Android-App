@@ -108,8 +108,6 @@ public class SignupActivity extends AppCompatActivity {
 
 
         auth = FirebaseAuth.getInstance();
-        System.out.println(auth);
-
         txtName = findViewById(R.id.name);
         txtEmail = findViewById(R.id.email);
         txtPassword = findViewById(R.id.password);

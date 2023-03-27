@@ -20,7 +20,8 @@ public class SettingsFragment extends Fragment {
     Switch changeTheme;
     Pref pref;
     Button signOutBut;
-    FloatingActionButton addKidBut;
+
+    FirebaseAuth auth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,9 +34,7 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         pref = new Pref(getActivity());
-
         changeTheme = view.findViewById(R.id.switch_btn);
-
         changeTheme.setChecked(pref.getBoolean("Switch"));
 
         changeTheme.setOnClickListener(new View.OnClickListener() {
@@ -48,21 +47,11 @@ public class SettingsFragment extends Fragment {
                     pref.setBoolean("Switch", false);
                     changeTheme.setChecked(false);
                 }
-                startActivity(new Intent(getActivity(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                getActivity().finish();
+
             }
         });
 
-
-        addKidBut = (FloatingActionButton) view.findViewById(R.id.add_kidFloat);
         signOutBut = (Button) view.findViewById(R.id.sign_out);
-
-        addKidBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), KidInfoActivity.class));
-            }
-        });
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +60,5 @@ public class SettingsFragment extends Fragment {
                 getActivity().finish();
             }
         });
-
-
     }
 }
