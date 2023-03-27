@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr format="color" name="backgroundColor"/>
+    <attr format="reference" name="hide"/>
+    <attr format="reference" name="ic_account"/>
+    <attr format="reference" name="ic_camera"/>
+    <attr format="reference" name="ic_eye"/>
+    <attr format="reference" name="ic_graphic"/>
+    <attr format="reference" name="ic_home"/>
+    <attr format="reference" name="ic_lock"/>
+    <attr format="reference" name="ic_mail"/>
+    <attr format="reference" name="ic_pointing"/>
+    <attr format="reference" name="ic_setting"/>
+    <attr format="color" name="navig_Color"/>
+    <attr format="color" name="txtColor"/>
+    <color name="black">#FF000000</color>
+    <color name="colorPrimary">#32b5bd</color>
+    <color name="lightGrey">#BDB8B8</color>
+    <color name="white">#FFFFFFFF</color>
+    <string name="app_name">KidSupervisor</string>
+    <string name="default_web_client_id" translatable="false">109990230892-aueuml2dp3tpullbgkmfoqticddgn7ed.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">109990230892</string>
+    <string name="google_api_key" translatable="false">AIzaSyDPk4m9qA4ieJtcd22Ex_RJlbmnyPTPPko</string>
+    <string name="google_app_id" translatable="false">1:109990230892:android:ad177fddc81ccf37499149</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDPk4m9qA4ieJtcd22Ex_RJlbmnyPTPPko</string>
+    <string name="google_storage_bucket" translatable="false">coen390project-7ece3.appspot.com</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="project_id" translatable="false">coen390project-7ece3</string>
+    <string name="show_notification">Show Notification\n <font Size="8">During Sleep hours</font> </string>
+    <style name="Theme.KidSupervisor" parent="Theme.AppCompat.Light.NoActionBar">
+        
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        
+        <item name="colorSecondary">@color/colorPrimary</item>
+        <item name="colorSecondaryVariant">@color/colorPrimary</item>
+        <item name="colorOnSecondary">@color/black</item>
+        
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
+        
+    </style>
+    <style name="darktheme" parent="Theme.KidSupervisor">
+        <item name="backgroundColor">@color/black</item>
+        <item name="navig_Color">#404040</item>
+        <item name="ic_home">@drawable/ic_home_dark</item>
+        <item name="ic_camera">@drawable/ic_camera_dark</item>
+        <item name="ic_graphic">@drawable/ic_graphic_dark</item>
+        <item name="ic_setting">@drawable/ic_setting_dark</item>
+        <item name="txtColor">@color/white</item>
+        <item name="ic_mail">@drawable/ic_mail_dark</item>
+        <item name="ic_lock">@drawable/ic_lock_dark</item>
+        <item name="ic_eye">@drawable/ic_eye_dark</item>
+        <item name="ic_pointing">@drawable/pointing_dark</item>
+        <item name="hide">@drawable/hide</item>
+        <item name="ic_account">@drawable/ic_account_drak</item>
+
+    </style>
+    <style name="lighttheme" parent="Theme.KidSupervisor">
+        <item name="backgroundColor">#f9fafd</item>
+        <item name="navig_Color">@color/white</item>
+        <item name="ic_home">@drawable/ic_home</item>
+        <item name="ic_camera">@drawable/ic_camera</item>
+        <item name="ic_graphic">@drawable/ic_graphic_eq</item>
+        <item name="ic_setting">@drawable/ic_settings</item>
+        <item name="txtColor">@color/black</item>
+        <item name="ic_mail">@drawable/ic_mail</item>
+        <item name="ic_lock">@drawable/ic_lock</item>
+        <item name="ic_eye">@drawable/ic_eye</item>
+        <item name="ic_pointing">@drawable/pointing</item>
+        <item name="hide">@drawable/hide</item>
+        <item name="ic_account">@drawable/ic_account</item>
+
+    </style>
+</resources>

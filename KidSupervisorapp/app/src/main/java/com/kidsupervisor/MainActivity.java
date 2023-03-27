@@ -3,6 +3,7 @@ package com.kidsupervisor;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         pref = new Pref(this);
         if (!pref.getBoolean("Switch")) {
             setTheme(R.style.lighttheme);
