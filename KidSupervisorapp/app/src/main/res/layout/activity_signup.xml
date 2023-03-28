@@ -12,6 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Kid\nSupervisor"
+        android:textColor="?attr/txtColor"
         android:textSize="@dimen/_24sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -26,6 +27,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Signup"
+        android:textColor="?attr/txtColor"
         android:textSize="@dimen/_15sdp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -65,6 +67,7 @@
             android:maxLines="1"
             android:paddingHorizontal="@dimen/_16sdp"
             android:singleLine="true"
+            android:textColor="?attr/txtColor"
             android:textColorHint="@color/lightGrey"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
@@ -99,6 +102,7 @@
             android:maxLines="1"
             android:paddingHorizontal="@dimen/_16sdp"
             android:singleLine="true"
+            android:textColor="?attr/txtColor"
             android:textColorHint="@color/lightGrey"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold"
@@ -139,6 +143,7 @@
             android:maxLines="1"
             android:paddingHorizontal="@dimen/_16sdp"
             android:singleLine="true"
+            android:textColor="?attr/txtColor"
             android:textColorHint="@color/lightGrey"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
@@ -186,6 +191,7 @@
             android:maxLines="1"
             android:paddingHorizontal="@dimen/_16sdp"
             android:singleLine="true"
+            android:textColor="?attr/txtColor"
             android:textColorHint="@color/lightGrey"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />

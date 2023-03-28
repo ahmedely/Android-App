@@ -1,7 +1,5 @@
 package com.kidsupervisor;
 
-import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -11,9 +9,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kidsupervisor.databinding.ActivityMainBinding;
@@ -52,13 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
 
         binding.bottomNavigationView.setOnNavigationItemSelectedListener(this);
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            if (extras.containsKey("menuFragment")) {
-                binding.bottomNavigationView.setSelectedItemId(R.id.camera);
 
-            }
-        }
 
     }
 
@@ -102,15 +91,4 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         return false;
     }
 
-    // Go to Camera fragment on Notification click
-    @Override
-    protected void onNewIntent(Intent intent) {
-        super.onNewIntent(intent);
-        Bundle extras = intent.getExtras();
-        if (extras != null) {
-            if (extras.containsKey("menuFragment")) {
-                binding.bottomNavigationView.setSelectedItemId(R.id.camera);
-            }
-        }
-    }
 }

@@ -1,61 +1,46 @@
 package com.kidsupervisor;
 
 public class Kid {
+    private String name;
+    private int age;
+    private double weight;
+    private boolean saved;
 
-    private String id;
-    private String fullName;
-    private String age;
-    private String weight;
-    private String height;
+    public Kid(){
+        name = "";
+        age = 0;
+        weight = 0.0;
+        saved = false;
+    }
 
-    public Kid(String fullName, String age, String weight, String height) {
-        this.fullName = fullName;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setAge(int age) {
         this.age = age;
-        this.weight = weight;
-        this.height = height;
     }
 
-    public String getWeight() {
-        return weight;
-    }
-
-    public void setWeight(String weight) {
+    public void setWeight(double weight) {
         this.weight = weight;
     }
 
-    public String getHeight() {
-        return height;
+    public String getName() {
+        return name;
     }
 
-    public void setHeight(String height) {
-        this.height = height;
-    }
-
-    public Kid() {
-    }
-
-    public String getFullName() {
-        return fullName;
-    }
-
-    public void setFullName(String fullName) {
-        this.fullName = fullName;
-    }
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getAge() {
+    public int getAge() {
         return age;
     }
 
-    public void setAge(String age) {
-        this.age = age;
+    public double getWeight() {
+        return weight;
     }
 
+    public boolean isSaved() {return saved; }
+
+    public void setSaved(boolean saved) { this.saved = saved; }
 }
+
+
+
