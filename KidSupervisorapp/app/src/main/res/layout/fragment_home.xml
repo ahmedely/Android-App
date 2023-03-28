@@ -44,9 +44,6 @@
         android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/pageName" />
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/weightText2"
-        app:layout_constraintTop_toBottomOf="@+id/weightText2" />
 
     <TextView
         android:id="@+id/ageText"
@@ -57,9 +54,6 @@
         android:textColor="?attr/txtColor"
         app:layout_constraintStart_toStartOf="@+id/nameText"
         app:layout_constraintTop_toBottomOf="@+id/weightText" />
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/spinner" />
 
     <TextView
         android:id="@+id/lengthText"
@@ -70,9 +64,6 @@
         app:layout_constraintStart_toStartOf="@+id/ageText"
         app:layout_constraintTop_toBottomOf="@+id/ageText" />
 
-        android:textColor="@color/black"
-        app:layout_constraintStart_toStartOf="@+id/weightText"
-        app:layout_constraintTop_toBottomOf="@+id/weightText" />
 
     <TextView
         android:id="@+id/scheduleText"
@@ -146,10 +137,6 @@
         app:layout_constraintEnd_toStartOf="@+id/addSchedule"
         app:layout_constraintStart_toEndOf="@+id/removeSchedule"
         app:layout_constraintTop_toTopOf="@+id/removeSchedule" />
-        android:textColor="@color/black"
-        android:textStyle="bold|italic"
-        app:layout_constraintStart_toStartOf="@+id/lengthText"
-        app:layout_constraintTop_toBottomOf="@+id/lengthText" />
 
     <Button
         android:id="@+id/removeSchedule"
@@ -159,41 +146,6 @@
         android:layout_marginTop="20dp"
         android:text="-"
         app:layout_constraintStart_toStartOf="parent"
-        android:id="@+id/addSchedule"
-        android:layout_width="89dp"
-        android:layout_height="42dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="60dp"
-        android:text="ADD"
-        app:layout_constraintStart_toEndOf="@+id/list"
-        app:layout_constraintTop_toTopOf="@+id/list" />
-
-    <Button
-        android:id="@+id/modifyBtn"
-        android:layout_width="89dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:text="MODIFY"
-        app:layout_constraintStart_toEndOf="@+id/list"
-        app:layout_constraintTop_toBottomOf="@+id/addSchedule" />
-
-    <Button
-        android:id="@+id/rmBtn"
-        android:layout_width="89dp"
-        android:layout_height="44dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="5dp"
-        android:text="DELETE"
-        app:layout_constraintStart_toEndOf="@+id/list"
-        app:layout_constraintTop_toBottomOf="@+id/modifyBtn" />
-
-    <ListView
-        android:id="@+id/list"
-        android:layout_width="209dp"
-        android:layout_height="284dp"
-        android:layout_marginTop="8dp"
-        app:layout_constraintStart_toStartOf="@+id/scheduleText"
         app:layout_constraintTop_toBottomOf="@+id/scheduleText" />
 
     <Button
