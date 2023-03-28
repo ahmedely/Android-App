@@ -4,8 +4,8 @@ package com.kidsupervisor.databinding;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,13 +22,7 @@ public final class ActivityKidInfoBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button buttonDelete;
-
-  @NonNull
-  public final Button buttonEdit;
-
-  @NonNull
-  public final Button buttonSave;
+  public final ImageView btnRemoveKid;
 
   @NonNull
   public final EditText editTextHeight;
@@ -54,16 +48,14 @@ public final class ActivityKidInfoBinding implements ViewBinding {
   @NonNull
   public final TextView textViewkidWeight;
 
-  private ActivityKidInfoBinding(@NonNull ConstraintLayout rootView, @NonNull Button buttonDelete,
-      @NonNull Button buttonEdit, @NonNull Button buttonSave, @NonNull EditText editTextHeight,
+  private ActivityKidInfoBinding(@NonNull ConstraintLayout rootView,
+      @NonNull ImageView btnRemoveKid, @NonNull EditText editTextHeight,
       @NonNull EditText editTextKidAge, @NonNull EditText editTextKidName,
       @NonNull EditText editTextNumberDecimal, @NonNull TextView textView2,
       @NonNull TextView textViewKidName, @NonNull TextView textViewkidAge,
       @NonNull TextView textViewkidWeight) {
     this.rootView = rootView;
-    this.buttonDelete = buttonDelete;
-    this.buttonEdit = buttonEdit;
-    this.buttonSave = buttonSave;
+    this.btnRemoveKid = btnRemoveKid;
     this.editTextHeight = editTextHeight;
     this.editTextKidAge = editTextKidAge;
     this.editTextKidName = editTextKidName;
@@ -101,21 +93,9 @@ public final class ActivityKidInfoBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.buttonDelete;
-      Button buttonDelete = ViewBindings.findChildViewById(rootView, id);
-      if (buttonDelete == null) {
-        break missingId;
-      }
-
-      id = R.id.buttonEdit;
-      Button buttonEdit = ViewBindings.findChildViewById(rootView, id);
-      if (buttonEdit == null) {
-        break missingId;
-      }
-
-      id = R.id.buttonSave;
-      Button buttonSave = ViewBindings.findChildViewById(rootView, id);
-      if (buttonSave == null) {
+      id = R.id.btnRemoveKid;
+      ImageView btnRemoveKid = ViewBindings.findChildViewById(rootView, id);
+      if (btnRemoveKid == null) {
         break missingId;
       }
 
@@ -167,9 +147,9 @@ public final class ActivityKidInfoBinding implements ViewBinding {
         break missingId;
       }
 
-      return new ActivityKidInfoBinding((ConstraintLayout) rootView, buttonDelete, buttonEdit,
-          buttonSave, editTextHeight, editTextKidAge, editTextKidName, editTextNumberDecimal,
-          textView2, textViewKidName, textViewkidAge, textViewkidWeight);
+      return new ActivityKidInfoBinding((ConstraintLayout) rootView, btnRemoveKid, editTextHeight,
+          editTextKidAge, editTextKidName, editTextNumberDecimal, textView2, textViewKidName,
+          textViewkidAge, textViewkidWeight);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

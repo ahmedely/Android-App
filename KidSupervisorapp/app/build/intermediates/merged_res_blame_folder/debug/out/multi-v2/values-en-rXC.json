@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.kidsupervisor.app-mergeDebugResources-33:/values-en-rXC/values-en-rXC.xml",
+            "outputFile": "com.kidsupervisor.app-mergeDebugResources-45:/values-en-rXC/values-en-rXC.xml",
             "map": [
                 {
                     "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\2205cd4a9e7fdd0bfd0339109a1c92c0\\transformed\\appcompat-1.5.1\\res\\values-en-rXC\\values-en-rXC.xml",

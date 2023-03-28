@@ -6,14 +6,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.Spinner;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kidsupervisor.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -24,50 +22,47 @@ public final class FragmentHomeBinding implements ViewBinding {
   private final ConstraintLayout rootView;
 
   @NonNull
-  public final Button addSchedule;
+  public final Button btnAddKid;
 
   @NonNull
-  public final TextView lengthText;
+  public final Button btnAddSchedule;
 
   @NonNull
-  public final ListView list;
+  public final Button btnDeleteSchedule;
 
   @NonNull
-  public final FloatingActionButton logoPic;
+  public final Button btnModifySchedule;
 
   @NonNull
-  public final Button modifyBtn;
+  public final ListView kidsList;
 
   @NonNull
-  public final Button rmBtn;
+  public final ListView scheduleList;
 
   @NonNull
   public final TextView scheduleText;
 
   @NonNull
-  public final Spinner spinner;
+  public final TextView txtListOfKids;
 
   @NonNull
-  public final TextView weightText;
+  public final ConstraintLayout txtWeight;
 
-  @NonNull
-  public final TextView weightText2;
-
-  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull Button addSchedule,
-      @NonNull TextView lengthText, @NonNull ListView list, @NonNull FloatingActionButton logoPic,
-      @NonNull Button modifyBtn, @NonNull Button rmBtn, @NonNull TextView scheduleText,
-      @NonNull Spinner spinner, @NonNull TextView weightText, @NonNull TextView weightText2) {
+  private FragmentHomeBinding(@NonNull ConstraintLayout rootView, @NonNull Button btnAddKid,
+      @NonNull Button btnAddSchedule, @NonNull Button btnDeleteSchedule,
+      @NonNull Button btnModifySchedule, @NonNull ListView kidsList, @NonNull ListView scheduleList,
+      @NonNull TextView scheduleText, @NonNull TextView txtListOfKids,
+      @NonNull ConstraintLayout txtWeight) {
     this.rootView = rootView;
-    this.addSchedule = addSchedule;
-    this.lengthText = lengthText;
-    this.list = list;
-    this.logoPic = logoPic;
-    this.modifyBtn = modifyBtn;
-    this.rmBtn = rmBtn;
+    this.btnAddKid = btnAddKid;
+    this.btnAddSchedule = btnAddSchedule;
+    this.btnDeleteSchedule = btnDeleteSchedule;
+    this.btnModifySchedule = btnModifySchedule;
+    this.kidsList = kidsList;
+    this.scheduleList = scheduleList;
     this.scheduleText = scheduleText;
-    this.spinner = spinner;
-    this.weightText = weightText;
-    this.weightText2 = weightText2;
+    this.txtListOfKids = txtListOfKids;
+    this.txtWeight = txtWeight;
   }
 
   @Override
@@ -97,39 +92,39 @@ public final class FragmentHomeBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.addSchedule;
-      Button addSchedule = ViewBindings.findChildViewById(rootView, id);
-      if (addSchedule == null) {
+      id = R.id.btnAddKid;
+      Button btnAddKid = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddKid == null) {
         break missingId;
       }
 
-      id = R.id.lengthText;
-      TextView lengthText = ViewBindings.findChildViewById(rootView, id);
-      if (lengthText == null) {
+      id = R.id.btnAddSchedule;
+      Button btnAddSchedule = ViewBindings.findChildViewById(rootView, id);
+      if (btnAddSchedule == null) {
         break missingId;
       }
 
-      id = R.id.list;
-      ListView list = ViewBindings.findChildViewById(rootView, id);
-      if (list == null) {
+      id = R.id.btnDeleteSchedule;
+      Button btnDeleteSchedule = ViewBindings.findChildViewById(rootView, id);
+      if (btnDeleteSchedule == null) {
         break missingId;
       }
 
-      id = R.id.logoPic;
-      FloatingActionButton logoPic = ViewBindings.findChildViewById(rootView, id);
-      if (logoPic == null) {
+      id = R.id.btnModifySchedule;
+      Button btnModifySchedule = ViewBindings.findChildViewById(rootView, id);
+      if (btnModifySchedule == null) {
         break missingId;
       }
 
-      id = R.id.modifyBtn;
-      Button modifyBtn = ViewBindings.findChildViewById(rootView, id);
-      if (modifyBtn == null) {
+      id = R.id.kidsList;
+      ListView kidsList = ViewBindings.findChildViewById(rootView, id);
+      if (kidsList == null) {
         break missingId;
       }
 
-      id = R.id.rmBtn;
-      Button rmBtn = ViewBindings.findChildViewById(rootView, id);
-      if (rmBtn == null) {
+      id = R.id.scheduleList;
+      ListView scheduleList = ViewBindings.findChildViewById(rootView, id);
+      if (scheduleList == null) {
         break missingId;
       }
 
@@ -139,26 +134,17 @@ public final class FragmentHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.spinner;
-      Spinner spinner = ViewBindings.findChildViewById(rootView, id);
-      if (spinner == null) {
+      id = R.id.txtListOfKids;
+      TextView txtListOfKids = ViewBindings.findChildViewById(rootView, id);
+      if (txtListOfKids == null) {
         break missingId;
       }
 
-      id = R.id.weightText;
-      TextView weightText = ViewBindings.findChildViewById(rootView, id);
-      if (weightText == null) {
-        break missingId;
-      }
+      ConstraintLayout txtWeight = (ConstraintLayout) rootView;
 
-      id = R.id.weightText2;
-      TextView weightText2 = ViewBindings.findChildViewById(rootView, id);
-      if (weightText2 == null) {
-        break missingId;
-      }
-
-      return new FragmentHomeBinding((ConstraintLayout) rootView, addSchedule, lengthText, list,
-          logoPic, modifyBtn, rmBtn, scheduleText, spinner, weightText, weightText2);
+      return new FragmentHomeBinding((ConstraintLayout) rootView, btnAddKid, btnAddSchedule,
+          btnDeleteSchedule, btnModifySchedule, kidsList, scheduleList, scheduleText, txtListOfKids,
+          txtWeight);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

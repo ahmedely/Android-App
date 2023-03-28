@@ -13,7 +13,6 @@ import androidx.annotation.Nullable;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.viewbinding.ViewBinding;
 import androidx.viewbinding.ViewBindings;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.kidsupervisor.R;
 import java.lang.NullPointerException;
 import java.lang.Override;
@@ -22,9 +21,6 @@ import java.lang.String;
 public final class FragmentSettingsBinding implements ViewBinding {
   @NonNull
   private final ConstraintLayout rootView;
-
-  @NonNull
-  public final FloatingActionButton addKidFloat;
 
   @NonNull
   public final RelativeLayout cameraLayout;
@@ -48,12 +44,10 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final TextView txtSetting;
 
   private FragmentSettingsBinding(@NonNull ConstraintLayout rootView,
-      @NonNull FloatingActionButton addKidFloat, @NonNull RelativeLayout cameraLayout,
-      @NonNull RelativeLayout scheduleLayout, @NonNull Button signOut,
-      @NonNull Switch switcNotification, @NonNull Switch switchBtn,
+      @NonNull RelativeLayout cameraLayout, @NonNull RelativeLayout scheduleLayout,
+      @NonNull Button signOut, @NonNull Switch switcNotification, @NonNull Switch switchBtn,
       @NonNull RelativeLayout themeLayout, @NonNull TextView txtSetting) {
     this.rootView = rootView;
-    this.addKidFloat = addKidFloat;
     this.cameraLayout = cameraLayout;
     this.scheduleLayout = scheduleLayout;
     this.signOut = signOut;
@@ -90,12 +84,6 @@ public final class FragmentSettingsBinding implements ViewBinding {
     // This is done to optimize the compiled bytecode for size and performance.
     int id;
     missingId: {
-      id = R.id.add_kidFloat;
-      FloatingActionButton addKidFloat = ViewBindings.findChildViewById(rootView, id);
-      if (addKidFloat == null) {
-        break missingId;
-      }
-
       id = R.id.camera_Layout;
       RelativeLayout cameraLayout = ViewBindings.findChildViewById(rootView, id);
       if (cameraLayout == null) {
@@ -138,8 +126,8 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentSettingsBinding((ConstraintLayout) rootView, addKidFloat, cameraLayout,
-          scheduleLayout, signOut, switcNotification, switchBtn, themeLayout, txtSetting);
+      return new FragmentSettingsBinding((ConstraintLayout) rootView, cameraLayout, scheduleLayout,
+          signOut, switcNotification, switchBtn, themeLayout, txtSetting);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

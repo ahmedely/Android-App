@@ -31,8 +31,8 @@
 20-->C:\Users\User\AndroidStudioProjects\TeamProject\KidSupervisorapp\app\src\main\AndroidManifest.xml:10:9-54
 21        android:icon="@mipmap/ic_launcher"
 21-->C:\Users\User\AndroidStudioProjects\TeamProject\KidSupervisorapp\app\src\main\AndroidManifest.xml:11:9-43
-22        android:label="zzzMonitor"
-22-->C:\Users\User\AndroidStudioProjects\TeamProject\KidSupervisorapp\app\src\main\AndroidManifest.xml:12:9-35
+22        android:label="SleepSafe"
+22-->C:\Users\User\AndroidStudioProjects\TeamProject\KidSupervisorapp\app\src\main\AndroidManifest.xml:12:9-34
 23        android:roundIcon="@mipmap/ic_launcher_round"
 23-->C:\Users\User\AndroidStudioProjects\TeamProject\KidSupervisorapp\app\src\main\AndroidManifest.xml:13:9-54
 24        android:supportsRtl="true"
@@ -246,6 +246,19 @@
 134                android:value="androidx.startup" />
 134-->[androidx.lifecycle:lifecycle-process:2.4.1] C:\Users\User\.gradle\caches\transforms-3\c2dfcefb92e37fc96955220fe8b8c302\transformed\lifecycle-process-2.4.1\AndroidManifest.xml:33:17-49
 135        </provider>
-136    </application>
-137
-138</manifest>
+136
+137        <uses-library
+137-->[androidx.window:window:1.0.0] C:\Users\User\.gradle\caches\transforms-3\ca4cf1e28e33ef6034fdd417c261a8ab\transformed\window-1.0.0\AndroidManifest.xml:25:9-27:40
+138            android:name="androidx.window.extensions"
+138-->[androidx.window:window:1.0.0] C:\Users\User\.gradle\caches\transforms-3\ca4cf1e28e33ef6034fdd417c261a8ab\transformed\window-1.0.0\AndroidManifest.xml:26:13-54
+139            android:required="false" />
+139-->[androidx.window:window:1.0.0] C:\Users\User\.gradle\caches\transforms-3\ca4cf1e28e33ef6034fdd417c261a8ab\transformed\window-1.0.0\AndroidManifest.xml:27:13-37
+140        <uses-library
+140-->[androidx.window:window:1.0.0] C:\Users\User\.gradle\caches\transforms-3\ca4cf1e28e33ef6034fdd417c261a8ab\transformed\window-1.0.0\AndroidManifest.xml:28:9-30:40
+141            android:name="androidx.window.sidecar"
+141-->[androidx.window:window:1.0.0] C:\Users\User\.gradle\caches\transforms-3\ca4cf1e28e33ef6034fdd417c261a8ab\transformed\window-1.0.0\AndroidManifest.xml:29:13-51
+142            android:required="false" />
+142-->[androidx.window:window:1.0.0] C:\Users\User\.gradle\caches\transforms-3\ca4cf1e28e33ef6034fdd417c261a8ab\transformed\window-1.0.0\AndroidManifest.xml:30:13-37
+143    </application>
+144
+145</manifest>

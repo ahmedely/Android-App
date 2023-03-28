@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.kidsupervisor.app-mergeDebugResources-33:/values-sw360dp-v13/values-sw360dp-v13.xml",
+            "outputFile": "com.kidsupervisor.app-mergeDebugResources-45:/values-sw360dp-v13/values-sw360dp-v13.xml",
             "map": [
                 {
                     "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\cdf745c389d1ddb012db0b62c87bc15a\\transformed\\sdp-android-1.1.0\\res\\values-sw360dp-v13\\values-sw360dp-v13.xml",
