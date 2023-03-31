@@ -13,7 +13,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="Settings"
+        android:text="SETTINGS"
+        android:textColor="@color/black"
         android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -22,19 +23,19 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <LinearLayout
+        android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/txt_Setting"
         android:layout_marginHorizontal="@dimen/_12sdp"
-        android:layout_marginTop="@dimen/_20sdp"
         android:background="@drawable/setting_bg"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.516"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.189">
+        app:layout_constraintTop_toBottomOf="@+id/txt_Setting"
+        app:layout_constraintVertical_bias="0.059">
 
         <RelativeLayout
             android:id="@+id/theme_Layout"
@@ -48,6 +49,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:text="Dark Mode"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
             <Switch
@@ -71,6 +73,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/_10sdp"
                 android:text="Camera"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
 
@@ -96,6 +99,7 @@
                 android:layout_marginStart="@dimen/_10sdp"
                 android:layout_toStartOf="@id/switc_notification"
                 android:text="@string/show_notification"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
             <Switch
@@ -111,8 +115,8 @@
 
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_marginVertical="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/button_shape"
@@ -121,24 +125,32 @@
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
 
+        <Button
+            android:id="@+id/editPrfl"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/button_shape"
+            android:text="EDIT PROFILE"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/sign_out"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/button_shape"
+            android:text="Sign out"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
 
     </LinearLayout>
-
-    <Button
-        android:id="@+id/sign_out"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="20dp"
-        android:layout_marginBottom="40dp"
-        android:background="@drawable/button_shape"
-        android:text="Sign out"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.566"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -4,7 +4,7 @@
             "outputFile": "com.kidsupervisor.app-mergeDebugResources-45:/values-xlarge-v4/values-xlarge-v4.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\2205cd4a9e7fdd0bfd0339109a1c92c0\\transformed\\appcompat-1.5.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\4269181ff1ad25780c987a3cfa38ccc3\\transformed\\appcompat-1.5.1\\res\\values-xlarge-v4\\values-xlarge-v4.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7",
                         "startColumns": "4,4,4,4,4,4",

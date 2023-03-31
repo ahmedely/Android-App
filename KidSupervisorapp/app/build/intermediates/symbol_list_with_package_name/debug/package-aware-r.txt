@@ -3334,10 +3334,9 @@ drawable ic_graphic_eq
 drawable ic_home
 drawable ic_home_dark
 drawable ic_keyboard_black_24dp
-drawable ic_launcher_background
-drawable ic_launcher_foreground
 drawable ic_lock
 drawable ic_lock_dark
+drawable ic_logo_background
 drawable ic_m3_chip_check
 drawable ic_m3_chip_checked_circle
 drawable ic_m3_chip_close
@@ -3421,6 +3420,10 @@ drawable notify_panel_notification_icon_bg
 drawable pointing
 drawable pointing_dark
 drawable setting_bg
+drawable slide1
+drawable slide2
+drawable slide3
+drawable slide4
 drawable splash_screen
 drawable test_level_drawable
 drawable tooltip_frame_dark
@@ -3515,6 +3518,7 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id backBtn
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -3564,6 +3568,7 @@ id clockwise
 id closest
 id collapseActionView
 id compress
+id confirmPass
 id confirmPassword
 id confirm_button
 id constraint
@@ -3614,6 +3619,7 @@ id easeIn
 id easeInOut
 id easeOut
 id east
+id editPrfl
 id editTextHeight
 id editTextKidAge
 id editTextKidName
@@ -3697,6 +3703,8 @@ id line1
 id line3
 id linear
 id linearLayout
+id linearLayout1
+id linearLayout2
 id listMode
 id list_item
 id locale
@@ -3775,6 +3783,8 @@ id never
 id neverCompleteToEnd
 id neverCompleteToStart
 id newAccountTextViw
+id newPass
+id nextBtn
 id noScroll
 id noState
 id none
@@ -3784,6 +3794,7 @@ id notification_background
 id notification_main_column
 id notification_main_column_container
 id off
+id oldPass
 id on
 id onInterceptTouchReturnSwipe
 id outline
@@ -3810,6 +3821,8 @@ id progress_horizontal
 id radio
 id ratio
 id rectangles
+id relativeLayout3
+id relativeLayout4
 id reverseSawtooth
 id right
 id rightToLeft
@@ -3854,6 +3867,7 @@ id showTitle
 id sign_out
 id signupButton
 id sin
+id skipBtn
 id skipCollapsed
 id skipped
 id slide
@@ -3942,6 +3956,7 @@ id transition_position
 id transition_scene_layoutid_cache
 id transition_transform
 id triangle
+id tutLayout
 id txtEmail
 id txtListOfKids
 id txtWeight
@@ -4101,6 +4116,7 @@ layout activity_main
 layout activity_reset_password
 layout activity_signup
 layout activity_splash_screen
+layout activity_tutorial
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
 layout custom_dialog
@@ -4121,6 +4137,7 @@ layout design_text_input_end_icon
 layout design_text_input_start_icon
 layout dp_example
 layout fragment_camera
+layout fragment_edit_user_profile
 layout fragment_home
 layout fragment_settings
 layout fragment_stats
@@ -4184,8 +4201,10 @@ layout select_dialog_multichoice_material
 layout select_dialog_singlechoice_material
 layout support_simple_spinner_dropdown_item
 menu bottom_nav_menu
-mipmap ic_launcher
 mipmap ic_launcher_round
+mipmap ic_logo
+mipmap ic_logo_foreground
+mipmap ic_logo_round
 mipmap logo_foreground
 plurals mtrl_badge_content_description
 raw firebase_common_keep

@@ -34,6 +34,8 @@ public class SignupActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
         pref = new Pref(this);
         if (!pref.getBoolean("Switch")) {
             setTheme(R.style.lighttheme);
@@ -146,6 +148,7 @@ public class SignupActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
+                    pref.setUserStatus(true);
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                     Toast.makeText(SignupActivity.this, "Account created", Toast.LENGTH_LONG).show();
                 } else {

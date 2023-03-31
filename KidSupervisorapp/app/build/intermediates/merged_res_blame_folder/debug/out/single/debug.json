@@ -1,290 +1,306 @@
 [
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_activity_signup.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\activity_signup.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_eye.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_eye.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_ic_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\ic_logo_foreground.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xxxhdpi_ic_launcher_round.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xxxhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_account.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_account.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_button_shape.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\button_shape.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\menu_bottom_nav_menu.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\menu\\bottom_nav_menu.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_eye.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_eye.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_ic_logo_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\ic_logo_round.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_eye_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_eye_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_lock.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_lock.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_camera.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\fragment_camera.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_ic_logo_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\ic_logo_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_splash_screen.png.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\splash_screen.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_activity_login.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\activity_login.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-anydpi-v26_ic_logo_round.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-anydpi-v26\\ic_logo_round.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_setting_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_setting_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_settings.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\fragment_settings.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\xml_data_extraction_rules.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\xml\\data_extraction_rules.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_ic_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\ic_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_babies.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_babies.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_activity_main.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\activity_main.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_settings.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_settings.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_pointing_dark.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\pointing_dark.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_setting_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_setting_dark.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_home.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\fragment_home.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_mail.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_mail.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_slide3.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\slide3.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_activity_reset_password.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\activity_reset_password.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_camera.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\fragment_camera.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xxhdpi_ic_launcher.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_camera.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_camera.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_camera.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_camera.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_main.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_main.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_account.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_account.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\ic_logo.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_launcher_background.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_launcher_background.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_setting_bg.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\setting_bg.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_pointing_dark.png.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\pointing_dark.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_edit_user_profile.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\fragment_edit_user_profile.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_pointing.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\pointing.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_camera_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_camera_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_graphic_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_graphic_dark.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_home.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_home.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\color_navi_colors.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\color\\navi_colors.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-anydpi-v26\\ic_launcher.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_tutorial.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_tutorial.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_edittext_bg.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\edittext_bg.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_reset_password.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_reset_password.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_settings.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_settings.xml"
+        "merged": "com.kidsupervisor.app-merged_res-47:/layout_fragment_edit_user_profile.xml.flat",
+        "source": "com.kidsupervisor.app-main-49:/layout/fragment_edit_user_profile.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_activity_splash_screen.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\activity_splash_screen.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_ic_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\ic_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_mail_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_mail_dark.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_ic_logo_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\ic_logo_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_settings.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\fragment_settings.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_ic_logo_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\ic_logo_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_mail_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_mail_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_hide.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\hide.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xxxhdpi_ic_launcher.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xxxhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_stats.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\fragment_stats.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\xml_backup_rules.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\xml\\backup_rules.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xhdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xhdpi\\ic_logo.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\menu_bottom_nav_menu.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\menu\\bottom_nav_menu.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-anydpi-v26_ic_logo.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-anydpi-v26\\ic_logo.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-hdpi_ic_launcher_round.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-hdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_button_shape.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\button_shape.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_kid_info.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_kid_info.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_stats.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\fragment_stats.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_splash_screen.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_splash_screen.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xxxhdpi_logo_foreground.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xxxhdpi/logo_foreground.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_ic_logo_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\ic_logo_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_lock.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_lock.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_eye_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_eye_dark.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-hdpi_ic_launcher.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-hdpi/ic_launcher.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_fragment_home.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\fragment_home.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_navi_states.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\navi_states.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_account_drak.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_account_drak.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\xml_data_extraction_rules.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\xml\\data_extraction_rules.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-mdpi_ic_launcher_round.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-mdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_slide4.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\slide4.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xxhdpi_ic_launcher_round.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xxhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_graphic_eq.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_graphic_eq.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\logo_foreground.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xxhdpi_logo_foreground.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xxhdpi/logo_foreground.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_login.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_ic_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\ic_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_hide.png.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\hide.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_mail.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_mail.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\ic_launcher.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_account_drak.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_account_drak.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xhdpi_ic_launcher.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xhdpi/ic_launcher.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_logo_background.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_logo_background.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\layout_activity_kid_info.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\layout\\activity_kid_info.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_slide1.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\slide1.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\ic_launcher_round.webp"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-hdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_setting_bg.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\setting_bg.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\ic_logo.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xhdpi_ic_launcher_round.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xhdpi/ic_launcher_round.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_ic_logo_foreground.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\ic_logo_foreground.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_graphic_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_graphic_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_splash_screen.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\splash_screen.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_baseline_delete_24.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\baseline_delete_24.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable-v24_ic_launcher_foreground.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable-v24\\ic_launcher_foreground.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\ic_logo.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-hdpi_logo_foreground.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-hdpi/logo_foreground.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_home.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_home.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_lock_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_lock_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_lock_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_lock_dark.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_home_dark.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_home_dark.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_home_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_home_dark.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-mdpi_ic_launcher.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-mdpi/ic_launcher.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-mdpi_logo_foreground.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-mdpi/logo_foreground.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-mdpi\\ic_launcher_round.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_graphic_eq.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\ic_graphic_eq.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_baseline_delete_24.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\baseline_delete_24.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.kidsupervisor.app-main-49:/drawable/ic_launcher_background.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_babies.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_babies.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_ic_camera_dark.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\ic_camera_dark.xml"
     },
     {
-        "merged": "com.kidsupervisor.app-merged_res-47:/mipmap-xhdpi_logo_foreground.png.flat",
-        "source": "com.kidsupervisor.app-main-49:/mipmap-xhdpi/logo_foreground.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\xml_backup_rules.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\xml\\backup_rules.xml"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\color_navi_colors.xml.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\color\\navi_colors.xml"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxhdpi_ic_logo.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxhdpi\\ic_logo.png"
     },
     {
-        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-merged_res-47:\\drawable_pointing.png.flat",
-        "source": "C:\\Users\\User\\.gradle\\daemon\\7.4\\com.kidsupervisor.app-main-49:\\drawable\\pointing.png"
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_edittext_bg.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\edittext_bg.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_slide2.png.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\slide2.png"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\drawable_navi_states.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\drawable\\navi_states.xml"
+    },
+    {
+        "merged": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-merged_res-47:\\layout_activity_signup.xml.flat",
+        "source": "C:\\Users\\User\\.gradle\\daemon\\7.5\\com.kidsupervisor.app-main-49:\\layout\\activity_signup.xml"
     }
 ]

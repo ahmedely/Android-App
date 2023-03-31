@@ -21,10 +21,9 @@ import com.google.firebase.database.FirebaseDatabase;
 public class SettingsFragment extends Fragment {
     private Switch changeTheme;
     private Pref pref;
-    private Button signOutBut;
+    private Button signOutBut,edit_Profile;
     private DatabaseReference databaseRef;
     private FirebaseAuth auth;
-    private FirebaseService firebaseService;
     private User currentUser;
 
     @Override
@@ -40,9 +39,9 @@ public class SettingsFragment extends Fragment {
         currentUser = new User();
         pref = new Pref(getActivity());
         changeTheme = view.findViewById(R.id.switch_btn);
+        edit_Profile=view.findViewById(R.id.editPrfl);
         changeTheme.setChecked(pref.getBoolean("Switch"));
         auth = FirebaseAuth.getInstance();
-        firebaseService = new FirebaseService(getContext());
         changeTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -57,15 +56,29 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        edit_Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //go to dialogFragment
+                EditUserProfile dialogFragment = new EditUserProfile();
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+            }
+        });
+
+
         signOutBut = (Button) view.findViewById(R.id.sign_out);
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pref.setUserStatus(false);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+                pref.setLogInStatus(false);
                 getActivity().finish();
             }
         });
+
+
         if (auth.getCurrentUser() != null) {
             databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
 

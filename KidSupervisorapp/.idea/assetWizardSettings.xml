@@ -80,6 +80,7 @@
                                               <map>
                                                 <entry key="color" value="000000" />
                                                 <entry key="imagePath" value="C:\Users\User\Desktop\logo.png" />
+                                                <entry key="scalingPercent" value="106" />
                                               </map>
                                             </option>
                                           </PersistentState>
@@ -111,7 +112,7 @@
                                   </option>
                                   <option name="values">
                                     <map>
-                                      <entry key="foregroundLayerName" value="logo_foreground" />
+                                      <entry key="outputName" value="ic_logo" />
                                     </map>
                                   </option>
                                 </PersistentState>
@@ -292,7 +293,39 @@
         </entry>
         <entry key="vectorWizard">
           <value>
-            <PersistentState />
+            <PersistentState>
+              <option name="children">
+                <map>
+                  <entry key="vectorAssetStep">
+                    <value>
+                      <PersistentState>
+                        <option name="children">
+                          <map>
+                            <entry key="clipartAsset">
+                              <value>
+                                <PersistentState>
+                                  <option name="values">
+                                    <map>
+                                      <entry key="url" value="file:/$USER_HOME$/AppData/Local/Android/Sdk/icons/material/materialicons/arrow_forward/baseline_arrow_forward_24.xml" />
+                                    </map>
+                                  </option>
+                                </PersistentState>
+                              </value>
+                            </entry>
+                          </map>
+                        </option>
+                        <option name="values">
+                          <map>
+                            <entry key="outputName" value="arrow_frwd" />
+                            <entry key="sourceFile" value="C:\Users\User\AndroidStudioProjects\TeamProject\KidSupervisorapp" />
+                          </map>
+                        </option>
+                      </PersistentState>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </PersistentState>
           </value>
         </entry>
       </map>

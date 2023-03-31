@@ -17,7 +17,7 @@
     <color name="colorPrimary">#32b5bd</color>
     <color name="lightGrey">#BDB8B8</color>
     <color name="white">#FFFFFFFF</color>
-    <string name="app_name">KidSupervisor</string>
+    <string name="app_name">SleepSafe</string>
     <string name="default_web_client_id" translatable="false">109990230892-aueuml2dp3tpullbgkmfoqticddgn7ed.apps.googleusercontent.com</string>
     <string name="gcm_defaultSenderId" translatable="false">109990230892</string>
     <string name="google_api_key" translatable="false">AIzaSyDPk4m9qA4ieJtcd22Ex_RJlbmnyPTPPko</string>

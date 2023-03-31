@@ -6,7 +6,6 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -16,9 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kidsupervisor.databinding.ActivityMainBinding;
@@ -29,14 +25,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     ActivityMainBinding binding;
 
     Pref pref;
-
     private final Fragment homeFragment = new HomeFragment();
     private final Fragment camraFragment = new CameraFragment();
     private final Fragment settingsFragment = new SettingsFragment();
     private final Fragment statsFragment = new StatsFragment();
     private Fragment activeFragment = homeFragment;
     FragmentManager fragmentManager = getSupportFragmentManager();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +42,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else {
             setTheme(R.style.darktheme);
         }
+        pref.setLogInStatus(true);
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

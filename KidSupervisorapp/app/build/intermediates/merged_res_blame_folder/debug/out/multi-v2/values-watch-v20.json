@@ -4,7 +4,7 @@
             "outputFile": "com.kidsupervisor.app-mergeDebugResources-45:/values-watch-v20/values-watch-v20.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\2205cd4a9e7fdd0bfd0339109a1c92c0\\transformed\\appcompat-1.5.1\\res\\values-watch-v20\\values-watch-v20.xml",
+                    "source": "C:\\Users\\User\\.gradle\\caches\\transforms-3\\4269181ff1ad25780c987a3cfa38ccc3\\transformed\\appcompat-1.5.1\\res\\values-watch-v20\\values-watch-v20.xml",
                     "from": {
                         "startLines": "2,5,8",
                         "startColumns": "4,4,4",

@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -26,6 +27,12 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final RelativeLayout cameraLayout;
 
   @NonNull
+  public final Button editPrfl;
+
+  @NonNull
+  public final LinearLayout linearLayout2;
+
+  @NonNull
   public final RelativeLayout scheduleLayout;
 
   @NonNull
@@ -44,11 +51,14 @@ public final class FragmentSettingsBinding implements ViewBinding {
   public final TextView txtSetting;
 
   private FragmentSettingsBinding(@NonNull ConstraintLayout rootView,
-      @NonNull RelativeLayout cameraLayout, @NonNull RelativeLayout scheduleLayout,
+      @NonNull RelativeLayout cameraLayout, @NonNull Button editPrfl,
+      @NonNull LinearLayout linearLayout2, @NonNull RelativeLayout scheduleLayout,
       @NonNull Button signOut, @NonNull Switch switcNotification, @NonNull Switch switchBtn,
       @NonNull RelativeLayout themeLayout, @NonNull TextView txtSetting) {
     this.rootView = rootView;
     this.cameraLayout = cameraLayout;
+    this.editPrfl = editPrfl;
+    this.linearLayout2 = linearLayout2;
     this.scheduleLayout = scheduleLayout;
     this.signOut = signOut;
     this.switcNotification = switcNotification;
@@ -90,6 +100,18 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
+      id = R.id.editPrfl;
+      Button editPrfl = ViewBindings.findChildViewById(rootView, id);
+      if (editPrfl == null) {
+        break missingId;
+      }
+
+      id = R.id.linearLayout2;
+      LinearLayout linearLayout2 = ViewBindings.findChildViewById(rootView, id);
+      if (linearLayout2 == null) {
+        break missingId;
+      }
+
       id = R.id.schedule_Layout;
       RelativeLayout scheduleLayout = ViewBindings.findChildViewById(rootView, id);
       if (scheduleLayout == null) {
@@ -126,8 +148,9 @@ public final class FragmentSettingsBinding implements ViewBinding {
         break missingId;
       }
 
-      return new FragmentSettingsBinding((ConstraintLayout) rootView, cameraLayout, scheduleLayout,
-          signOut, switcNotification, switchBtn, themeLayout, txtSetting);
+      return new FragmentSettingsBinding((ConstraintLayout) rootView, cameraLayout, editPrfl,
+          linearLayout2, scheduleLayout, signOut, switcNotification, switchBtn, themeLayout,
+          txtSetting);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));
