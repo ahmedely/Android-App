@@ -147,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                if (snapshot.exists() && (snapshot.getKey().equals("movementSensor") || snapshot.getKey().equals("soundSensor"))) {
+                if (snapshot.exists() && (snapshot.getKey().equals("movementSensor") && snapshot.getValue().equals(true))) {
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -159,7 +159,7 @@ public class LoginActivity extends AppCompatActivity {
                     builder.setSmallIcon(R.drawable.ic_mail);
                     builder.setAutoCancel(true);
                     builder.setContentIntent(pendingIntent);
-
+                    databaseRef.child("movementSensor").setValue(false);
                     NotificationManagerCompat managerCompat = NotificationManagerCompat.from(LoginActivity.this);
                     managerCompat.notify(counter, builder.build());
                     counter++;
