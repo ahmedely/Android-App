@@ -33,7 +33,7 @@ public class Pref {
     }
     public boolean getUserStatus(){
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getBoolean("newUser", false);
+        return editor.getBoolean("newUser", true);
     }
 
     public void setBoolean(String key, Boolean value) {

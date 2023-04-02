@@ -86,7 +86,7 @@ public class SettingsFragment extends Fragment {
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pref.setUserStatus(false);
+                pref.setUserStatus(true);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
                 pref.setLogInStatus();

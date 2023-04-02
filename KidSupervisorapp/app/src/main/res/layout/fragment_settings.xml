@@ -44,6 +44,7 @@
             android:layout_marginVertical="@dimen/_10sdp">
 
             <TextView
+                android:id="@+id/textViewx"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -52,12 +53,32 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
+            <TextView
+                android:id="@+id/textView3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="79dp"
+                android:layout_toEndOf="@+id/textViewx"
+                android:text="LIGHT"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/textView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/switch_btn"
+                android:text="DARK"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
             <Switch
                 android:id="@+id/switch_btn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/_10sdp"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/textView3"
                 tools:ignore="UseSwitchCompatOrMaterialXml" />
         </RelativeLayout>
 
@@ -68,6 +89,7 @@
             android:layout_marginVertical="@dimen/_10sdp">
 
             <TextView
+                android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
@@ -77,14 +99,35 @@
                 android:textSize="@dimen/_14sdp" />
 
 
+            <TextView
+                android:id="@+id/textViewy"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="89dp"
+                android:layout_toEndOf="@+id/textView5"
+                android:text="AWAKE"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/textViewy2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/simpleSwitch"
+                android:text="SLEEP"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
             <Switch
                 android:id="@+id/simpleSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_toEndOf="@+id/textViewy"
                 android:checked="false"
-                android:layout_alignParentEnd="true"
                 android:textOff="No"
-                android:textOn="Yes"/>
+                android:textOn="Yes" />
 
         </RelativeLayout>
 
@@ -97,6 +140,8 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/button_shape"
             android:text="Help"
+            android:drawableStart="@drawable/baseline_help_24"
+            android:padding="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
@@ -121,6 +166,8 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/button_shape"
             android:text="EDIT PROFILE"
+            android:drawableStart="@drawable/baseline_edit_24"
+            android:padding="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
@@ -133,6 +180,8 @@
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/button_shape"
             android:text="Sign out"
+            android:drawableStart="@drawable/baseline_logout_24"
+            android:padding="@dimen/_10sdp"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
