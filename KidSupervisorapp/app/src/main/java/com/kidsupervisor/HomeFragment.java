@@ -75,30 +75,26 @@ public class HomeFragment extends Fragment {
         btnModifySchedule = view.findViewById(R.id.btnModifySchedule);
         scheduleList = view.findViewById(R.id.scheduleList);
         btnAddKid = view.findViewById(R.id.btnAddKid);
-        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
-
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 user.getKids().clear();
                 if (snapshot.exists()) {
-                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                        if (dataSnapshot.getKey().equals(auth.getUid())) {
-                            System.out.println("ID : " + dataSnapshot.child("id").getValue().toString());
-                            user.setId(dataSnapshot.child("id").getValue().toString());
-                            user.setFullName(dataSnapshot.child("fullName").getValue().toString());
-                            user.setEmail(dataSnapshot.child("email").getValue().toString());
-                            user.setSelectedKid(dataSnapshot.child("selectedKid").getValue().toString());
-                            for (DataSnapshot kidSnapshot : dataSnapshot.child("kids").getChildren()) {
-                                Kid kid = new Kid();
-                                kid.setId(kidSnapshot.child("id").getValue().toString());
-                                kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
-                                kid.setAge(kidSnapshot.child("age").getValue().toString());
-                                kid.setWeight(kidSnapshot.child("weight").getValue().toString());
-                                kid.setHeight(kidSnapshot.child("height").getValue().toString());
-                                user.addKid(kid);
-                            }
+                    user.setId(snapshot.child("id").getValue().toString());
+                    user.setFullName(snapshot.child("fullName").getValue().toString());
+                    user.setEmail(snapshot.child("email").getValue().toString());
+                    if(snapshot.child("kids").exists()) {
+                        for (DataSnapshot kidSnapshot : snapshot.child("kids").getChildren()) {
+                            Kid kid = new Kid();
+                            kid.setId(kidSnapshot.child("id").getValue().toString());
+                            kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
+                            kid.setAge(kidSnapshot.child("age").getValue().toString());
+                            kid.setWeight(kidSnapshot.child("weight").getValue().toString());
+                            kid.setHeight(kidSnapshot.child("height").getValue().toString());
+                            user.addKid(kid);
                         }
+
                     }
                 }
                 kidsList.removeAll(schedulesList);

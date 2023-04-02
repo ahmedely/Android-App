@@ -24,6 +24,7 @@ import com.google.firebase.database.ValueEventListener;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.UUID;
 
@@ -39,6 +40,30 @@ public class FirebaseService {
         this.context = context;
 
 
+    }
+
+    public void addUser(User user) {
+        this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users");
+        databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful()) {
+                    String id = auth.getUid();
+                    user.setId(id);
+                    databaseRef.child(id).setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(context, "User was added successfully", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+
+                            }
+                        }
+                    });
+                }
+            }
+        });
     }
 
     public void addKid(Kid kid) {
@@ -165,7 +190,7 @@ public class FirebaseService {
     public void updateFullName(String fullName) {
         if (auth.getCurrentUser() != null) {
             this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("fullName");
-            databaseRef.setValue("email").addOnCompleteListener(new OnCompleteListener<Void>() {
+            databaseRef.setValue(fullName).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
                     if (task.isSuccessful()) {
@@ -177,5 +202,35 @@ public class FirebaseService {
                 }
             });
         }
+    }
+
+    public void addDate(String year, String month, String day, String time,Boolean isSleeping) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Schedules").child(year).child(month).child(day).child(time).child("isSleeping");
+            this.databaseRef.setValue(isSleeping);
+
+        }
+
+
+    }
+
+    public ArrayList<Schedule> getDate(String year, String month, String day) {
+        ArrayList<Schedule> schedules = new ArrayList<>();
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Schedules").child(year).child(month).child(day);
+            this.databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+
+                    for (DataSnapshot snapshot : task.getResult().getChildren()) {
+                        String time = snapshot.getKey().toString();
+                        Boolean isSleeping = (Boolean) snapshot.child("isSleeping").getValue();
+                        Schedule schedule = new Schedule(time, isSleeping);
+                        schedules.add(schedule);
+                    }
+                }
+            });
+        }
+        return schedules;
     }
 }

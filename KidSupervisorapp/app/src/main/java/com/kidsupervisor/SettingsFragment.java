@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -68,7 +70,6 @@ public class SettingsFragment extends Fragment {
         });
         if (auth.getCurrentUser() != null) {
             databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
-
             databaseRef.addChildEventListener(new ChildEventListener() {
                 @Override
                 public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
@@ -79,22 +80,21 @@ public class SettingsFragment extends Fragment {
                 public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
                     currentUser.getKids().clear();
                     if (snapshot.exists()) {
-
                         currentUser.setId(snapshot.child("id").getValue().toString());
                         currentUser.setFullName(snapshot.child("fullName").getValue().toString());
                         currentUser.setEmail(snapshot.child("email").getValue().toString());
-                        currentUser.setSelectedKid(snapshot.child("selectedKid").getValue().toString());
-                        for (DataSnapshot kidSnapshot : snapshot.child("kids").getChildren()) {
-                            Kid kid = new Kid();
-                            kid.setId(kidSnapshot.child("id").getValue().toString());
-                            kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
-                            kid.setAge(kidSnapshot.child("age").getValue().toString());
-                            kid.setWeight(kidSnapshot.child("weight").getValue().toString());
-                            kid.setHeight(kidSnapshot.child("height").getValue().toString());
-                            currentUser.addKid(kid);
+                        if(snapshot.child("kids").exists()) {
+                            for (DataSnapshot kidSnapshot : snapshot.child("kids").getChildren()) {
+                                Kid kid = new Kid();
+                                kid.setId(kidSnapshot.child("id").getValue().toString());
+                                kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
+                                kid.setAge(kidSnapshot.child("age").getValue().toString());
+                                kid.setWeight(kidSnapshot.child("weight").getValue().toString());
+                                kid.setHeight(kidSnapshot.child("height").getValue().toString());
+                                currentUser.addKid(kid);
+                            }
+
                         }
-
-
                     }
                 }
 

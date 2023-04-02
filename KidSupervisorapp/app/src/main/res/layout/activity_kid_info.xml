@@ -111,7 +111,7 @@
         android:editable="false"
         android:ems="10"
         android:hint="Height"
-        android:inputType="textPersonName"
+        android:inputType="numberDecimal"
         android:paddingHorizontal="@dimen/_8sdp"
         android:text=""
         app:layout_constraintEnd_toEndOf="parent"
