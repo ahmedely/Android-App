@@ -7,27 +7,35 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Switch;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 
 public class SettingsFragment extends Fragment {
     private Switch changeTheme;
     private Pref pref;
-    private Button signOutBut;
-    private DatabaseReference databaseRef;
+    private Button signOutBut,edit_Profile,helpBtn,changeLanguage;
+
+    private TextView profileName;
+    private DatabaseReference databaseRef,onChangeDatabaseRef;
     private FirebaseAuth auth;
-    private FirebaseService firebaseService;
     private User currentUser;
+
+    private Bundle bundle;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,9 +50,13 @@ public class SettingsFragment extends Fragment {
         currentUser = new User();
         pref = new Pref(getActivity());
         changeTheme = view.findViewById(R.id.switch_btn);
+        edit_Profile = view.findViewById(R.id.editPrfl);
+        profileName = view.findViewById(R.id.profile_name);
+
+        bundle = new Bundle();
+
         changeTheme.setChecked(pref.getBoolean("Switch"));
         auth = FirebaseAuth.getInstance();
-        firebaseService = new FirebaseService(getContext());
         changeTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -59,30 +71,69 @@ public class SettingsFragment extends Fragment {
             }
         });
 
+        edit_Profile.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //go to dialogFragment
+                EditUserProfile dialogFragment = new EditUserProfile();
+                dialogFragment.setArguments(bundle);
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+            }
+        });
+
+
         signOutBut = (Button) view.findViewById(R.id.sign_out);
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pref.setUserStatus(false);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
+                pref.setLogInStatus();
                 getActivity().finish();
             }
         });
+
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
+        databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DataSnapshot> task) {
+                if (task.isSuccessful())
+                    profileName.setText(task.getResult().child("fullName").getValue().toString());
+            }
+        });
+
         if (auth.getCurrentUser() != null) {
-            databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
-            databaseRef.addChildEventListener(new ChildEventListener() {
+            onChangeDatabaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
+            onChangeDatabaseRef.addValueEventListener(new ValueEventListener() {
                 @Override
-                public void onChildAdded(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
-                }
-
-                @Override
-                public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
                     currentUser.getKids().clear();
                     if (snapshot.exists()) {
-                        currentUser.setId(snapshot.child("id").getValue().toString());
-                        currentUser.setFullName(snapshot.child("fullName").getValue().toString());
-                        currentUser.setEmail(snapshot.child("email").getValue().toString());
+                        if (snapshot.child("id").exists()) {
+                            currentUser.setId(snapshot.child("id").getValue().toString());
+                        }else{
+                            currentUser.setId("");
+                        }
+                        if (snapshot.child("fullName").exists()) {
+                            currentUser.setFullName(snapshot.child("fullName").getValue().toString());
+                        }else{
+                            currentUser.setFullName("");
+                        }
+                        if (snapshot.child("email").exists()) {
+                            currentUser.setEmail(snapshot.child("email").getValue().toString());
+
+                        }else{
+                            currentUser.setEmail("");
+                        }
+
+                        bundle.putString("fullName",currentUser.getFullName());
+                        bundle.putString("email",currentUser.getEmail());
+
+                        profileName.setText(currentUser.getFullName());
+
+
+
                         if(snapshot.child("kids").exists()) {
                             for (DataSnapshot kidSnapshot : snapshot.child("kids").getChildren()) {
                                 Kid kid = new Kid();
@@ -96,16 +147,6 @@ public class SettingsFragment extends Fragment {
 
                         }
                     }
-                }
-
-                @Override
-                public void onChildRemoved(@NonNull DataSnapshot snapshot) {
-
-                }
-
-                @Override
-                public void onChildMoved(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
-
                 }
 
                 @Override
