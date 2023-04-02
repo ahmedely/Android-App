@@ -26,6 +26,11 @@ public class User {
         this.selectedKid = selectedKid;
         this.kids = new ArrayList();
     }
+    public User(String fullName,  String email) {
+        this.fullName = fullName;
+        this.email = email;
+        this.kids = new ArrayList();
+    }
 
     public User() {
         this.kids = new ArrayList();

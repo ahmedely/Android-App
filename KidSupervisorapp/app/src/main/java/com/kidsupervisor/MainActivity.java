@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.PopupMenu;
 import android.widget.Toast;
@@ -19,6 +20,14 @@ import androidx.fragment.app.FragmentManager;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.kidsupervisor.databinding.ActivityMainBinding;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Year;
+import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
 
@@ -31,11 +40,12 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private final Fragment statsFragment = new StatsFragment();
     private Fragment activeFragment = homeFragment;
     FragmentManager fragmentManager = getSupportFragmentManager();
+    private FirebaseService firebaseService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        firebaseService = new FirebaseService(this);
         pref = new Pref(this);
         if (!pref.getBoolean("Switch")) {
             setTheme(R.style.lighttheme);
@@ -65,7 +75,13 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                 builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+                        LocalDateTime now = LocalDateTime.now();
+                        String year = dtf.format(now).split("/")[0];
+                        String month = dtf.format(now).split("/")[1];
+                        String day = dtf.format(now).split("/")[2].split("\\s+")[0];
+                        String time = dtf.format(now).split("/")[2].split("\\s+")[1];
+                        firebaseService.addDate(year, month, day, time, false);
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
@@ -74,7 +90,16 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
 
                     }
                 });
-                builder.show();
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        builder.show();
+
+                    }
+                }, 5000);
+
+
             }
         }
 
