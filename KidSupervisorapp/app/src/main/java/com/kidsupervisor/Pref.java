@@ -3,13 +3,17 @@ package com.kidsupervisor;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class Pref {
 
     Context mContext;
+    private FirebaseAuth auth;
 
     public Pref(Context context) {
 
         mContext = context;
+        auth=FirebaseAuth.getInstance();
     }
 
     public void setString(String key, String value) {
@@ -43,13 +47,19 @@ public class Pref {
         return editor.getBoolean(key, false);
     }
     //for knowing which activity to go after splash screen
-    public void setLogInStatus(boolean x) {
+    public void setLogInStatus() {
         SharedPreferences.Editor editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE).edit();
-        editor.putBoolean("logIn", x);
+        if(auth.getCurrentUser()!=null)
+            editor.putBoolean("logIn",true);
+        else
+            editor.putBoolean("logIn",false);
         editor.apply();
     }
-    public boolean getLogInStatus() {
+
+    public Boolean getLogInStatus(){
+
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getBoolean("logIn", false);
+        return editor.getBoolean("logIn",false);
     }
+
 }

@@ -23,6 +23,8 @@ public class EditUserProfile  extends AppCompatDialogFragment {
     private TextView email,name,oldPassword,newPassword,confirmPassword;
     private FirebaseService firebaseService;
 
+    Bundle bundle;
+
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -38,6 +40,15 @@ public class EditUserProfile  extends AppCompatDialogFragment {
         newPassword=view.findViewById(R.id.newPass);
         confirmPassword=view.findViewById(R.id.confirmPass);
 
+        if(getArguments()!=null){
+            if(getArguments().getString("fullName")!=null){
+                name.setText(getArguments().getString("fullName"));
+            }
+            if(getArguments().getString("email")!=null){
+                email.setText(getArguments().getString("email"));
+            }
+        }
+
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setView(view)
                 .setTitle("EDIT USER INFO")
@@ -45,19 +56,18 @@ public class EditUserProfile  extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 //change password
-                        if((!newPassword.toString().isEmpty()) && newPassword.toString().equals(confirmPassword)){
-                            Toast.makeText(getContext(), "password changed", Toast.LENGTH_SHORT).show();
-                            firebaseService.updatePassword(oldPassword.toString(),newPassword.toString());
+                        if((!newPassword.getText().toString().isEmpty()) && newPassword.getText().toString().equals(confirmPassword)) {
+                            if (newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
+                                firebaseService.updatePassword(oldPassword.getText().toString(), newPassword.getText().toString());
+                            }
                         }
                  //change email
-                        if(!email.toString().isEmpty()){
-                            firebaseService.updateEmail(email.toString());
-                            Toast.makeText(getContext(), "email changed", Toast.LENGTH_SHORT).show();
+                        if(!email.getText().toString().isEmpty()){
+                            firebaseService.updateEmail(email.getText().toString());
                         }
                         //change name
-                        if(!name.toString().isEmpty()){
-                            firebaseService.updateFullName(name.toString());
-                            Toast.makeText(getContext(), "name changed", Toast.LENGTH_SHORT).show();
+                        if(!name.getText().toString().isEmpty()){
+                            firebaseService.updateFullName(name.getText().toString());
 
                         }
                     }

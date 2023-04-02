@@ -9,11 +9,11 @@
 
 
     <TextView
-        android:id="@+id/txt_Setting"
+        android:id="@+id/profile_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="28dp"
-        android:text="SETTINGS"
+        android:text="NAME"
         android:textColor="@color/black"
         android:textSize="@dimen/_20sdp"
         android:textStyle="bold"
@@ -26,7 +26,7 @@
         android:id="@+id/linearLayout2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/txt_Setting"
+        android:layout_below="@id/profile_name"
         android:layout_marginHorizontal="@dimen/_12sdp"
         android:background="@drawable/setting_bg"
         android:orientation="vertical"
@@ -34,7 +34,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_Setting"
+        app:layout_constraintTop_toBottomOf="@+id/profile_name"
         app:layout_constraintVertical_bias="0.059">
 
         <RelativeLayout
@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:text="Dark Mode"
+                android:text="Select theme:"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
@@ -72,55 +72,43 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="@dimen/_10sdp"
-                android:text="Camera"
+                android:text="Baby state:"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_14sdp" />
 
 
             <Switch
+                android:id="@+id/simpleSwitch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:checked="false"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="@dimen/_10sdp"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/schedule_Layout"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginVertical="@dimen/_10sdp">
-
-            <TextView
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
-                android:layout_marginStart="@dimen/_10sdp"
-                android:layout_toStartOf="@id/switc_notification"
-                android:text="@string/show_notification"
-                android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
-
-            <Switch
-                android:id="@+id/switc_notification"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:layout_marginEnd="@dimen/_10sdp"
-                tools:ignore="UseSwitchCompatOrMaterialXml" />
+                android:textOff="No"
+                android:textOn="Yes"/>
 
         </RelativeLayout>
 
 
         <Button
+            android:id="@+id/helpBtn"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginVertical="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_10sdp"
             android:background="@drawable/button_shape"
             android:text="Help"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/languageBtn"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginVertical="@dimen/_10sdp"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:background="@drawable/button_shape"
+            android:text="Language"
             android:textColor="@color/white"
             android:textSize="@dimen/_12sdp"
             android:textStyle="bold" />
