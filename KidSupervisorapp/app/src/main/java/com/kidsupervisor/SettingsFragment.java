@@ -110,9 +110,22 @@ public class SettingsFragment extends Fragment {
                 public void onDataChange(@NonNull DataSnapshot snapshot) {
                     currentUser.getKids().clear();
                     if (snapshot.exists()) {
-                        currentUser.setId(snapshot.child("id").getValue().toString());
-                        currentUser.setFullName(snapshot.child("fullName").getValue().toString());
-                        currentUser.setEmail(snapshot.child("email").getValue().toString());
+                        if (snapshot.child("id").exists()) {
+                            currentUser.setId(snapshot.child("id").getValue().toString());
+                        }else{
+                            currentUser.setId("");
+                        }
+                        if (snapshot.child("fullName").exists()) {
+                            currentUser.setFullName(snapshot.child("fullName").getValue().toString());
+                        }else{
+                            currentUser.setFullName("");
+                        }
+                        if (snapshot.child("email").exists()) {
+                            currentUser.setEmail(snapshot.child("email").getValue().toString());
+
+                        }else{
+                            currentUser.setEmail("");
+                        }
 
                         bundle.putString("fullName",currentUser.getFullName());
                         bundle.putString("email",currentUser.getEmail());

@@ -56,14 +56,14 @@ public class EditUserProfile  extends AppCompatDialogFragment {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
 //change password
-                        if((!newPassword.getText().toString().isEmpty()) && newPassword.getText().toString().equals(confirmPassword)) {
+                        if((!newPassword.getText().toString().isEmpty()) && newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
                             if (newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
                                 firebaseService.updatePassword(oldPassword.getText().toString(), newPassword.getText().toString());
                             }
                         }
                  //change email
-                        if(!email.getText().toString().isEmpty()){
-                            firebaseService.updateEmail(email.getText().toString());
+                        if(!email.getText().toString().isEmpty() && !oldPassword.getText().toString().isEmpty()){
+                            firebaseService.updateEmail(oldPassword.getText().toString(),email.getText().toString());
                         }
                         //change name
                         if(!name.getText().toString().isEmpty()){

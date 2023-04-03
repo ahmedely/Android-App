@@ -132,39 +132,52 @@ public class FirebaseService {
         }
     }
 
-    public void updateEmail(String newEmail) {
+    public void updateEmail(String oldPassword, String newEmail) {
         if (auth.getCurrentUser() != null) {
-            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
-            databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if (task.isSuccessful()) {
-                        auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if (task.isSuccessful()) {
-                                    Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
-                                } else {
-                                    Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+
+
+            AuthCredential credential = EmailAuthProvider
+                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \\
+            auth.getCurrentUser().reauthenticate(credential)
+                    .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
+
+                                        databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+
+                                            }
+                                        });
+                                        Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
+                                    } else {
+                                        Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                    }
+
                                 }
+                            });
 
-                            }
-                        });
-                    } else {
-                        Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
-                    }
-
-                }
-            });
+                        }
+                    });
+        } else {
+            Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
         }
+
+
     }
 
+
     public void updatePassword(String oldPassword, String newPassword) {
-        String email = auth.getCurrentUser().getEmail().toString();
+        Toast.makeText(context, "UPDATE PASS", Toast.LENGTH_SHORT).show();
 
         if (auth.getCurrentUser() != null) {
 
-            AuthCredential credential = EmailAuthProvider.getCredential(email, oldPassword);
+            AuthCredential credential = EmailAuthProvider.getCredential(auth.getCurrentUser().getEmail(), oldPassword);
             auth.getCurrentUser().reauthenticate(credential).addOnCompleteListener(new OnCompleteListener<Void>() {
                 @Override
                 public void onComplete(@NonNull Task<Void> task) {
@@ -184,6 +197,8 @@ public class FirebaseService {
                     }
                 }
             });
+        } else {
+            Toast.makeText(context, "NOT WORKING", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -204,7 +219,7 @@ public class FirebaseService {
         }
     }
 
-    public void addDate(String year, String month, String day, String time,Boolean isSleeping) {
+    public void addDate(String year, String month, String day, String time, Boolean isSleeping) {
         if (auth.getCurrentUser() != null) {
             this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Schedules").child(year).child(month).child(day).child(time).child("isSleeping");
             this.databaseRef.setValue(isSleeping);
