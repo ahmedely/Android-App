@@ -2,6 +2,7 @@ package com.kidsupervisor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -12,7 +13,6 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 
 
@@ -20,7 +20,8 @@ public class SettingsFragment extends Fragment {
     Switch changeTheme;
     Pref pref;
     Button signOutBut;
-    FloatingActionButton addKidBut;
+
+    FirebaseAuth auth;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -33,9 +34,7 @@ public class SettingsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         pref = new Pref(getActivity());
-
         changeTheme = view.findViewById(R.id.switch_btn);
-
         changeTheme.setChecked(pref.getBoolean("Switch"));
 
         changeTheme.setOnClickListener(new View.OnClickListener() {
@@ -44,25 +43,22 @@ public class SettingsFragment extends Fragment {
                 if (changeTheme.isChecked()) {
                     pref.setBoolean("Switch", true);
                     changeTheme.setChecked(true);
+                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
+
+                    // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     pref.setBoolean("Switch", false);
                     changeTheme.setChecked(false);
+                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
+
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
                 }
-                startActivity(new Intent(getActivity(), MainActivity.class).addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION));
-                getActivity().finish();
+
             }
         });
 
-
-        addKidBut = (FloatingActionButton) view.findViewById(R.id.add_kidFloat);
-        signOutBut = (Button) view.findViewById(R.id.sign_out);
-
-        addKidBut.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getActivity(), KidInfoActivity.class));
-            }
-        });
+        signOutBut = (Button) view.findViewById(R.id.sign_out3);
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -71,7 +67,5 @@ public class SettingsFragment extends Fragment {
                 getActivity().finish();
             }
         });
-
-
     }
 }
