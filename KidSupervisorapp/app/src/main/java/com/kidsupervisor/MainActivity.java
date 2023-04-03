@@ -37,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
     private final Fragment homeFragment = new HomeFragment();
     private final Fragment camraFragment = new CameraFragment();
     private final Fragment settingsFragment = new SettingsFragment();
-    private final Fragment statsFragment = new StatsFragment();
+    private final Fragment statsFragment = new DataFragment();
     private Fragment activeFragment = homeFragment;
     FragmentManager fragmentManager = getSupportFragmentManager();
     private FirebaseService firebaseService;

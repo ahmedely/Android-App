@@ -47,6 +47,10 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
     implementation "androidx.navigation:navigation-fragment:2.5.3"
     implementation "androidx.navigation:navigation-ui:2.5.3"
+    implementation 'com.firebaseui:firebase-ui-database:7.1.1'
 
+    //  implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
+    implementation 'com.github.PhilJay:MPAndroidChart:v2.0.9'
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
+
 }

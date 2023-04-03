@@ -9,10 +9,12 @@
 
     <EditText
         android:id="@+id/editTextKidName"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_height="50dp"
         android:autofillHints="Name"
-        android:background="@drawable/edittext_bg"
+        android:background="@drawable/blue_circularbutton"
         android:editable="false"
         android:ems="10"
         android:hint="name"
@@ -24,7 +26,9 @@
 
     <EditText
         android:id="@+id/editTextKidAge"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_height="50dp"
         android:autofillHints="Age"
         android:background="@drawable/edittext_bg"
@@ -40,7 +44,9 @@
 
     <EditText
         android:id="@+id/editTextNumberDecimal"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_height="50dp"
         android:autofillHints="Weight"
         android:background="@drawable/edittext_bg"
@@ -105,7 +111,9 @@
 
     <EditText
         android:id="@+id/editTextHeight"
-        android:layout_width="250dp"
+        android:layout_width="match_parent"
+        android:layout_marginStart="50dp"
+        android:layout_marginEnd="50dp"
         android:layout_height="50dp"
         android:background="@drawable/edittext_bg"
         android:editable="false"

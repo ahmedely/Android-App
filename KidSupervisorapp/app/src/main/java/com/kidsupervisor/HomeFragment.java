@@ -3,11 +3,7 @@ package com.kidsupervisor;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,9 +11,12 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
@@ -27,7 +26,9 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.google.gson.Gson;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 
 
@@ -187,6 +188,7 @@ public class HomeFragment extends Fragment {
     }
 
 
+    int first_time_hour,first_time_min,second_time_hour,second_time_min;
     private void showTimePicker() {
         TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
 
@@ -205,15 +207,38 @@ public class HomeFragment extends Fragment {
                         currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
                     }
                     is_first = false;
+
+                    first_time_hour = hrs;
+                    first_time_min = min;
+                    Log.e("aaaa", "onTimeSet: "+first_time_hour );
                     showTimePicker();
                 } else {
                     currentValue += " ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+
+                    //second_time = String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+
+                    second_time_hour = hrs;
+                    second_time_min = min;
                     if (lastClicked == -2) {
                         schedulesList.add(currentValue);
                         nmb_of_schedules++;
                     } else {
                         schedulesList.set(lastClicked, currentValue);
                     }
+
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+                    String currentDateandTime = sdf.format(new Date());
+
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).push();
+                    databaseReference.child("start_hour").setValue(first_time_hour);
+                    databaseReference.child("start_min").setValue(first_time_min);
+
+                    databaseReference.child("end_hour").setValue(second_time_hour);
+                    databaseReference.child("end_min").setValue(second_time_min);
+
+
+                    //Log.e("ppo", "onTimeSet: "+ second_time);
+
                     adapter.notifyDataSetChanged();
                     is_first = true;
                 }
