@@ -152,6 +152,7 @@ public class SignupActivity extends AppCompatActivity {
                     firebaseService.addUser(user);
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                     Toast.makeText(SignupActivity.this, "Account created", Toast.LENGTH_LONG).show();
+                    pref.setUserStatus(true);
                 } else {
                     Toast.makeText(SignupActivity.this, "Sign up Failed", Toast.LENGTH_LONG).show();
                 }
