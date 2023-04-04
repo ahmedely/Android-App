@@ -4,20 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fff"
     >
 
 
     <ImageView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_180sdp"
+        android:layout_height="@dimen/_300sdp"
         android:background="@drawable/bg_back"/>
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:adjustViewBounds="true"
         android:id="@+id/bar"
-        android:visibility="invisible"
-
         android:layout_marginTop="@dimen/_160sdp"
         android:src="@drawable/curve"/>
     <androidx.cardview.widget.CardView
@@ -55,6 +54,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bar"
+        android:background="#fff"
         android:orientation="vertical">
         <TextView
             android:layout_width="wrap_content"
@@ -64,6 +64,7 @@
             android:gravity="center"
             android:text="Register"
             android:layout_gravity="center"
+            android:textColor="#000000"
             android:textSize="28sp"
             android:textStyle="bold" />
 
@@ -90,7 +91,8 @@
                 android:paddingStart="@dimen/medium"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-
+                android:textColor="#000"
+                android:textColorHint="#000000"
                 android:textSize="16sp" />
 
             <ImageView
@@ -129,7 +131,8 @@
                 android:paddingStart="@dimen/medium"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-
+                android:textColor="#000"
+                android:textColorHint="#000000"
                 android:textSize="16sp" />
 
             <ImageView
@@ -168,19 +171,19 @@
                 android:paddingStart="@dimen/medium"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-
+                android:textColor="#000"
+                android:textColorHint="#000000"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/hideshow"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="10dp"
-
-                android:src="?attr/ic_eye" />
-
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:padding="@dimen/_7sdp"
+                android:paddingEnd="@dimen/_10sdp"
+                android:src="@drawable/pass_icon" />
         </RelativeLayout>
         <RelativeLayout
             android:layout_width="match_parent"
@@ -205,18 +208,21 @@
                 android:paddingStart="@dimen/medium"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingBottom="@dimen/_10sdp"
-
+                android:textColor="#000"
+                android:textColorHint="#000000"
                 android:textSize="16sp" />
 
             <ImageView
-                android:id="@+id/hideshow1"
-                android:layout_width="@dimen/_24sdp"
-                android:layout_height="@dimen/_24sdp"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="10dp"
-                android:layout_centerVertical="true"
-                android:src="?attr/ic_eye" />
 
+                android:layout_centerVertical="true"
+                android:layout_marginEnd="@dimen/_7sdp"
+                android:fontFamily="@font/micross"
+                android:padding="@dimen/_7sdp"
+                android:paddingEnd="@dimen/medium"
+                android:src="@drawable/user_icon" />
         </RelativeLayout>
 
 
@@ -233,7 +239,7 @@
 
 
             android:background="@drawable/btn_2"
-            android:text="Sign Up"
+            android:text="Login"
             android:textColor="@color/white"
             android:textSize="@dimen/_11sdp"
             android:textStyle="bold" />
@@ -257,6 +263,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Don't have account? "
+            android:textColor="#000000"
             android:textSize="@dimen/_10sdp" />
 
         <TextView

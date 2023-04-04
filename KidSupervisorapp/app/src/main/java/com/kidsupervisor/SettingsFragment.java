@@ -2,6 +2,7 @@ package com.kidsupervisor;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -63,9 +64,16 @@ public class SettingsFragment extends Fragment {
                 if (changeTheme.isChecked()) {
                     pref.setBoolean("Switch", true);
                     changeTheme.setChecked(true);
+                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
+
+                    // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     pref.setBoolean("Switch", false);
                     changeTheme.setChecked(false);
+                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
+
+                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
                 }
 
             }
