@@ -248,4 +248,65 @@ public class FirebaseService {
         }
         return schedules;
     }
+
+    public void addEvent(Event event) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("Events");
+            databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        databaseRef.child(event.getId()).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(context, "Event added", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    public void editEvent(Event event) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("Events").child(event.getId());
+            databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        databaseRef.setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(context, "Event was changed successfully", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+    }
+
+    public void deleteEvent(String id) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("Events").child(id);
+            databaseRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(context, "Event was removed successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
 }
