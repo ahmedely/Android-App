@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".FAQsFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="15dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="FAQs:"
+                android:textStyle="bold"
+                android:textSize="20dp"
+                android:textColor="@color/black"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="What is a baby monitoring app?\n\nA baby monitoring app is a software application that allows you to monitor your baby's activities and behaviors using your smartphone or tablet. These apps typically use your device's camera and microphone to transmit real-time audio and video feeds to your phone, giving you a virtual window into your baby's room."
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="\nHow does a baby monitoring app work?\n\nA baby monitoring app works by connecting your smartphone or tablet to a camera and microphone in your baby's room. The app then transmits the audio and video feed to your device over Wi-Fi or cellular data, allowing you to watch and listen to your baby in real-time."
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="\nIs a baby monitoring app secure?\n\nMost reputable baby monitoring apps use secure, encrypted connections to transmit data between your device and the camera in your baby's room. However, it's important to choose a trustworthy app from a reputable developer and to follow best practices for securing your Wi-Fi network and devices."
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="\nAre baby monitoring apps expensive?\n\nThe cost of baby monitoring apps can vary widely depending on the features and functionality you're looking for. Some apps are free, while others may require a one-time purchase or a monthly subscription fee."
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="\nCan I use a baby monitoring app without Wi-Fi?\n\nMost baby monitoring apps require a Wi-Fi or cellular data connection to transmit audio and video feeds between the camera and your device. However, some cameras may offer offline recording capabilities, allowing you to review footage later when you have a Wi-Fi or cellular connection."
+                android:textSize="15dp"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="5dp"
+                android:text="\nAre baby monitoring apps legal?\n\nAs long as you're using a baby monitoring app to monitor your own child in your own home, it's generally legal to use. However, it's important to be aware of local laws and regulations regarding privacy and surveillance."
+                android:textSize="15dp"/>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

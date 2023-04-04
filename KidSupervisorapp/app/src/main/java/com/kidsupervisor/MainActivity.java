@@ -52,7 +52,6 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         } else {
             setTheme(R.style.darktheme);
         }
-        pref.setLogInStatus();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 

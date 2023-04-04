@@ -3,6 +3,7 @@ package com.kidsupervisor;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,12 +31,17 @@ public class TutorialActivity extends AppCompatActivity {
         back=findViewById(R.id.backBtn);
         constraintLayout=findViewById(R.id.tutLayout);
 
+        pref.setUserStatus(false);
         //go to mainActivity
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TutorialActivity.this, MainActivity.class));
-                finish();
+                if(pref.getPrevFragment()==true)
+                    onBackPressed();
+                else {
+                     startActivity(new Intent(TutorialActivity.this, MainActivity.class));
+                    finish();
+                }
             }
         });
         //go to next page
@@ -55,8 +61,12 @@ public class TutorialActivity extends AppCompatActivity {
                 counter++;
                 }
                 else{
-                    startActivity(new Intent(TutorialActivity.this, MainActivity.class));
-                    finish();
+                    if(pref.getPrevFragment()==true)
+                        onBackPressed();
+                    else {
+                        startActivity(new Intent(TutorialActivity.this, MainActivity.class));
+                        finish();
+                    }
                 }
             }
         });

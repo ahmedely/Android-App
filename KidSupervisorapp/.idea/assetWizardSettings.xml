@@ -6,6 +6,9 @@
         <entry key="imageWizard">
           <value>
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> ahmedely
             <PersistentState>
               <option name="children">
                 <map>
@@ -327,9 +330,12 @@
                 </map>
               </option>
             </PersistentState>
+<<<<<<< HEAD
 =======
             <PersistentState />
 >>>>>>> Mohdchayeb
+=======
+>>>>>>> ahmedely
           </value>
         </entry>
       </map>

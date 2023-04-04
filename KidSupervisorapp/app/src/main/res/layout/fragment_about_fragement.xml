@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".AboutFragment">
+<ScrollView
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginEnd="5dp"
+        android:text="The goal behide SleepSafe was to provide peace of mind by keeping a watchful eye on your little one while you attend to other tasks.
+This app is easy to use and offers the possibility to watch the live stream of your kid with triggering notification whenever the baby moves. Our app is the perfect tool for keeping an eye on your little one's well-being.
+We pride ourselves on providing a secure and reliable service, with encrypted data transmission and user authentication to ensure your privacy is protected. We also understand that every family is unique, so our app offers customizable settings to fit your family's needs.
+Our team is dedicated to providing top-notch customer support and regularly updates our app with the latest features and improvements. We're here to support you through your parenting journey and make the experience as stress-free as possible.
+Thank you for choosing our baby monitoring app, we hope it helps bring you and your little one peace of mind."
+        android:inputType="textMultiLine"
+        android:textSize="15dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="TERM OF USE:"
+        android:textStyle="bold"
+        android:layout_marginStart="5dp"
+        android:inputType="textMultiLine"
+        android:textSize="20dp"
+        android:textColor="@color/black" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="By using our app, you agree to be bound by these terms and conditions:"
+        />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="1- User Content: Our app allows you to upload and share user-generated content. You are solely responsible for the content that you upload, and you agree that you will not upload any content that is illegal, harmful, offensive, or infringes on the rights of others."
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:inputType="textMultiLine"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="2- Privacy: We take your privacy seriously and will only collect and use your personal information in accordance with our Privacy Policy. Please review our Privacy Policy to understand how we collect, use, and disclose your information."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="3- Security: We take security seriously and have implemented measures to protect your information from unauthorized access, disclosure, or modification. However, we cannot guarantee the security of your information."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="4- Intellectual Property: Our app and all content and materials contained within it are protected by intellectual property laws. You agree not to copy, modify, distribute, or create derivative works based on our app or its content without our prior written consent."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="5- Termination: We reserve the right to terminate your access to our app at any time without notice if we determine that you have violated these Terms of Use."
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="6- Disclaimer: Our app is provided on an 'as is' and 'as available' basis. We make no representations or warranties of any kind, express or implied, regarding the app or its content."
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="7- Limitation of Liability: We shall not be liable for any damages arising out of or in connection with your use of our app, including but not limited to any direct, indirect, incidental, consequential, or punitive damages."
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_marginEnd="5dp"
+            android:text="By using our app, you agree to these Terms of Use. If you do not agree to these terms and conditions, please do not use our app. We reserve the right to modify these Terms of Use at any time, so please check back periodically for updates."
+            />
+    </LinearLayout>
+</ScrollView>
+</LinearLayout>

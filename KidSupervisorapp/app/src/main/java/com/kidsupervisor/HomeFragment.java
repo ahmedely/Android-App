@@ -59,7 +59,7 @@ public class HomeFragment extends Fragment {
     private FirebaseService firebaseService;
     private FirebaseAuth auth;
     private Bundle bundle; // Used to share variable between activities/fragments
-    RecyclerView scheduleList2;
+    //RecyclerView scheduleList2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -81,8 +81,8 @@ public class HomeFragment extends Fragment {
         eventsList = new ArrayList<>();
         events = new ArrayList<>();
 
-        scheduleList2 = view.findViewById(R.id.scheduleList2);
-        scheduleList2.setLayoutManager(new LinearLayoutManager(getActivity()));
+        //scheduleList2 = view.findViewById(R.id.scheduleList2);
+       // scheduleList2.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         kidsListView = view.findViewById(R.id.kidsList);
         btnAddSchedule = view.findViewById(R.id.btnAddSchedule);
@@ -237,169 +237,169 @@ public class HomeFragment extends Fragment {
 //            }
 //        });
 
-        fetch();
+//        fetch();
     }
 
     //========================
-    private void fetch() {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-        String currentDateandTime = sdf.format(new Date());
-        DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime);
+//    private void fetch() {
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+//        String currentDateandTime = sdf.format(new Date());
+//        DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime);
+//
+//        FirebaseRecyclerOptions<ModelD> options
+//                = new FirebaseRecyclerOptions.Builder<ModelD>()
+//                .setQuery(query, ModelD.class)
+//                .build();
 
-        FirebaseRecyclerOptions<ModelD> options
-                = new FirebaseRecyclerOptions.Builder<ModelD>()
-                .setQuery(query, ModelD.class)
-                .build();
+//        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<ModelD, ViewHolder>(options) {
+//            @Override
+//            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_s, parent, false);
+//
+//                return new ViewHolder(view);
+//            }
+//
+//
+//            @Override
+//            protected void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position, ModelD model) {
+//
+//
+//                holder.tvTitle.setText(model.getStart_hour()+":"+model.getStart_min()+" ➤ "+ model.end_hour+":"+ model.end_min);
+//
+//
+//                holder.tvTitle.setOnClickListener(new View.OnClickListener() {
+//                    @Override
+//                    public void onClick(View view) {
+//                        AlertDialog.Builder builder;
+//                        builder = new AlertDialog.Builder(getActivity());
+//                        builder.setTitle("Alert!");
+//                        builder.setMessage("Is your Baby awake ?");
+//                        builder.setCancelable(true);
+//                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+//                                String currentDateandTime = sdf.format(new Date());
+//
+//                                SimpleDateFormat sdfHour = new SimpleDateFormat("HH");
+//                                String strHOur = sdfHour.format(new Date());
+//
+//                                SimpleDateFormat sdfMin = new SimpleDateFormat("mm");
+//                                String strMin = sdfMin.format(new Date());
+//                                DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(getRef(position).getKey());
+//                                query.child("end_hour").setValue(Integer.parseInt(strHOur));
+//                                query.child("end_min").setValue(Integer.parseInt(strMin));
+//
+//                            }
+//                        });
+//                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialogInterface, int i) {
+//
+//                            }
+//                        });
+//                        builder.show();
+//                    }
+//                });
+//
+//
+//            }
+//
+//        };
+//        scheduleList2.setAdapter(adapter);
+//        adapter.startListening();
+//    }
 
-        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<ModelD, ViewHolder>(options) {
-            @Override
-            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_s, parent, false);
-
-                return new ViewHolder(view);
-            }
-
-
-            @Override
-            protected void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position, ModelD model) {
-
-
-                holder.tvTitle.setText(model.getStart_hour()+":"+model.getStart_min()+" ➤ "+ model.end_hour+":"+ model.end_min);
-
-
-                holder.tvTitle.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        AlertDialog.Builder builder;
-                        builder = new AlertDialog.Builder(getActivity());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Is your Baby awake ?");
-                        builder.setCancelable(true);
-                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-                                String currentDateandTime = sdf.format(new Date());
-
-                                SimpleDateFormat sdfHour = new SimpleDateFormat("HH");
-                                String strHOur = sdfHour.format(new Date());
-
-                                SimpleDateFormat sdfMin = new SimpleDateFormat("mm");
-                                String strMin = sdfMin.format(new Date());
-                                DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(getRef(position).getKey());
-                                query.child("end_hour").setValue(Integer.parseInt(strHOur));
-                                query.child("end_min").setValue(Integer.parseInt(strMin));
-
-                            }
-                        });
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                            }
-                        });
-                        builder.show();
-                    }
-                });
-
-
-            }
-
-        };
-        scheduleList2.setAdapter(adapter);
-        adapter.startListening();
-    }
-
-    public static class ViewHolder extends RecyclerView.ViewHolder{
-
-        View mView;
-
-        TextView tvTitle;
-        public ViewHolder(View itemView) {
-            super(itemView);
-            mView =itemView;
-
-            tvTitle = mView.findViewById(R.id.tvTitle);
-
-
-
-
-
-        }
-
-
-    }
-
-
-
-    int first_time_hour,first_time_min,second_time_hour,second_time_min;
-    private void showTimePicker() {
-        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-
-            @Override
-            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-                hrs = hourOfDay;
-                min = minute;
-
-                if (is_first == true) {
-
-                    if (lastClicked == -2) {
-                        currentValue = Integer.toString(nmb_of_schedules) + ". ";
-                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-                    } else {
-                        currentValue = Integer.toString(lastClicked + 1) + ". ";
-                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-                    }
-                    is_first = false;
-
-                    first_time_hour = hrs;
-                    first_time_min = min;
-                    Log.e("aaaa", "onTimeSet: "+first_time_hour );
-                    showTimePicker();
-                } else {
-                    currentValue += " ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-
-                    //second_time = String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-
-                    second_time_hour = hrs;
-                    second_time_min = min;
-                    if (lastClicked == -2) {
-                        schedulesList.add(currentValue);
-                        nmb_of_schedules++;
-                    } else {
-                        schedulesList.set(lastClicked, currentValue);
-                    }
-
-                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-                    String currentDateandTime = sdf.format(new Date());
-
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).push();
-                    databaseReference.child("start_hour").setValue(first_time_hour);
-                    databaseReference.child("start_min").setValue(first_time_min);
-
-                    databaseReference.child("end_hour").setValue(second_time_hour);
-                    databaseReference.child("end_min").setValue(second_time_min);
-
-
-                    //Log.e("ppo", "onTimeSet: "+ second_time);
-
-                    adapter.notifyDataSetChanged();
-                    is_first = true;
-                }
-            }
-        }, hrs, min, true);
-
-        timePickerDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                if (which == DialogInterface.BUTTON_NEGATIVE) {
-                    dialog.dismiss();
-                    lastClicked = -1;
-                    is_first = true;
-                }
-            }
-        });
-        timePickerDialog.show();
-    }
+//    public static class ViewHolder extends RecyclerView.ViewHolder{
+//
+//        View mView;
+//
+//        TextView tvTitle;
+//        public ViewHolder(View itemView) {
+//            super(itemView);
+//            mView =itemView;
+//
+//            tvTitle = mView.findViewById(R.id.tvTitle);
+//
+//
+//
+//
+//
+//        }
+//
+//
+//    }
+//
+//
+//
+//    int first_time_hour,first_time_min,second_time_hour,second_time_min;
+//    private void showTimePicker() {
+//        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
+//
+//            @Override
+//            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
+//                hrs = hourOfDay;
+//                min = minute;
+//
+//                if (is_first == true) {
+//
+//                    if (lastClicked == -2) {
+//                        currentValue = Integer.toString(nmb_of_schedules) + ". ";
+//                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+//                    } else {
+//                        currentValue = Integer.toString(lastClicked + 1) + ". ";
+//                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+//                    }
+//                    is_first = false;
+//
+//                    first_time_hour = hrs;
+//                    first_time_min = min;
+//                    Log.e("aaaa", "onTimeSet: "+first_time_hour );
+//                    showTimePicker();
+//                } else {
+//                    currentValue += " ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+//
+//                    //second_time = String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
+//
+//                    second_time_hour = hrs;
+//                    second_time_min = min;
+//                    if (lastClicked == -2) {
+//                        schedulesList.add(currentValue);
+//                        nmb_of_schedules++;
+//                    } else {
+//                        schedulesList.set(lastClicked, currentValue);
+//                    }
+//
+//                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+//                    String currentDateandTime = sdf.format(new Date());
+//
+//                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).push();
+//                    databaseReference.child("start_hour").setValue(first_time_hour);
+//                    databaseReference.child("start_min").setValue(first_time_min);
+//
+//                    databaseReference.child("end_hour").setValue(second_time_hour);
+//                    databaseReference.child("end_min").setValue(second_time_min);
+//
+//
+//                    //Log.e("ppo", "onTimeSet: "+ second_time);
+//
+//                    adapter.notifyDataSetChanged();
+//                    is_first = true;
+//                }
+//            }
+//        }, hrs, min, true);
+//
+//        timePickerDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
+//            @Override
+//            public void onClick(DialogInterface dialog, int which) {
+//                if (which == DialogInterface.BUTTON_NEGATIVE) {
+//                    dialog.dismiss();
+//                    lastClicked = -1;
+//                    is_first = true;
+//                }
+//            }
+//        });
+//        timePickerDialog.show();
+//    }
 }
