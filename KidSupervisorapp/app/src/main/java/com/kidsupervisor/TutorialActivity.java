@@ -60,6 +60,14 @@ public class TutorialActivity extends AppCompatActivity {
                 constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide4));
                 counter++;
                 }
+                else if(counter==3){
+                constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide5));
+                counter++;
+                }
+                else if(counter==4){
+                constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide6));
+                counter++;
+                }
                 else{
                     if(pref.getPrevFragment()==true)
                         onBackPressed();
@@ -75,10 +83,16 @@ public class TutorialActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(counter>0) {
-                    if (counter == 3) {
+                    if (counter == 5) {
+                        constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide5));
+                        counter--;
+                    } else if (counter == 4) {
+                        constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide4));
+                        counter--;
+                    }  else if (counter == 3) {
                         constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide3));
                         counter--;
-                    } else if (counter == 2) {
+                    }  else if (counter == 2) {
                         constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide2));
                         counter--;
                     } else {
