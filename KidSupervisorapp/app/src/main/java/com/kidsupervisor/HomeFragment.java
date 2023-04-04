@@ -1,5 +1,7 @@
 package com.kidsupervisor;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
@@ -11,13 +13,18 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.firebase.ui.database.FirebaseRecyclerAdapter;
+import com.firebase.ui.database.FirebaseRecyclerOptions;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -50,7 +57,7 @@ public class HomeFragment extends Fragment {
     private FirebaseService firebaseService;
     private FirebaseAuth auth;
     private Bundle bundle; // Used to share variable between activities/fragments
-
+    RecyclerView scheduleList2;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -69,6 +76,9 @@ public class HomeFragment extends Fragment {
         user = new User();
         schedulesList = new ArrayList<>();
         kidsList = new ArrayList<>();
+
+        scheduleList2 = view.findViewById(R.id.scheduleList2);
+        scheduleList2.setLayoutManager(new LinearLayoutManager(getActivity()));
 
         kidsListView = view.findViewById(R.id.kidsList);
         btnAddSchedule = view.findViewById(R.id.btnAddSchedule);
@@ -89,16 +99,16 @@ public class HomeFragment extends Fragment {
                             user.setId(dataSnapshot.child("id").getValue().toString());
                             user.setFullName(dataSnapshot.child("fullName").getValue().toString());
                             user.setEmail(dataSnapshot.child("email").getValue().toString());
-                            user.setSelectedKid(dataSnapshot.child("selectedKid").getValue().toString());
-                            for (DataSnapshot kidSnapshot : dataSnapshot.child("kids").getChildren()) {
-                                Kid kid = new Kid();
-                                kid.setId(kidSnapshot.child("id").getValue().toString());
-                                kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
-                                kid.setAge(kidSnapshot.child("age").getValue().toString());
-                                kid.setWeight(kidSnapshot.child("weight").getValue().toString());
-                                kid.setHeight(kidSnapshot.child("height").getValue().toString());
-                                user.addKid(kid);
-                            }
+//                            user.setSelectedKid(dataSnapshot.child("selectedKid").getValue().toString());
+//                            for (DataSnapshot kidSnapshot : dataSnapshot.child("kids").getChildren()) {
+//                                Kid kid = new Kid();
+//                                kid.setId(kidSnapshot.child("id").getValue().toString());
+//                                kid.setFullName(kidSnapshot.child("fullName").getValue().toString());
+//                                kid.setAge(kidSnapshot.child("age").getValue().toString());
+//                                kid.setWeight(kidSnapshot.child("weight").getValue().toString());
+//                                kid.setHeight(kidSnapshot.child("height").getValue().toString());
+//                                user.addKid(kid);
+//                            }
                         }
                     }
                 }
@@ -189,7 +199,100 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        fetch();
     }
+
+    //========================
+    private void fetch() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime);
+
+        FirebaseRecyclerOptions<ModelD> options
+                = new FirebaseRecyclerOptions.Builder<ModelD>()
+                .setQuery(query, ModelD.class)
+                .build();
+
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<ModelD, ViewHolder>(options) {
+            @Override
+            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_s, parent, false);
+
+                return new ViewHolder(view);
+            }
+
+
+            @Override
+            protected void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position, ModelD model) {
+
+
+                holder.tvTitle.setText(model.getStart_hour()+":"+model.getStart_min()+" ➤ "+ model.end_hour+":"+ model.end_min);
+
+
+                holder.tvTitle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder;
+                        builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Alert!");
+                        builder.setMessage("Is your Baby awake ?");
+                        builder.setCancelable(true);
+                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+                                String currentDateandTime = sdf.format(new Date());
+
+                                SimpleDateFormat sdfHour = new SimpleDateFormat("HH");
+                                String strHOur = sdfHour.format(new Date());
+
+                                SimpleDateFormat sdfMin = new SimpleDateFormat("mm");
+                                String strMin = sdfMin.format(new Date());
+                                DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(getRef(position).getKey());
+                                query.child("end_hour").setValue(Integer.parseInt(strHOur));
+                                query.child("end_min").setValue(Integer.parseInt(strMin));
+
+                            }
+                        });
+                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                        builder.show();
+                    }
+                });
+
+
+            }
+
+        };
+        scheduleList2.setAdapter(adapter);
+        adapter.startListening();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+
+        View mView;
+
+        TextView tvTitle;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mView =itemView;
+
+            tvTitle = mView.findViewById(R.id.tvTitle);
+
+
+
+
+
+        }
+
+
+    }
+
 
 
     int first_time_hour,first_time_min,second_time_hour,second_time_min;

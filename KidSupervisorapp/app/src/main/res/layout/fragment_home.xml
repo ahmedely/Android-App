@@ -74,10 +74,22 @@
         app:layout_constraintStart_toEndOf="@+id/scheduleList"
         app:layout_constraintTop_toBottomOf="@+id/btnModifySchedule" />
 
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/scheduleList2"
+        android:layout_width="204dp"
+        android:layout_height="243dp"
+        android:layout_marginBottom="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.135"
+        app:layout_constraintStart_toStartOf="parent" />
+
     <ListView
         android:id="@+id/scheduleList"
         android:layout_width="204dp"
         android:layout_height="243dp"
+        android:visibility="invisible"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
