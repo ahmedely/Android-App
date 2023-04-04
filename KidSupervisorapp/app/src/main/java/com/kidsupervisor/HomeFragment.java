@@ -41,8 +41,8 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private Button btnAddSchedule, btnDeleteSchedule, btnModifySchedule;
-    private Button btnAddKid;
+    private Button btnAddSchedule,btnAddKid, btnDeleteSchedule, btnModifySchedule,changeBabyState;
+    private TextView baby_state;
     private User user;
     int nmb_of_schedules = 1;
     ListView scheduleList;
@@ -90,6 +90,8 @@ public class HomeFragment extends Fragment {
         // btnModifySchedule = view.findViewById(R.id.btnModifySchedule);
         scheduleList = view.findViewById(R.id.scheduleList);
         btnAddKid = view.findViewById(R.id.btnAddKid);
+        changeBabyState=view.findViewById(R.id.babyStateBtn);
+        baby_state=view.findViewById(R.id.baby_state);
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -174,6 +176,19 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        changeBabyState.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(baby_state.getText().toString().equals("AWAKE")){
+                    baby_state.setText("SLEEPING");
+                    baby_state.setBackgroundResource(R.drawable.btn_3);
+                }
+                else{
+                    baby_state.setText("AWAKE");
+                    baby_state.setBackgroundResource(R.drawable.btn_bg);
+                }
+            }
+        });
 
         kidsListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

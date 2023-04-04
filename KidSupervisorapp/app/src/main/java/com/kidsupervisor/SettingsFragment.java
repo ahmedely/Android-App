@@ -95,7 +95,7 @@ public class SettingsFragment extends Fragment {
         });
 
 
-        signOutBut = (Button) view.findViewById(R.id.sign_out);
+        signOutBut = view.findViewById(R.id.sign_out_btn);
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
