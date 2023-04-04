@@ -1,5 +1,6 @@
 package com.kidsupervisor;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.Settings;
@@ -7,9 +8,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -18,7 +20,6 @@ import androidx.fragment.app.Fragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -29,9 +30,11 @@ import com.google.firebase.database.ValueEventListener;
 public class SettingsFragment extends Fragment {
     private Switch changeTheme;
     private Pref pref;
-    private Button signOutBut,edit_Profile,helpBtn,changeLanguage;
+    private LinearLayout signOutBut;
+    private Button edit_Profile;
 
-    private TextView profileName;
+    private RelativeLayout guide_btn,aboutUs,reportBugs,btn_FAQs;
+    private TextView profileName,emailProfile;
     private DatabaseReference databaseRef,onChangeDatabaseRef;
     private FirebaseAuth auth;
     private User currentUser;
@@ -53,6 +56,11 @@ public class SettingsFragment extends Fragment {
         changeTheme = view.findViewById(R.id.switch_btn);
         edit_Profile = view.findViewById(R.id.editPrfl);
         profileName = view.findViewById(R.id.profile_name);
+        emailProfile=view.findViewById(R.id.emailTxt);
+        guide_btn=view.findViewById(R.id.guideBtn);
+        aboutUs=view.findViewById(R.id.aboutBtn);
+        reportBugs=view.findViewById(R.id.reportBugs_btn);
+        btn_FAQs=view.findViewById(R.id.faqsBtn);
 
         bundle = new Bundle();
 
@@ -66,13 +74,10 @@ public class SettingsFragment extends Fragment {
                     changeTheme.setChecked(true);
                     startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
 
-                    // AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 } else {
                     pref.setBoolean("Switch", false);
                     changeTheme.setChecked(false);
                     startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
-
-                    //AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
 
                 }
 
@@ -90,24 +95,59 @@ public class SettingsFragment extends Fragment {
         });
 
 
-        signOutBut = (Button) view.findViewById(R.id.sign_out);
+        signOutBut = view.findViewById(R.id.sign_out_btn);
         signOutBut.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pref.setUserStatus(true);
+                pref.setUserStatus(false);
                 FirebaseAuth.getInstance().signOut();
                 startActivity(new Intent(getActivity(), LoginActivity.class));
-                pref.setLogInStatus();
                 getActivity().finish();
+            }
+        });
+
+        guide_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                pref.setPrevFragment(true);
+                startActivity(new Intent(getActivity(), TutorialActivity.class));
+            }
+        });
+
+        aboutUs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                AboutFragment dialogFragment = new AboutFragment();
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+            }
+        });
+
+        reportBugs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                ReportBugDialog dialogFragment = new ReportBugDialog();
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+
+            }
+        });
+
+        btn_FAQs.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FAQsFragment dialogFragment = new FAQsFragment();
+                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
             }
         });
 
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
         databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+            @SuppressLint("SuspiciousIndentation")
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
                 if (task.isSuccessful())
                     profileName.setText(task.getResult().child("fullName").getValue().toString());
+                    emailProfile.setText(task.getResult().child("email").getValue().toString());
             }
         });
 

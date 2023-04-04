@@ -51,6 +51,7 @@
         android:textStyle="bold" />
     <LinearLayout
         android:layout_width="match_parent"
+        android:id="@+id/signInlayout"
         android:layout_height="wrap_content"
         android:layout_below="@+id/bar"
         android:orientation="vertical">
@@ -197,7 +198,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
-
+                android:inputType="textPassword"
                 android:hint="Confirm Password"
                 android:minWidth="150dp"
                 android:paddingStart="@dimen/medium"
@@ -218,14 +219,13 @@
         </RelativeLayout>
 
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/signupButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="45dp"
 
-            android:layout_marginTop="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginEnd="45dp"
             android:layout_marginBottom="@dimen/_10sdp"
 
@@ -236,36 +236,34 @@
             android:textSize="@dimen/_11sdp"
             android:textStyle="bold" />
 
+        <LinearLayout
+            android:id="@+id/login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:layout_marginStart="@dimen/_20sdp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="@dimen/_20sdp"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Already have an account? "
+                android:textSize="@dimen/_10sdp" />
+
+            <TextView
+                android:id="@+id/newAccountTextViw"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Log in"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_10sdp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
     </LinearLayout>
 
-
-    <LinearLayout
-        android:id="@+id/login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-
-        android:layout_alignParentBottom="true"
-        android:layout_marginStart="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        android:layout_marginEnd="@dimen/_20sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:gravity="center">
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Don't have account? "
-            android:textSize="@dimen/_10sdp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Register"
-            android:id="@+id/newAccountTextViw"
-            android:textColor="@color/colorPrimary"
-            android:textSize="@dimen/_10sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
 
     <ProgressBar
         android:id="@+id/progressbars"

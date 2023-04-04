@@ -17,14 +17,20 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_gravity="center"
+                android:clickable="true"
+                android:src="@drawable/bg_settings" />
             <ImageView
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="center"
-                android:layout_marginTop="100dp"
+                android:layout_marginTop="-200dp"
                 android:clickable="true"
                 android:src="@drawable/ic_account" />
+
 
             <TextView
                 android:id="@+id/profile_name"
@@ -79,7 +85,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
+                        android:src="@drawable/baseline_dark_mode_24" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -87,11 +93,10 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
                         android:layout_toEndOf="@+id/logo1"
-                        android:text="Theme"
+                        android:text="Dark mode"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.SwitchCompat
+                    <Switch
                         android:id="@+id/switch_btn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -102,36 +107,8 @@
                         />
                 </RelativeLayout>
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
 
-                    <ImageView
-                        android:id="@+id/logo4"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
 
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@+id/logo4"
-                        android:text="Notification"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
-
-                    <androidx.appcompat.widget.SwitchCompat
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-                        android:switchMinWidth="50dp"
-
-                        />
-                </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
@@ -143,28 +120,6 @@
                 android:background="@drawable/button_shape"
                 android:orientation="vertical"
                 android:padding="15dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/logo10"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@+id/logo10"
-                        android:text="Language"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -188,28 +143,6 @@
                         android:textStyle="bold" />
 
                 </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/logo17"
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:layout_marginStart="20dp"
-                        android:layout_toEndOf="@+id/logo17"
-                        android:text="Sharing options"
-                        android:textColor="#FFFFFF"
-                        android:textStyle="bold" />
-
-                </RelativeLayout>
 
             </LinearLayout>
 
@@ -224,7 +157,9 @@
                 android:padding="15dp">
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/guideBtn"
+                    android:clickable="true">
 
                     <ImageView
                         android:id="@+id/logo6"
@@ -235,13 +170,12 @@
 
                     <TextView
                         android:id="@+id/helpBtn"
-                        android:clickable="true"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
                         android:layout_toEndOf="@+id/logo6"
-                        android:text="Tutorial"
+                        android:text="Guide"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
 
@@ -249,7 +183,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/aboutBtn">
 
                     <ImageView
                         android:id="@+id/logo88"
@@ -271,14 +206,15 @@
                 </RelativeLayout>
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/reportBugs_btn">
 
                     <ImageView
                         android:id="@+id/logo00"
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
+                        android:src="@drawable/baseline_bug_report_24" />
 
                     <TextView
                         android:id="@+id/helpBdtn"
@@ -296,7 +232,8 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
+                    android:layout_height="wrap_content"
+                    android:id="@+id/faqsBtn">
 
                     <ImageView
                         android:id="@+id/logo0"
@@ -328,7 +265,7 @@
                 android:layout_marginStart="20dp"
                 android:layout_marginTop="20dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/button_shape"
+                android:background="@drawable/btn_3"
                 android:orientation="vertical"
                 android:padding="15dp">
                 <RelativeLayout
