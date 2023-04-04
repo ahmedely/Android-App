@@ -69,21 +69,23 @@ public class GraphActivity extends AppCompatActivity  {
                         }
                         ArrayList<BarDataSet> dataSets = null;
 
-                        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Start Minutes");
-                        barDataSet1.setColor(Color.rgb(0, 155, 0));
+                        BarDataSet barDataSet1 = new BarDataSet(valueSet1, "Red to Green - Sleeping");
+                        barDataSet1.setColors(new int[] {Color.RED, Color.GREEN});
 
-                        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "End Minutes");
+                        BarDataSet barDataSet2 = new BarDataSet(valueSet2, "End");
                         barDataSet2.setColor(Color.rgb(0, 0, 155));
 
                         dataSets = new ArrayList<>();
                         dataSets.add(barDataSet1);
                         //dataSets.add(barDataSet2);
 
+
                         BarChart chart = (BarChart) findViewById(R.id.barchart);
                         BarData data = new BarData(getXAxisValues(), dataSets);
                         chart.setData(data);
-                        chart.getXAxis().setAdjustXLabels(false);
 
+                        chart.getXAxis().setAdjustXLabels(false);
+                        //chart.getXAxis().setValues(getXAxisValues());
 
                         XAxis xAxis = chart.getXAxis();
                         xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
