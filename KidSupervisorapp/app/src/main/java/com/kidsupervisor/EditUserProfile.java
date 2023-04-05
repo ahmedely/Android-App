@@ -22,7 +22,7 @@ public class EditUserProfile  extends AppCompatDialogFragment {
 
     private TextView email,oldPassword,newPassword,confirmPassword;
     private FirebaseService firebaseService;
-
+    private String currentEmail;
 
     @NonNull
     @Override
@@ -40,7 +40,8 @@ public class EditUserProfile  extends AppCompatDialogFragment {
 
         if(getArguments()!=null){
             if(getArguments().getString("email")!=null){
-                email.setText(getArguments().getString("email"));
+                currentEmail=getArguments().getString("email");
+                email.setText(currentEmail);
             }
         }
 
@@ -56,7 +57,7 @@ public class EditUserProfile  extends AppCompatDialogFragment {
                             }
                         }
                  //change email
-                        if(!email.getText().toString().isEmpty() && !oldPassword.getText().toString().isEmpty()){
+                        if(!email.getText().toString().isEmpty() && !oldPassword.getText().toString().isEmpty() && !email.getText().toString().equals(currentEmail)){
                             firebaseService.updateEmail(oldPassword.getText().toString(),email.getText().toString());
                         }
                     }
