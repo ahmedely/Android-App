@@ -1,7 +1,5 @@
 package com.kidsupervisor;
 
-import org.json.JSONArray;
-
 import java.util.ArrayList;
 
 public class User {
@@ -24,11 +22,6 @@ public class User {
         this.fullName = fullName;
         this.email = email;
         this.selectedKid = selectedKid;
-        this.kids = new ArrayList();
-    }
-    public User(String fullName,  String email) {
-        this.fullName = fullName;
-        this.email = email;
         this.kids = new ArrayList();
     }
 

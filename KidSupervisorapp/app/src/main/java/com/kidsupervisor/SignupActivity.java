@@ -29,13 +29,11 @@ public class SignupActivity extends AppCompatActivity {
     private TextView txtPassword;
     private TextView txtConfirmPassword;
     private FirebaseAuth auth;
-    private FirebaseService firebaseService;
     Pref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        firebaseService = new FirebaseService(this);
         pref = new Pref(this);
         if (!pref.getBoolean("Switch")) {
             setTheme(R.style.lighttheme);
@@ -130,7 +128,7 @@ public class SignupActivity extends AppCompatActivity {
                 } else if (password.length() < 6) {
                     Toast.makeText(SignupActivity.this, "Password must be more than 5 characters", Toast.LENGTH_SHORT).show();
                 } else {
-                    signUp(name,email, password);
+                    signUp(email, password);
                 }
             }
         });
@@ -143,13 +141,11 @@ public class SignupActivity extends AppCompatActivity {
         });
     }
 
-    private void signUp(String fullName,String email, String password) {
+    private void signUp(String email, String password) {
         auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(SignupActivity.this, new OnCompleteListener<AuthResult>() {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    User user = new User(fullName,email);
-                    firebaseService.addUser(user);
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                     Toast.makeText(SignupActivity.this, "Account created", Toast.LENGTH_LONG).show();
                 } else {

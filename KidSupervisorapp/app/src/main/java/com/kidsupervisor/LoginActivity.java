@@ -1,14 +1,11 @@
 package com.kidsupervisor;
 
-import android.Manifest;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.Handler;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -18,27 +15,19 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
 import androidx.core.app.NotificationCompat;
 import androidx.core.app.NotificationManagerCompat;
-import androidx.core.content.ContextCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUserMetadata;
 import com.google.firebase.database.ChildEventListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.kidsupervisor.databinding.ActivityLoginBinding;
-import com.kidsupervisor.databinding.ActivityMainBinding;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
@@ -50,14 +39,13 @@ public class LoginActivity extends AppCompatActivity {
     public static final String CHANNEL_1 = "channel1";
     private DatabaseReference databaseRef;
     private FirebaseService firebaseService;
+    //  private FirebaseService firebaseService;
     static int counter = 0;
     Pref pref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-
         pref = new Pref(this);
         firebaseService = new FirebaseService(LoginActivity.this);
 
@@ -108,7 +96,7 @@ public class LoginActivity extends AppCompatActivity {
         txt_password = findViewById(R.id.password);
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Sensors").child("0");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel1 = new NotificationChannel(CHANNEL_1, "Channel 1 :)", NotificationManager.IMPORTANCE_HIGH);
             channel1.setDescription("This is Channel 1");
             NotificationManager manager = getSystemService(NotificationManager.class);
@@ -154,19 +142,19 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                if (snapshot.exists() && (snapshot.getKey().equals("movementSensor") && snapshot.getValue().equals(true))) {
+                if (snapshot.exists() && (snapshot.getKey().equals("movementSensor") || snapshot.getKey().equals("soundSensor"))) {
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                     intent.putExtra("menuFragment", "MyFragment");
-                    PendingIntent pendingIntent = PendingIntent.getActivity(LoginActivity.this, 1, intent, PendingIntent.FLAG_IMMUTABLE| PendingIntent.FLAG_UPDATE_CURRENT);
+                    PendingIntent pendingIntent = PendingIntent.getActivity(LoginActivity.this, 1, intent, PendingIntent.FLAG_IMMUTABLE);
                     NotificationCompat.Builder builder = new NotificationCompat.Builder(LoginActivity.this, CHANNEL_1);
                     builder.setContentTitle("Movement and sound detect");
                     builder.setContentText("Click to monitor your child");
                     builder.setSmallIcon(R.drawable.ic_mail);
                     builder.setAutoCancel(true);
                     builder.setContentIntent(pendingIntent);
-                    databaseRef.child("movementSensor").setValue(false);
+
                     NotificationManagerCompat managerCompat = NotificationManagerCompat.from(LoginActivity.this);
                     managerCompat.notify(counter, builder.build());
                     counter++;
@@ -200,16 +188,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<AuthResult> task) {
                 if (task.isSuccessful()) {
-                    if(pref.getUserStatus()==true){
-                        startActivity(new Intent(LoginActivity.this, TutorialActivity.class));
-                        finish();
-                    }
-                    else {
-                        startActivity(new Intent(LoginActivity.this, MainActivity.class));
-                        finish();
-                    }
-                }
-                else {
+                    startActivity(new Intent(LoginActivity.this, MainActivity.class));
+                    finish();
+                } else {
                     Toast.makeText(LoginActivity.this, "Email or Password is incorrect", Toast.LENGTH_SHORT).show();
                 }
             }
@@ -217,7 +198,6 @@ public class LoginActivity extends AppCompatActivity {
 
 
     }
-
 
     @Override
     public void onBackPressed() {

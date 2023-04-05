@@ -11,7 +11,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -105,6 +104,7 @@ public class KidInfoActivity extends AppCompatDialogFragment {
 
                 if (getArguments().get("edit").equals(true)) {
 
+                    System.out.println("ARGUMENT EDIT : " + getArguments().get("edit"));
                     positiveButton = dialog.getButton(AlertDialog.BUTTON_POSITIVE);
                     positiveButton.setVisibility(View.VISIBLE);
                     positiveButton.setOnClickListener(new View.OnClickListener() {
@@ -168,27 +168,9 @@ public class KidInfoActivity extends AppCompatDialogFragment {
                     @Override
                     public boolean onTouch(View view, MotionEvent motionEvent) {
 
-
-                        AlertDialog.Builder builder;
-                        builder = new AlertDialog.Builder(getContext());
-                        builder.setTitle("Alert!");
-                        builder.setMessage("Do you want to remove this kid ?");
-                        builder.setCancelable(true);
-                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-                                firebaseService.deleteKid(kid.getId());
-                                dialog.dismiss();
-                            }
-                        });
-                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-
-                            }
-                        });
-                        builder.show();
-
+                        firebaseService.deleteKid(kid.getId());
+                        //Toast.makeText(getContext(), "CLICKED2", Toast.LENGTH_SHORT).show();
+                        dialog.dismiss();
                         return false;
                     }
                 });

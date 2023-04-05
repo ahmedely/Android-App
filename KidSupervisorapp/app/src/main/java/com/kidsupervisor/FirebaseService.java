@@ -1,8 +1,7 @@
 package com.kidsupervisor;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -10,22 +9,17 @@ import androidx.annotation.NonNull;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthCredential;
-import com.google.firebase.auth.AuthResult;
-import com.google.firebase.auth.EmailAuthCredential;
 import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
-import org.json.JSONArray;
-import org.json.JSONObject;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 public class FirebaseService {
@@ -220,11 +214,37 @@ public class FirebaseService {
     }
 
     public void addDate(String year, String month, String day, String time, Boolean isSleeping) {
-        if (auth.getCurrentUser() != null) {
-            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Schedules").child(year).child(month).child(day).child(time).child("isSleeping");
-            this.databaseRef.setValue(isSleeping);
+        SharedPreferences sharedPreferences = context.getSharedPreferences("kid" , Context.MODE_PRIVATE);
+        String docId = sharedPreferences.getString("doc" ,"");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(docId);
 
-        }
+        Date date =  new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int hours = cal.get(Calendar.HOUR_OF_DAY);
+        int mint  = cal.get(Calendar.MINUTE);
+//        databaseReference.child("start_hour").setValue(hours);
+//        databaseReference.child("start_min").setValue(mint);
+
+        databaseReference.child("end_hour").setValue(hours);
+        databaseReference.child("end_min").setValue(mint);
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+//        String currentDateandTime = sdf.format(new Date());
+//        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).push();
+//
+//        Date date =  new Date();
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(date);
+//        int hours = cal.get(Calendar.HOUR_OF_DAY);
+//        int mint  = cal.get(Calendar.MINUTE);
+//        databaseReference.child("start_hour").setValue(hours);
+//        databaseReference.child("start_min").setValue(mint);
+////
+//        databaseReference.child("end_hour").setValue(hours+3);
+//        databaseReference.child("end_min").setValue(mint);
 
 
     }
