@@ -26,15 +26,15 @@ public class Pref {
         return editor.getBoolean("newUser", true);
     }
 
-    public void setBoolean(String key, Boolean value) {
+    public void setBoolean(Boolean value) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE).edit();
-        editor.putBoolean(key, value);
+        editor.putBoolean("Switch", value);
         editor.apply();
     }
 
-    public Boolean getBoolean(String key) {
+    public Boolean getBoolean() {
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getBoolean(key, false);
+        return editor.getBoolean("Switch", false);
     }
     //to know if tutorial button is clicked on setting or on login
     public void setPrevFragment(Boolean x){
@@ -46,4 +46,5 @@ public class Pref {
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
         return editor.getBoolean("Fragment",false);
     }
+
 }

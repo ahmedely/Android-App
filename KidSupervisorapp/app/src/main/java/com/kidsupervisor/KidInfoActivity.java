@@ -78,7 +78,7 @@ public class KidInfoActivity extends AppCompatDialogFragment {
 
         pref = new Pref(getContext());
 
-        if (!pref.getBoolean("Switch")) {
+        if (!pref.getBoolean()) {
             getActivity().setTheme(R.style.lighttheme);
         } else {
             getActivity().setTheme(R.style.darktheme);

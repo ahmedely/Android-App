@@ -133,7 +133,7 @@ public class FirebaseService {
 
 
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \\
+                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \
             auth.getCurrentUser().reauthenticate(credential)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
@@ -167,9 +167,7 @@ public class FirebaseService {
 
     }
 
-
     public void updatePassword(String oldPassword, String newPassword) {
-        Toast.makeText(context, "UPDATE PASS", Toast.LENGTH_SHORT).show();
 
         if (auth.getCurrentUser() != null) {
 
@@ -183,7 +181,8 @@ public class FirebaseService {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(context, "Password was modified", Toast.LENGTH_SHORT).show();
-                                } else {
+                                }
+                                else {
                                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                                 }
                             }

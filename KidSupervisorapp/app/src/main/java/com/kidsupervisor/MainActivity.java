@@ -47,7 +47,7 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         firebaseService = new FirebaseService(this);
         pref = new Pref(this);
-        if (!pref.getBoolean("Switch")) {
+        if (!pref.getBoolean()) {
             setTheme(R.style.lighttheme);
         } else {
             setTheme(R.style.darktheme);
