@@ -1,8 +1,7 @@
 package com.kidsupervisor;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
+import android.content.SharedPreferences;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -16,16 +15,18 @@ import com.google.firebase.auth.EmailAuthProvider;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.Locale;
 import java.util.UUID;
 
 public class FirebaseService {
@@ -137,31 +138,35 @@ public class FirebaseService {
 
 
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \\
+                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \
             auth.getCurrentUser().reauthenticate(credential)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
+                            if (task.isSuccessful()) {
+                                auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
 
-                                        databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                            databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                            }
-                                        });
-                                        Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                            Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                        }
+
                                     }
+                                });
 
-                                }
-                            });
-
+                            }
+                            else
+                                Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
@@ -171,9 +176,7 @@ public class FirebaseService {
 
     }
 
-
     public void updatePassword(String oldPassword, String newPassword) {
-        Toast.makeText(context, "UPDATE PASS", Toast.LENGTH_SHORT).show();
 
         if (auth.getCurrentUser() != null) {
 
@@ -187,7 +190,8 @@ public class FirebaseService {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(context, "Password was modified", Toast.LENGTH_SHORT).show();
-                                } else {
+                                }
+                                else {
                                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -219,15 +223,52 @@ public class FirebaseService {
         }
     }
 
-    public void addDate(String year, String month, String day, String time, Boolean isSleeping) {
-        if (auth.getCurrentUser() != null) {
-            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Schedules").child(year).child(month).child(day).child(time).child("isSleeping");
-            this.databaseRef.setValue(isSleeping);
+//    public void addDate(String year, String month, String day, String time, Boolean isSleeping) {
+//        if (auth.getCurrentUser() != null) {
+//            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Schedules").child(year).child(month).child(day).child(time).child("isSleeping");
+//            this.databaseRef.setValue(isSleeping);
+//
+//        }
+//
+//
+//    }
+public void addDate(String year, String month, String day, String time, Boolean isSleeping) {
+    SharedPreferences sharedPreferences = context.getSharedPreferences("kid" , Context.MODE_PRIVATE);
+    String docId = sharedPreferences.getString("doc" ,"");
+    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+    String currentDateandTime = sdf.format(new Date());
+    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(docId);
 
-        }
+    Date date =  new Date();
+    Calendar cal = Calendar.getInstance();
+    cal.setTime(date);
+    int hours = cal.get(Calendar.HOUR_OF_DAY);
+    int mint  = cal.get(Calendar.MINUTE);
+//        databaseReference.child("start_hour").setValue(hours);
+//        databaseReference.child("start_min").setValue(mint);
+
+    databaseReference.child("end_hour").setValue(hours);
+    databaseReference.child("end_min").setValue(mint);
+//
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+//        String currentDateandTime = sdf.format(new Date());
+//        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).push();
+//
+//        Date date =  new Date();
+//        Calendar cal = Calendar.getInstance();
+//        cal.setTime(date);
+//        int hours = cal.get(Calendar.HOUR_OF_DAY);
+//        int mint  = cal.get(Calendar.MINUTE);
+//        databaseReference.child("start_hour").setValue(hours);
+//        databaseReference.child("start_min").setValue(mint);
+////
+//        databaseReference.child("end_hour").setValue(hours+3);
+//        databaseReference.child("end_min").setValue(mint);
 
 
-    }
+}
+
+
 
     public ArrayList<Schedule> getDate(String year, String month, String day) {
         ArrayList<Schedule> schedules = new ArrayList<>();
@@ -247,5 +288,76 @@ public class FirebaseService {
             });
         }
         return schedules;
+    }
+
+    public void addEvent(Event event) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("Events");
+            databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        databaseRef.child(event.getId()).setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(context, "Event added", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+    }
+
+    public void editEvent(Event event) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("Events").child(event.getId());
+            databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
+                @Override
+                public void onComplete(@NonNull Task<DataSnapshot> task) {
+                    if (task.isSuccessful()) {
+                        databaseRef.setValue(event).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(context, "Event was changed successfully", Toast.LENGTH_SHORT).show();
+                                } else {
+                                    Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+                                }
+                            }
+                        });
+                    }
+                }
+            });
+        }
+
+    }
+
+    public void deleteEvent(String id) {
+        if (auth.getCurrentUser() != null) {
+            this.databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("Events").child(id);
+            databaseRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        Toast.makeText(context, "Event was removed successfully", Toast.LENGTH_SHORT).show();
+                    } else {
+                        Toast.makeText(context, "ERROR", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        }
+    }
+
+    public void setBabyState(boolean state){
+        this.databaseRef = FirebaseDatabase.getInstance().getReference().child("isSleeping");
+        this.databaseRef.setValue(state).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
     }
 }

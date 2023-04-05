@@ -30,14 +30,13 @@ import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
     ActivityMainBinding binding;
 
     Pref pref;
     private final Fragment homeFragment = new HomeFragment();
     private final Fragment camraFragment = new CameraFragment();
     private final Fragment settingsFragment = new SettingsFragment();
-    private final Fragment statsFragment = new StatsFragment();
+    private final Fragment statsFragment = new DataFragment();
     private Fragment activeFragment = homeFragment;
     FragmentManager fragmentManager = getSupportFragmentManager();
     private FirebaseService firebaseService;
@@ -47,12 +46,11 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
         super.onCreate(savedInstanceState);
         firebaseService = new FirebaseService(this);
         pref = new Pref(this);
-        if (!pref.getBoolean("Switch")) {
+        if (!pref.getBoolean()) {
             setTheme(R.style.lighttheme);
         } else {
             setTheme(R.style.darktheme);
         }
-        pref.setLogInStatus();
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
@@ -82,12 +80,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         String day = dtf.format(now).split("/")[2].split("\\s+")[0];
                         String time = dtf.format(now).split("/")[2].split("\\s+")[1];
                         firebaseService.addDate(year, month, day, time, false);
+
+                        firebaseService.setBabyState(false);
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                    firebaseService.setBabyState(true);
                     }
                 });
 

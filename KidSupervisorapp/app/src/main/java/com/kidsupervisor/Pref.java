@@ -16,16 +16,6 @@ public class Pref {
         auth=FirebaseAuth.getInstance();
     }
 
-    public void setString(String key, String value) {
-        SharedPreferences.Editor editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE).edit();
-        editor.putString(key, value);
-        editor.apply();
-    }
-
-    public String getString(String key) {
-        SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getString(key, "");
-    }
     public void setUserStatus(Boolean x){
         SharedPreferences.Editor editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE).edit();
         editor.putBoolean("newUser", x);
@@ -33,33 +23,28 @@ public class Pref {
     }
     public boolean getUserStatus(){
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getBoolean("newUser", false);
+        return editor.getBoolean("newUser", true);
     }
 
-    public void setBoolean(String key, Boolean value) {
+    public void setBoolean(Boolean value) {
         SharedPreferences.Editor editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE).edit();
-        editor.putBoolean(key, value);
+        editor.putBoolean("Switch", value);
         editor.apply();
     }
 
-    public Boolean getBoolean(String key) {
+    public Boolean getBoolean() {
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getBoolean(key, false);
+        return editor.getBoolean("Switch", false);
     }
-    //for knowing which activity to go after splash screen
-    public void setLogInStatus() {
+    //to know if tutorial button is clicked on setting or on login
+    public void setPrevFragment(Boolean x){
         SharedPreferences.Editor editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE).edit();
-        if(auth.getCurrentUser()!=null)
-            editor.putBoolean("logIn",true);
-        else
-            editor.putBoolean("logIn",false);
+        editor.putBoolean("Fragment", x);
         editor.apply();
     }
-
-    public Boolean getLogInStatus(){
-
+    public Boolean getPrevFragment(){
         SharedPreferences editor = mContext.getSharedPreferences("Pref", Context.MODE_PRIVATE);
-        return editor.getBoolean("logIn",false);
+        return editor.getBoolean("Fragment",false);
     }
 
 }

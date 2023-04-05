@@ -14,6 +14,7 @@ public class SplashScreen extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash_screen);
         pref = new Pref(this);
+        pref.setPrevFragment(false);
 
         new Handler().postDelayed(new Runnable() {
             @Override
@@ -27,5 +28,4 @@ public class SplashScreen extends AppCompatActivity {
             }
         },2000);
     }
-
 }

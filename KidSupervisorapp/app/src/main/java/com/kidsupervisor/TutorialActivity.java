@@ -3,6 +3,7 @@ package com.kidsupervisor;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 import androidx.core.content.ContextCompat;
+import androidx.fragment.app.FragmentManager;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,12 +31,17 @@ public class TutorialActivity extends AppCompatActivity {
         back=findViewById(R.id.backBtn);
         constraintLayout=findViewById(R.id.tutLayout);
 
+        pref.setUserStatus(false);
         //go to mainActivity
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(TutorialActivity.this, MainActivity.class));
-                finish();
+                if(pref.getPrevFragment()==true)
+                    onBackPressed();
+                else {
+                     startActivity(new Intent(TutorialActivity.this, MainActivity.class));
+                    finish();
+                }
             }
         });
         //go to next page
@@ -54,9 +60,21 @@ public class TutorialActivity extends AppCompatActivity {
                 constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide4));
                 counter++;
                 }
+                else if(counter==3){
+                constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide5));
+                counter++;
+                }
+                else if(counter==4){
+                constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide6));
+                counter++;
+                }
                 else{
-                    startActivity(new Intent(TutorialActivity.this, MainActivity.class));
-                    finish();
+                    if(pref.getPrevFragment()==true)
+                        onBackPressed();
+                    else {
+                        startActivity(new Intent(TutorialActivity.this, MainActivity.class));
+                        finish();
+                    }
                 }
             }
         });
@@ -65,10 +83,16 @@ public class TutorialActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(counter>0) {
-                    if (counter == 3) {
+                    if (counter == 5) {
+                        constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide5));
+                        counter--;
+                    } else if (counter == 4) {
+                        constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide4));
+                        counter--;
+                    }  else if (counter == 3) {
                         constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide3));
                         counter--;
-                    } else if (counter == 2) {
+                    }  else if (counter == 2) {
                         constraintLayout.setBackground(ContextCompat.getDrawable(TutorialActivity.this, R.drawable.slide2));
                         counter--;
                     } else {

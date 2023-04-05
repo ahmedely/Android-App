@@ -27,7 +27,7 @@ public class ResetPasswordActivity extends AppCompatActivity {
 
         pref = new Pref(this);
 
-        if (!pref.getBoolean("Switch")) {
+        if (!pref.getBoolean()) {
             setTheme(R.style.lighttheme);
         } else {
             setTheme(R.style.darktheme);

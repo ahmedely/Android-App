@@ -37,7 +37,7 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         firebaseService = new FirebaseService(this);
         pref = new Pref(this);
-        if (!pref.getBoolean("Switch")) {
+        if (!pref.getBoolean()) {
             setTheme(R.style.lighttheme);
         } else {
             setTheme(R.style.darktheme);
@@ -52,7 +52,7 @@ public class SignupActivity extends AppCompatActivity {
                 if (binding.password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
                     binding.password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
-                    if (!pref.getBoolean("Switch")) {
+                    if (!pref.getBoolean()) {
 
                         binding.hideshow.setImageResource(R.drawable.hide);
                         binding.hideshow.setImageTintList(getResources().getColorStateList(R.color.black));
@@ -64,7 +64,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 } else {
 
-                    if (!pref.getBoolean("Switch")) {
+                    if (!pref.getBoolean()) {
                         binding.hideshow.setImageResource(R.drawable.ic_eye);
                     } else {
                         binding.hideshow.setImageResource(R.drawable.ic_eye_dark);
@@ -82,7 +82,7 @@ public class SignupActivity extends AppCompatActivity {
                 if (binding.confirmPassword.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
                     binding.confirmPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
-                    if (!pref.getBoolean("Switch")) {
+                    if (!pref.getBoolean()) {
 
                         binding.hideshow1.setImageResource(R.drawable.hide);
                         binding.hideshow1.setImageTintList(getResources().getColorStateList(R.color.black));
@@ -94,7 +94,7 @@ public class SignupActivity extends AppCompatActivity {
 
                 } else {
 
-                    if (!pref.getBoolean("Switch")) {
+                    if (!pref.getBoolean()) {
 
                         binding.hideshow1.setImageResource(R.drawable.ic_eye);
                     } else {
@@ -152,6 +152,7 @@ public class SignupActivity extends AppCompatActivity {
                     firebaseService.addUser(user);
                     startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                     Toast.makeText(SignupActivity.this, "Account created", Toast.LENGTH_LONG).show();
+                    pref.setUserStatus(true);
                 } else {
                     Toast.makeText(SignupActivity.this, "Sign up Failed", Toast.LENGTH_LONG).show();
                 }

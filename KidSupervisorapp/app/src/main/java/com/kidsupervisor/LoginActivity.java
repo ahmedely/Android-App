@@ -33,12 +33,7 @@ import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 import com.kidsupervisor.databinding.ActivityLoginBinding;
-import com.kidsupervisor.databinding.ActivityMainBinding;
-
-import java.util.Timer;
-import java.util.TimerTask;
 
 public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
@@ -61,7 +56,7 @@ public class LoginActivity extends AppCompatActivity {
         pref = new Pref(this);
         firebaseService = new FirebaseService(LoginActivity.this);
 
-        if (!pref.getBoolean("Switch")) {
+        if (!pref.getBoolean()) {
             setTheme(R.style.lighttheme);
         } else {
             setTheme(R.style.darktheme);
@@ -76,7 +71,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (binding.password.getTransformationMethod().equals(PasswordTransformationMethod.getInstance())) {
                     binding.password.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
 
-                    if (!pref.getBoolean("Switch")) {
+                    if (!pref.getBoolean()) {
 
                         binding.hideshow.setImageResource(R.drawable.hide);
                         binding.hideshow.setImageTintList(getResources().getColorStateList(R.color.black));
@@ -88,7 +83,7 @@ public class LoginActivity extends AppCompatActivity {
 
                 } else {
 
-                    if (!pref.getBoolean("Switch")) {
+                    if (!pref.getBoolean()) {
 
                         binding.hideshow.setImageResource(R.drawable.ic_eye);
                     } else {
@@ -106,9 +101,9 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         txt_email = findViewById(R.id.email);
         txt_password = findViewById(R.id.password);
-        databaseRef = FirebaseDatabase.getInstance().getReference().child("Sensors").child("0");
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("Sensors").child( "0");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ){
             NotificationChannel channel1 = new NotificationChannel(CHANNEL_1, "Channel 1 :)", NotificationManager.IMPORTANCE_HIGH);
             channel1.setDescription("This is Channel 1");
             NotificationManager manager = getSystemService(NotificationManager.class);
@@ -154,7 +149,7 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onChildChanged(@NonNull DataSnapshot snapshot, @Nullable String previousChildName) {
 
-                if (snapshot.exists() && (snapshot.getKey().equals("movementSensor") && snapshot.getValue().equals(true))) {
+                if (snapshot.exists() && (snapshot.getKey().equals("movementSensor") || snapshot.getKey().equals(true))) {
 
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
                     intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
