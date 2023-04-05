@@ -101,9 +101,9 @@ public class LoginActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
         txt_email = findViewById(R.id.email);
         txt_password = findViewById(R.id.password);
-        databaseRef = FirebaseDatabase.getInstance().getReference().child("Sensors").child("0");
+        databaseRef = FirebaseDatabase.getInstance().getReference().child("Sensors").child( "0");
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O ){
             NotificationChannel channel1 = new NotificationChannel(CHANNEL_1, "Channel 1 :)", NotificationManager.IMPORTANCE_HIGH);
             channel1.setDescription("This is Channel 1");
             NotificationManager manager = getSystemService(NotificationManager.class);

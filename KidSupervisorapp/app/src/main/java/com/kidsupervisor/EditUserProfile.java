@@ -20,10 +20,9 @@ import androidx.appcompat.app.AppCompatDialogFragment;
 
 public class EditUserProfile  extends AppCompatDialogFragment {
 
-    private TextView email,name,oldPassword,newPassword,confirmPassword;
+    private TextView email,oldPassword,newPassword,confirmPassword;
     private FirebaseService firebaseService;
 
-    Bundle bundle;
 
     @NonNull
     @Override
@@ -34,16 +33,12 @@ public class EditUserProfile  extends AppCompatDialogFragment {
         LayoutInflater inflater = getActivity().getLayoutInflater();
         View view = inflater.inflate(R.layout.fragment_edit_user_profile, null);
 
-        name = view.findViewById(R.id.name);
         email=view.findViewById(R.id.email);
         oldPassword=view.findViewById(R.id.oldPass);
         newPassword=view.findViewById(R.id.newPass);
         confirmPassword=view.findViewById(R.id.confirmPass);
 
         if(getArguments()!=null){
-            if(getArguments().getString("fullName")!=null){
-                name.setText(getArguments().getString("fullName"));
-            }
             if(getArguments().getString("email")!=null){
                 email.setText(getArguments().getString("email"));
             }
@@ -55,7 +50,6 @@ public class EditUserProfile  extends AppCompatDialogFragment {
                 .setPositiveButton("SAVE", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
-//change password
                         if((!newPassword.getText().toString().isEmpty()) && newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
                             if (newPassword.getText().toString().equals(confirmPassword.getText().toString())) {
                                 firebaseService.updatePassword(oldPassword.getText().toString(), newPassword.getText().toString());
@@ -64,11 +58,6 @@ public class EditUserProfile  extends AppCompatDialogFragment {
                  //change email
                         if(!email.getText().toString().isEmpty() && !oldPassword.getText().toString().isEmpty()){
                             firebaseService.updateEmail(oldPassword.getText().toString(),email.getText().toString());
-                        }
-                        //change name
-                        if(!name.getText().toString().isEmpty()){
-                            firebaseService.updateFullName(name.getText().toString());
-
                         }
                     }
                 })

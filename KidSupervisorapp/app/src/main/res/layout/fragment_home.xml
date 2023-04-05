@@ -15,70 +15,97 @@
         android:id="@+id/btnAddKid"
         android:layout_width="97dp"
         android:layout_height="49dp"
-        android:layout_marginTop="136dp"
-        android:text="ADD KID"
+        android:layout_marginTop="16dp"
         android:background="@drawable/button_shape"
+        android:text="ADD KID"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.654"
+        app:layout_constraintHorizontal_bias="0.389"
         app:layout_constraintStart_toEndOf="@+id/kidsList"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/kidsList" />
 
     <TextView
         android:id="@+id/scheduleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="12dp"
+        android:layout_marginTop="24dp"
         android:text="Events List:"
         android:textStyle="bold|italic"
-        app:layout_constraintBottom_toTopOf="@+id/scheduleList"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/txtListOfKids"
+        app:layout_constraintTop_toBottomOf="@+id/kidsList" />
 
     <Button
         android:id="@+id/btnAddSchedule"
         android:layout_width="96dp"
         android:layout_height="60dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="88dp"
+        android:layout_marginTop="20dp"
         android:background="@drawable/button_shape"
         android:text="ADD Event"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.448"
-        app:layout_constraintStart_toEndOf="@+id/scheduleList"
+        app:layout_constraintStart_toStartOf="@+id/btnAddKid"
         app:layout_constraintTop_toTopOf="@+id/scheduleList" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/button_shape"
+        android:orientation="horizontal"
+        android:padding="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Button
+            android:id="@+id/babyStateBtn"
+            android:layout_width="130dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_3sdp"
+            android:background="@android:color/transparent"
+            android:gravity="center|start"
+            android:text="Baby state" />
+
+        <TextView
+            android:id="@+id/baby_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="-40dp"
+            android:background="@drawable/btn_bg"
+            android:padding="@dimen/_3sdp"
+            android:text="AWAKE"
+            android:textColor="@color/white"
+            android:textSize="14dp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
     <ListView
         android:id="@+id/scheduleList"
-        android:layout_width="248dp"
-        android:layout_height="269dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.135"
-        app:layout_constraintStart_toStartOf="parent" />
+        android:layout_width="233dp"
+        android:layout_height="267dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintStart_toStartOf="@+id/kidsList"
+        app:layout_constraintTop_toBottomOf="@+id/scheduleText" />
 
     <ListView
         android:id="@+id/kidsList"
-        android:layout_width="205dp"
-        android:layout_height="229dp"
-        android:layout_marginTop="48dp"
+        android:layout_width="230dp"
+        android:layout_height="257dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.137"
+        app:layout_constraintHorizontal_bias="0.138"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/txtListOfKids" />
 
     <TextView
         android:id="@+id/txtListOfKids"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
         android:text="List of kids"
         android:textStyle="bold|italic"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.091"
+        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

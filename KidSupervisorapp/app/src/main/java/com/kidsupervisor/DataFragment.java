@@ -44,7 +44,6 @@ public class DataFragment extends Fragment {
 
         CalendarView calendarView = v.findViewById(R.id.calendarView);
 
-        calendarView.setMinDate(System.currentTimeMillis() - 1000);
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
