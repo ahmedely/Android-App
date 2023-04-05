@@ -98,12 +98,12 @@ public class SettingsFragment extends Fragment {
                 if (changeTheme.isChecked()) {
                     pref.setBoolean(true);
                     changeTheme.setChecked(true);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
+                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
                 }
                 else {
                     pref.setBoolean(false);
                     changeTheme.setChecked(false);
-                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
                 }
 
             }
