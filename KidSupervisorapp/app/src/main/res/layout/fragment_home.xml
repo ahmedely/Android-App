@@ -42,40 +42,21 @@
         app:layout_constraintStart_toStartOf="@+id/btnAddKid"
         app:layout_constraintTop_toTopOf="@+id/scheduleList" />
 
-    <LinearLayout
-        android:id="@+id/linearLayout3"
+    <Button
+        android:id="@+id/babyStateBtn"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="32dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/button_shape"
-        android:orientation="horizontal"
-        android:padding="3dp"
+        android:background="@drawable/btn_bg"
+        android:padding="@dimen/_3sdp"
+        android:text="AWAKE"
+        android:textColor="@color/white"
+        android:textSize="14dp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <Button
-            android:id="@+id/babyStateBtn"
-            android:layout_width="110dp"
-            android:layout_height="30dp"
-            android:layout_marginStart="@dimen/_3sdp"
-            android:background="@android:color/transparent"
-            android:gravity="center|start"
-            android:text="Baby is" />
-
-        <TextView
-            android:id="@+id/baby_state"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="-57dp"
-            android:background="@drawable/btn_bg"
-            android:padding="@dimen/_3sdp"
-            android:text="AWAKE"
-            android:textColor="@color/white"
-            android:textSize="14dp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
         android:id="@+id/scheduleList"
@@ -104,7 +85,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout3" />
+        app:layout_constraintTop_toBottomOf="@+id/babyStateBtn" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 

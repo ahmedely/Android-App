@@ -45,7 +45,6 @@ import java.util.Locale;
 public class HomeFragment extends Fragment {
 
     private Button btnAddSchedule, btnAddKid, changeBabyState;
-    private TextView baby_state;
     private User user;
     ListView scheduleList;
     ListView kidsListView;
@@ -81,7 +80,6 @@ public class HomeFragment extends Fragment {
         scheduleList = view.findViewById(R.id.scheduleList);
         btnAddKid = view.findViewById(R.id.btnAddKid);
         changeBabyState = view.findViewById(R.id.babyStateBtn);
-        baby_state = view.findViewById(R.id.baby_state);
 
         schedulesList = new ArrayList<>();
         kidsList = new ArrayList<>();
@@ -171,12 +169,12 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     if(snapshot.getValue().toString() =="true"){
-                        baby_state.setText("SLEEPING");
-                        baby_state.setBackgroundResource(R.drawable.btn_3);
+                        changeBabyState.setText("SLEEPING");
+                        changeBabyState.setBackgroundResource(R.drawable.btn_3);
                     }
                     else{
-                        baby_state.setText("AWAKE");
-                        baby_state.setBackgroundResource(R.drawable.btn_bg);
+                        changeBabyState.setText("AWAKE");
+                        changeBabyState.setBackgroundResource(R.drawable.btn_bg);
                     }
                 }
             }
@@ -201,9 +199,9 @@ public class HomeFragment extends Fragment {
         changeBabyState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (baby_state.getText().toString().equals("AWAKE")) {
-                    baby_state.setText("SLEEPING");
-                    baby_state.setBackgroundResource(R.drawable.btn_3);
+                if (changeBabyState.getText().toString().equals("AWAKE")) {
+                    changeBabyState.setText("SLEEPING");
+                    changeBabyState.setBackgroundResource(R.drawable.btn_3);
                     firebaseService.setBabyState(true);
                 }
                 addStartSleepTime();
