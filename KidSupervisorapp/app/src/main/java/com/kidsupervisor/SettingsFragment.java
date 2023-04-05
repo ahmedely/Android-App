@@ -24,6 +24,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatDelegate;
+import androidx.core.content.res.ResourcesCompat;
 import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -88,21 +90,20 @@ public class SettingsFragment extends Fragment {
 
         bundle = new Bundle();
 
-        changeTheme.setChecked(pref.getBoolean("Switch"));
+        changeTheme.setChecked(false);
         auth = FirebaseAuth.getInstance();
         changeTheme.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (changeTheme.isChecked()) {
-                    pref.setBoolean("Switch", true);
+                    pref.setBoolean(true);
                     changeTheme.setChecked(true);
-                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES);
                 }
                 else {
-                    pref.setBoolean("Switch", false);
+                    pref.setBoolean(false);
                     changeTheme.setChecked(false);
-                    startActivity(new Intent(Settings.ACTION_DISPLAY_SETTINGS));
-
+                    AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
                 }
 
             }
@@ -205,9 +206,9 @@ public class SettingsFragment extends Fragment {
             @SuppressLint("SuspiciousIndentation")
             @Override
             public void onComplete(@NonNull Task<DataSnapshot> task) {
-                if (task.isSuccessful())
+                if (task.isSuccessful()) {
                     profileName.setText(task.getResult().child("fullName").getValue().toString());
-                emailProfile.setText(task.getResult().child("email").getValue().toString());
+                }
             }
         });
 
@@ -238,6 +239,8 @@ public class SettingsFragment extends Fragment {
                         bundle.putString("email", currentUser.getEmail());
 
                         profileName.setText(currentUser.getFullName());
+                        emailProfile.setText(currentUser.getEmail());
+
 
 
                         if (snapshot.child("kids").exists()) {

@@ -138,31 +138,35 @@ public class FirebaseService {
 
 
             AuthCredential credential = EmailAuthProvider
-                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \\
+                    .getCredential(auth.getCurrentUser().getEmail(), oldPassword); // Current Login Credentials \
             auth.getCurrentUser().reauthenticate(credential)
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
+                            if (task.isSuccessful()) {
+                                auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
 
-                                        databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                            databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                            }
-                                        });
-                                        Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                            Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                        }
+
                                     }
+                                });
 
-                                }
-                            });
-
+                            }
+                            else
+                                Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {
@@ -172,9 +176,7 @@ public class FirebaseService {
 
     }
 
-
     public void updatePassword(String oldPassword, String newPassword) {
-        Toast.makeText(context, "UPDATE PASS", Toast.LENGTH_SHORT).show();
 
         if (auth.getCurrentUser() != null) {
 
@@ -188,7 +190,8 @@ public class FirebaseService {
                             public void onComplete(@NonNull Task<Void> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(context, "Password was modified", Toast.LENGTH_SHORT).show();
-                                } else {
+                                }
+                                else {
                                     Toast.makeText(context, "Error", Toast.LENGTH_SHORT).show();
                                 }
                             }
