@@ -111,13 +111,16 @@ public class HomeFragment extends Fragment {
 
                     }
                 }
-                kidsList.removeAll(kidsList);
+                kidsList.clear();
                 kidsList = new ArrayList<>();
                 for (Kid kid : user.getKids()) {
                     kidsList.add(kid.getFullName());
                 }
-                adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, kidsList);
-                kidsListView.setAdapter(adapter2);
+                if(getContext() != null){
+                    adapter2 = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, kidsList);
+                    kidsListView.setAdapter(adapter2);
+                }
+
             }
 
 
@@ -147,9 +150,11 @@ public class HomeFragment extends Fragment {
                     }
 
                 }
-
+            if(getContext() != null){
                 adapter = new ArrayAdapter<String>(getContext(), android.R.layout.simple_list_item_1, eventsList);
                 scheduleList.setAdapter(adapter);
+            }
+
 
             }
 
