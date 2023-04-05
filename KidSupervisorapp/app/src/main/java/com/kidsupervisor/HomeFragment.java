@@ -3,7 +3,9 @@ package com.kidsupervisor;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -35,6 +37,7 @@ import com.google.gson.Gson;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
 
@@ -179,6 +182,7 @@ public class HomeFragment extends Fragment {
                     baby_state.setText("AWAKE");
                     baby_state.setBackgroundResource(R.drawable.btn_bg);
                 }
+                addStartSleepTime();
             }
         });
 
@@ -217,5 +221,120 @@ public class HomeFragment extends Fragment {
             }
         });
 
+
     }
+
+    private void addStartSleepTime() {
+        String docId = String.valueOf(System.currentTimeMillis());
+        SharedPreferences sharedPreferences = getActivity().getSharedPreferences("kid" , Context.MODE_PRIVATE);
+        sharedPreferences.edit().putString("doc", docId).apply();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(docId);
+
+        Date date =  new Date();
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(date);
+        int hours = cal.get(Calendar.HOUR_OF_DAY);
+        int mint  = cal.get(Calendar.MINUTE);
+        databaseReference.child("start_hour").setValue(hours);
+        databaseReference.child("start_min").setValue(mint);
+
+        databaseReference.child("end_hour").setValue(000);
+        databaseReference.child("end_min").setValue(000);
+    }
+
+    //========================
+    private void fetch() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+        String currentDateandTime = sdf.format(new Date());
+        DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime);
+
+        FirebaseRecyclerOptions<ModelD> options
+                = new FirebaseRecyclerOptions.Builder<ModelD>()
+                .setQuery(query, ModelD.class)
+                .build();
+
+        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<ModelD, ViewHolder>(options) {
+            @Override
+            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_s, parent, false);
+
+                return new ViewHolder(view);
+            }
+
+
+            @Override
+            protected void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position, ModelD model) {
+
+
+                holder.tvTitle.setText(model.getStart_hour()+":"+model.getStart_min()+" ➤ "+ model.end_hour+":"+ model.end_min);
+
+
+                holder.tvTitle.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        AlertDialog.Builder builder;
+                        builder = new AlertDialog.Builder(getActivity());
+                        builder.setTitle("Alert!");
+                        builder.setMessage("Is your Baby awake ?");
+                        builder.setCancelable(true);
+                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
+                                String currentDateandTime = sdf.format(new Date());
+
+                                SimpleDateFormat sdfHour = new SimpleDateFormat("HH");
+                                String strHOur = sdfHour.format(new Date());
+
+                                SimpleDateFormat sdfMin = new SimpleDateFormat("mm");
+                                String strMin = sdfMin.format(new Date());
+                                DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(getRef(position).getKey());
+                                query.child("end_hour").setValue(Integer.parseInt(strHOur));
+                                query.child("end_min").setValue(Integer.parseInt(strMin));
+
+                            }
+                        });
+                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+
+                            }
+                        });
+                        builder.show();
+                    }
+                });
+
+
+            }
+
+        };
+        adapter.startListening();
+    }
+
+    public static class ViewHolder extends RecyclerView.ViewHolder{
+
+        View mView;
+
+        TextView tvTitle;
+        public ViewHolder(View itemView) {
+            super(itemView);
+            mView =itemView;
+
+            tvTitle = mView.findViewById(R.id.tvTitle);
+
+
+
+
+
+        }
+
+
+    }
+
+
+
+
 }
