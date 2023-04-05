@@ -347,4 +347,14 @@ public void addDate(String year, String month, String day, String time, Boolean 
             });
         }
     }
+
+    public void setBabyState(boolean state){
+        this.databaseRef = FirebaseDatabase.getInstance().getReference().child("isSleeping");
+        this.databaseRef.setValue(state).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+
+            }
+        });
+    }
 }
