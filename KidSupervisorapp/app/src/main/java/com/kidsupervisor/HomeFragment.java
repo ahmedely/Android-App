@@ -41,31 +41,26 @@ import java.util.Locale;
 
 public class HomeFragment extends Fragment {
 
-    private Button btnAddSchedule,btnAddKid, btnDeleteSchedule, btnModifySchedule,changeBabyState;
+    private Button btnAddSchedule, btnAddKid, changeBabyState;
     private TextView baby_state;
     private User user;
-    int nmb_of_schedules = 1;
     ListView scheduleList;
     ListView kidsListView;
-    private ArrayList<String> kidsList, schedulesList, eventsList;
+    private ArrayList<String> kidsList, eventsList, schedulesList;
+
     private ArrayAdapter<String> adapter, adapter2;
     private ArrayList<Event> events;
-    private int hrs, min;
     private DatabaseReference databaseRef;
     private DatabaseReference eventDatabaseRef;
     private String currentValue = "";
-    private int lastClicked = -1;
-    boolean is_first = true;
     private FirebaseService firebaseService;
     private FirebaseAuth auth;
     private Bundle bundle; // Used to share variable between activities/fragments
-    //RecyclerView scheduleList2;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         View v = inflater.inflate(R.layout.fragment_home, container, false);
-
-
         return v;
     }
 
@@ -76,22 +71,20 @@ public class HomeFragment extends Fragment {
         firebaseService = new FirebaseService(getContext());
         auth = FirebaseAuth.getInstance();
         user = new User();
+
+        kidsListView = view.findViewById(R.id.kidsList);
+        btnAddSchedule = view.findViewById(R.id.btnAddSchedule);
+        scheduleList = view.findViewById(R.id.scheduleList);
+        btnAddKid = view.findViewById(R.id.btnAddKid);
+        changeBabyState = view.findViewById(R.id.babyStateBtn);
+        baby_state = view.findViewById(R.id.baby_state);
+
         schedulesList = new ArrayList<>();
         kidsList = new ArrayList<>();
         eventsList = new ArrayList<>();
         events = new ArrayList<>();
 
-        //scheduleList2 = view.findViewById(R.id.scheduleList2);
-       // scheduleList2.setLayoutManager(new LinearLayoutManager(getActivity()));
 
-        kidsListView = view.findViewById(R.id.kidsList);
-        btnAddSchedule = view.findViewById(R.id.btnAddSchedule);
-        //  btnDeleteSchedule = view.findViewById(R.id.btnDeleteSchedule);
-        // btnModifySchedule = view.findViewById(R.id.btnModifySchedule);
-        scheduleList = view.findViewById(R.id.scheduleList);
-        btnAddKid = view.findViewById(R.id.btnAddKid);
-        changeBabyState=view.findViewById(R.id.babyStateBtn);
-        baby_state=view.findViewById(R.id.baby_state);
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
         databaseRef.addValueEventListener(new ValueEventListener() {
             @Override
@@ -179,11 +172,10 @@ public class HomeFragment extends Fragment {
         changeBabyState.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if(baby_state.getText().toString().equals("AWAKE")){
+                if (baby_state.getText().toString().equals("AWAKE")) {
                     baby_state.setText("SLEEPING");
                     baby_state.setBackgroundResource(R.drawable.btn_3);
-                }
-                else{
+                } else {
                     baby_state.setText("AWAKE");
                     baby_state.setBackgroundResource(R.drawable.btn_bg);
                 }
@@ -215,206 +207,15 @@ public class HomeFragment extends Fragment {
                 eventFragment.show(getActivity().getSupportFragmentManager(), "");
             }
         });
-//        btnModifySchedule.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (lastClicked == -1 || lastClicked == -2) {
-//                    Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
-//                } else {
-//                  //  showTimePicker();
-//
-//                    lastClicked = -1;
-//                }
-//            }
-//        });
+        //add event
         btnAddSchedule.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                lastClicked = -2;
                 EventFragment eventFragment = new EventFragment();
                 //  eventFragment.setArguments(bundle);
                 eventFragment.show(getActivity().getSupportFragmentManager(), "");
             }
         });
 
-//        btnDeleteSchedule.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (lastClicked == -1 || lastClicked == -2) {
-//                    Toast.makeText(getContext(), "Please select an item", Toast.LENGTH_SHORT).show();
-//                } else {
-//                    // Toast.makeText(getContext(), Integer.toString(lastClicked), Toast.LENGTH_SHORT).show();
-//                    schedulesList.remove(lastClicked);
-//                    adapter.notifyDataSetChanged();
-//                    lastClicked = -1;
-//                    nmb_of_schedules--;
-//                }
-//            }
-//        });
-
-//        fetch();
     }
-
-    //========================
-//    private void fetch() {
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-//        String currentDateandTime = sdf.format(new Date());
-//        DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime);
-//
-//        FirebaseRecyclerOptions<ModelD> options
-//                = new FirebaseRecyclerOptions.Builder<ModelD>()
-//                .setQuery(query, ModelD.class)
-//                .build();
-
-//        FirebaseRecyclerAdapter adapter = new FirebaseRecyclerAdapter<ModelD, ViewHolder>(options) {
-//            @Override
-//            public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-//                View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_s, parent, false);
-//
-//                return new ViewHolder(view);
-//            }
-//
-//
-//            @Override
-//            protected void onBindViewHolder(ViewHolder holder, @SuppressLint("RecyclerView") final int position, ModelD model) {
-//
-//
-//                holder.tvTitle.setText(model.getStart_hour()+":"+model.getStart_min()+" ➤ "+ model.end_hour+":"+ model.end_min);
-//
-//
-//                holder.tvTitle.setOnClickListener(new View.OnClickListener() {
-//                    @Override
-//                    public void onClick(View view) {
-//                        AlertDialog.Builder builder;
-//                        builder = new AlertDialog.Builder(getActivity());
-//                        builder.setTitle("Alert!");
-//                        builder.setMessage("Is your Baby awake ?");
-//                        builder.setCancelable(true);
-//                        builder.setPositiveButton("YES", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                                SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-//                                String currentDateandTime = sdf.format(new Date());
-//
-//                                SimpleDateFormat sdfHour = new SimpleDateFormat("HH");
-//                                String strHOur = sdfHour.format(new Date());
-//
-//                                SimpleDateFormat sdfMin = new SimpleDateFormat("mm");
-//                                String strMin = sdfMin.format(new Date());
-//                                DatabaseReference query = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).child(getRef(position).getKey());
-//                                query.child("end_hour").setValue(Integer.parseInt(strHOur));
-//                                query.child("end_min").setValue(Integer.parseInt(strMin));
-//
-//                            }
-//                        });
-//                        builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialogInterface, int i) {
-//
-//                            }
-//                        });
-//                        builder.show();
-//                    }
-//                });
-//
-//
-//            }
-//
-//        };
-//        scheduleList2.setAdapter(adapter);
-//        adapter.startListening();
-//    }
-
-//    public static class ViewHolder extends RecyclerView.ViewHolder{
-//
-//        View mView;
-//
-//        TextView tvTitle;
-//        public ViewHolder(View itemView) {
-//            super(itemView);
-//            mView =itemView;
-//
-//            tvTitle = mView.findViewById(R.id.tvTitle);
-//
-//
-//
-//
-//
-//        }
-//
-//
-//    }
-//
-//
-//
-//    int first_time_hour,first_time_min,second_time_hour,second_time_min;
-//    private void showTimePicker() {
-//        TimePickerDialog timePickerDialog = new TimePickerDialog(getContext(), new TimePickerDialog.OnTimeSetListener() {
-//
-//            @Override
-//            public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
-//                hrs = hourOfDay;
-//                min = minute;
-//
-//                if (is_first == true) {
-//
-//                    if (lastClicked == -2) {
-//                        currentValue = Integer.toString(nmb_of_schedules) + ". ";
-//                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-//                    } else {
-//                        currentValue = Integer.toString(lastClicked + 1) + ". ";
-//                        currentValue += String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-//                    }
-//                    is_first = false;
-//
-//                    first_time_hour = hrs;
-//                    first_time_min = min;
-//                    Log.e("aaaa", "onTimeSet: "+first_time_hour );
-//                    showTimePicker();
-//                } else {
-//                    currentValue += " ➤ " + String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-//
-//                    //second_time = String.format(Locale.getDefault(), "%02d:%02d", hrs, min);
-//
-//                    second_time_hour = hrs;
-//                    second_time_min = min;
-//                    if (lastClicked == -2) {
-//                        schedulesList.add(currentValue);
-//                        nmb_of_schedules++;
-//                    } else {
-//                        schedulesList.set(lastClicked, currentValue);
-//                    }
-//
-//                    SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd", Locale.getDefault());
-//                    String currentDateandTime = sdf.format(new Date());
-//
-//                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference().child("Schedules").child(FirebaseAuth.getInstance().getCurrentUser().getUid()).child(currentDateandTime).push();
-//                    databaseReference.child("start_hour").setValue(first_time_hour);
-//                    databaseReference.child("start_min").setValue(first_time_min);
-//
-//                    databaseReference.child("end_hour").setValue(second_time_hour);
-//                    databaseReference.child("end_min").setValue(second_time_min);
-//
-//
-//                    //Log.e("ppo", "onTimeSet: "+ second_time);
-//
-//                    adapter.notifyDataSetChanged();
-//                    is_first = true;
-//                }
-//            }
-//        }, hrs, min, true);
-//
-//        timePickerDialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Cancel", new DialogInterface.OnClickListener() {
-//            @Override
-//            public void onClick(DialogInterface dialog, int which) {
-//                if (which == DialogInterface.BUTTON_NEGATIVE) {
-//                    dialog.dismiss();
-//                    lastClicked = -1;
-//                    is_first = true;
-//                }
-//            }
-//        });
-//        timePickerDialog.show();
-//    }
 }

@@ -28,12 +28,15 @@ import com.google.firebase.database.ValueEventListener;
 
 
 public class SettingsFragment extends Fragment {
-    private Switch changeTheme;
+    private Switch changeTheme,stopNotifs;
+
+    private FirebaseService firebaseService;
+
     private Pref pref;
     private LinearLayout signOutBut;
     private Button edit_Profile;
 
-    private RelativeLayout guide_btn,aboutUs,reportBugs,btn_FAQs;
+    private RelativeLayout guide_btn,aboutUs,reportBugs,btn_FAQs,infosBtn,editEmPass;
     private TextView profileName,emailProfile;
     private DatabaseReference databaseRef,onChangeDatabaseRef;
     private FirebaseAuth auth;
@@ -51,6 +54,9 @@ public class SettingsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        firebaseService = new FirebaseService(getContext());
+
         currentUser = new User();
         pref = new Pref(getActivity());
         changeTheme = view.findViewById(R.id.switch_btn);
@@ -61,6 +67,12 @@ public class SettingsFragment extends Fragment {
         aboutUs=view.findViewById(R.id.aboutBtn);
         reportBugs=view.findViewById(R.id.reportBugs_btn);
         btn_FAQs=view.findViewById(R.id.faqsBtn);
+        stopNotifs=view.findViewById(R.id.switch_btn2);
+        infosBtn=view.findViewById(R.id.infos);
+        editEmPass=view.findViewById(R.id.editAccount);
+        profileName.setEnabled(false);
+
+
 
         bundle = new Bundle();
 
@@ -87,10 +99,31 @@ public class SettingsFragment extends Fragment {
         edit_Profile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //go to dialogFragment
+                String lastName="";
+                if(edit_Profile.getText().toString().equals("Edit")){
+                    profileName.setEnabled(true);
+                    edit_Profile.setText("Save");
+                    lastName=profileName.getText().toString();
+                }
+                else {
+                profileName.setEnabled(false);
+                    if(!profileName.getText().toString().isEmpty()){
+                        firebaseService.updateFullName(profileName.getText().toString());
+                    }
+                    else{
+                        profileName.setText(lastName);
+                    }
+                edit_Profile.setText("Edit");
+                }
+
+            }
+        });
+        editEmPass.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
                 EditUserProfile dialogFragment = new EditUserProfile();
-                dialogFragment.setArguments(bundle);
-                dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+                  dialogFragment.setArguments(bundle);
+                  dialogFragment.show(getActivity().getSupportFragmentManager(), "");
             }
         });
 
@@ -139,6 +172,13 @@ public class SettingsFragment extends Fragment {
                 dialogFragment.show(getActivity().getSupportFragmentManager(), "");
             }
         });
+        infosBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                    Useful_info dialogFragment = new Useful_info();
+                    dialogFragment.show(getActivity().getSupportFragmentManager(), "");
+            }
+        });
 
         databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid());
         databaseRef.get().addOnCompleteListener(new OnCompleteListener<DataSnapshot>() {
@@ -175,7 +215,6 @@ public class SettingsFragment extends Fragment {
                             currentUser.setEmail("");
                         }
 
-                        bundle.putString("fullName",currentUser.getFullName());
                         bundle.putString("email",currentUser.getEmail());
 
                         profileName.setText(currentUser.getFullName());

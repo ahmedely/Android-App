@@ -19,7 +19,7 @@
             android:orientation="vertical">
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="300dp"
+                android:layout_height="250dp"
                 android:layout_gravity="center"
                 android:clickable="true"
                 android:src="@drawable/bg_settings" />
@@ -32,11 +32,12 @@
                 android:src="@drawable/ic_account" />
 
 
-            <TextView
+            <EditText
                 android:id="@+id/profile_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:backgroundTint="@android:color/transparent"
                 android:layout_marginTop="10dp"
                 android:text="User"
                 android:textColor="#000000"
@@ -61,7 +62,7 @@
                 android:layout_marginTop="20dp"
                 android:background="@drawable/button_shape"
                 android:paddingEnd="30dp"
-                android:text="Edit profile"
+                android:text="Edit"
                 android:textStyle="bold"
                 android:textAllCaps="false"
                 android:textColor="#FFFFFF" />
@@ -107,6 +108,36 @@
                         />
                 </RelativeLayout>
 
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/logo39"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="12dp"
+                        android:src="@drawable/baseline_notifications_active_24" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/logo39"
+                        android:text="Enable Notifications"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+                    <Switch
+                        android:id="@+id/switch_btn2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+                        android:switchMinWidth="50dp"
+
+                        />
+                </RelativeLayout>
 
 
             </LinearLayout>
@@ -123,6 +154,7 @@
 
                 <RelativeLayout
                     android:layout_width="match_parent"
+                    android:id="@+id/editAccount"
                     android:layout_height="wrap_content">
 
                     <ImageView
@@ -130,7 +162,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
+                        android:src="@drawable/baseline_edit_24" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -138,7 +170,30 @@
                         android:layout_centerVertical="true"
                         android:layout_marginStart="20dp"
                         android:layout_toEndOf="@+id/logo14"
-                        android:text="Change password"
+                        android:text="Edit account"
+                        android:textColor="#FFFFFF"
+                        android:textStyle="bold" />
+
+                </RelativeLayout>
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:id="@+id/infos"
+                    android:layout_height="wrap_content">
+
+                    <ImageView
+                        android:id="@+id/logo124"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:padding="12dp"
+                        android:src="@drawable/baseline_info_24" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginStart="20dp"
+                        android:layout_toEndOf="@+id/logo124"
+                        android:text="Useful Information"
                         android:textColor="#FFFFFF"
                         android:textStyle="bold" />
 
@@ -191,7 +246,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
+                        android:src="@drawable/baseline_search_24" />
 
                     <TextView
                         android:layout_width="match_parent"
@@ -240,7 +295,7 @@
                         android:layout_width="40dp"
                         android:layout_height="40dp"
                         android:padding="12dp"
-                        android:src="@drawable/baseline_help_24" />
+                        android:src="@drawable/baseline_question_answer_24" />
 
                     <TextView
                         android:layout_width="match_parent"

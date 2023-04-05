@@ -68,45 +68,17 @@
     </RelativeLayout>
 
     <LinearLayout
-        android:id="@+id/linearLayout1"
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
         android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginTop="36dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/edittext_bg"
         android:orientation="horizontal"
         android:paddingHorizontal="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
-
-        <EditText
-            android:id="@+id/name"
-            android:layout_width="230dp"
-            android:layout_height="match_parent"
-            android:background="@android:color/transparent"
-            android:hint="Enter your name"
-            android:inputType="textEmailAddress"
-            android:maxLines="1"
-            android:paddingHorizontal="@dimen/_16sdp"
-            android:singleLine="true"
-            android:textColorHint="@color/lightGrey"
-            android:textSize="@dimen/_12sdp"
-            android:textStyle="bold" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
-        android:layout_marginHorizontal="@dimen/_40sdp"
-        android:layout_marginTop="10dp"
-        android:background="@drawable/edittext_bg"
-        android:orientation="horizontal"
-        android:paddingHorizontal="@dimen/_16sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout1">
 
         <EditText
             android:id="@+id/email"
