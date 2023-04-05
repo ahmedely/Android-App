@@ -45,9 +45,9 @@ public class ReportBugDialog  extends AppCompatDialogFragment {
         return builder.create();
     }
     public void sendMail(){
-
+        String []emails = {"coen69311@gmail.com"};
         Intent intent=new Intent(Intent.ACTION_SEND);
-        intent.putExtra(Intent.EXTRA_EMAIL,"coen69311@gmail.com");
+        intent.putExtra(Intent.EXTRA_EMAIL,emails);
         intent.putExtra(Intent.EXTRA_SUBJECT,subject.getText().toString());
         intent.putExtra(Intent.EXTRA_TEXT,text.getText().toString());
 
