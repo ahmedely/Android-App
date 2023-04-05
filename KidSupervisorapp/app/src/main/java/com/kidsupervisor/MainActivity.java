@@ -30,7 +30,6 @@ import java.util.GregorianCalendar;
 
 public class MainActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
     ActivityMainBinding binding;
 
     Pref pref;
@@ -81,12 +80,15 @@ public class MainActivity extends AppCompatActivity implements BottomNavigationV
                         String day = dtf.format(now).split("/")[2].split("\\s+")[0];
                         String time = dtf.format(now).split("/")[2].split("\\s+")[1];
                         firebaseService.addDate(year, month, day, time, false);
+
+                        firebaseService.setBabyState(false);
                     }
                 });
                 builder.setNegativeButton("NO", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
 
+                    firebaseService.setBabyState(true);
                     }
                 });
 

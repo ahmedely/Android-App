@@ -143,26 +143,30 @@ public class FirebaseService {
                     .addOnCompleteListener(new OnCompleteListener<Void>() {
                         @Override
                         public void onComplete(@NonNull Task<Void> task) {
-                            auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
+                            if (task.isSuccessful()) {
+                                auth.getCurrentUser().updateEmail(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                    @Override
+                                    public void onComplete(@NonNull Task<Void> task) {
+                                        if (task.isSuccessful()) {
+                                            databaseRef = FirebaseDatabase.getInstance().getReference().child("Users").child(auth.getUid()).child("email");
 
-                                        databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
+                                            databaseRef.setValue(newEmail).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
 
-                                            }
-                                        });
-                                        Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
-                                    } else {
-                                        Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                                }
+                                            });
+                                            Toast.makeText(context, "Email was modified", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
+                                        }
+
                                     }
+                                });
 
-                                }
-                            });
-
+                            }
+                            else
+                                Toast.makeText(context, "Email was not modified", Toast.LENGTH_SHORT).show();
                         }
                     });
         } else {

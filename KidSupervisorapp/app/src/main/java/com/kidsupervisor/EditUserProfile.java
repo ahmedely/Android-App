@@ -26,7 +26,7 @@ public class EditUserProfile  extends AppCompatDialogFragment {
     private TextView email,oldPassword,newPassword,confirmPassword;
     private FirebaseService firebaseService;
     private FirebaseAuth auth;
-
+    private String currentEmail;
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {

@@ -57,18 +57,18 @@
 
         <Button
             android:id="@+id/babyStateBtn"
-            android:layout_width="130dp"
-            android:layout_height="wrap_content"
+            android:layout_width="110dp"
+            android:layout_height="30dp"
             android:layout_marginStart="@dimen/_3sdp"
             android:background="@android:color/transparent"
             android:gravity="center|start"
-            android:text="Baby state" />
+            android:text="Baby is" />
 
         <TextView
             android:id="@+id/baby_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="-40dp"
+            android:layout_marginStart="-57dp"
             android:background="@drawable/btn_bg"
             android:padding="@dimen/_3sdp"
             android:text="AWAKE"

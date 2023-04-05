@@ -171,9 +171,12 @@ public class HomeFragment extends Fragment {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if(snapshot.exists()){
                     if(snapshot.getValue().toString() =="true"){
-                       // Toast.makeText(getContext(), "Baby is Sleeping", Toast.LENGTH_SHORT).show();
-                    }else{
-                      //  Toast.makeText(getContext(), "Baby is Awake", Toast.LENGTH_SHORT).show();
+                        baby_state.setText("SLEEPING");
+                        baby_state.setBackgroundResource(R.drawable.btn_3);
+                    }
+                    else{
+                        baby_state.setText("AWAKE");
+                        baby_state.setBackgroundResource(R.drawable.btn_bg);
                     }
                 }
             }
@@ -201,9 +204,7 @@ public class HomeFragment extends Fragment {
                 if (baby_state.getText().toString().equals("AWAKE")) {
                     baby_state.setText("SLEEPING");
                     baby_state.setBackgroundResource(R.drawable.btn_3);
-                } else {
-                    baby_state.setText("AWAKE");
-                    baby_state.setBackgroundResource(R.drawable.btn_bg);
+                    firebaseService.setBabyState(true);
                 }
                 addStartSleepTime();
             }

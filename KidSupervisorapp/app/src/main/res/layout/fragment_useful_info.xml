@@ -41,6 +41,7 @@
         android:id="@+id/link1"
         android:layout_width="400dp"
         android:paddingStart="@dimen/_5sdp"
+        android:paddingTop="@dimen/_5sdp"
         android:paddingEnd="@dimen/_5sdp"
         android:layout_height="wrap_content"
         android:autoLink="web"
@@ -53,7 +54,7 @@
             android:paddingEnd="@dimen/_5sdp"
             android:layout_height="wrap_content"
             android:autoLink="web"
-            android:paddingTop="@dimen/_2sdp"
+            android:paddingTop="@dimen/_5sdp"
             android:textSize="10dp"
             android:text="https://www.sleepfoundation.org/infants-and-sleep" />
         <TextView
@@ -63,7 +64,7 @@
             android:paddingEnd="@dimen/_5sdp"
             android:layout_height="wrap_content"
             android:autoLink="web"
-            android:paddingTop="@dimen/_2sdp"
+            android:paddingTop="@dimen/_5sdp"
             android:textSize="10dp"
             android:text="https://www.mayoclinic.org/healthy-lifestyle/infant-and-toddler-health/in-depth/healthy-baby/art-20046051" />
     </LinearLayout>
