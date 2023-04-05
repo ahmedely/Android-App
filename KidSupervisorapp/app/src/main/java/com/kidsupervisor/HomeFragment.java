@@ -55,6 +55,7 @@ public class HomeFragment extends Fragment {
     private ArrayList<Event> events;
     private DatabaseReference databaseRef;
     private DatabaseReference eventDatabaseRef;
+    private DatabaseReference babyStateDatabaseRef;
     private String currentValue = "";
     private FirebaseService firebaseService;
     private FirebaseAuth auth;
@@ -159,7 +160,24 @@ public class HomeFragment extends Fragment {
             }
         });
 
+        babyStateDatabaseRef= FirebaseDatabase.getInstance().getReference().child("isSleeping");
+        babyStateDatabaseRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists()){
+                    if(snapshot.getValue().toString() =="true"){
+                       // Toast.makeText(getContext(), "Baby is Sleeping", Toast.LENGTH_SHORT).show();
+                    }else{
+                      //  Toast.makeText(getContext(), "Baby is Awake", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            }
 
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
         btnAddKid.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

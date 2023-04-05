@@ -27,7 +27,6 @@ public class EditUserProfile  extends AppCompatDialogFragment {
     private FirebaseService firebaseService;
     private FirebaseAuth auth;
 
-
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
@@ -45,7 +44,8 @@ public class EditUserProfile  extends AppCompatDialogFragment {
 
         if(getArguments()!=null){
             if(getArguments().getString("email")!=null){
-                email.setText(getArguments().getString("email"));
+                currentEmail=getArguments().getString("email");
+                email.setText(currentEmail);
             }
         }
 
