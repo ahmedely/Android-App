@@ -15,5 +15,3 @@ Welcome to our Baby Supervising App! Our app is designed to help new parents kee
 -Raspberry Pi Model 2
 -Pi Camera  
 -MotionEye OS
-### App APK: ###
-
