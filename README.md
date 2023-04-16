@@ -12,8 +12,8 @@ Welcome to our Baby Supervising App! Our app is designed to help new parents kee
 ## DESCRIPTION: ##
 👶app is a Mobile application that allows parents to monitor their babies remotely and send notification based on triggers such as noise, motion, etc. The goal of this app is to provide parents with peace of mind and support as they care for their newborn, and to help them make informed decisions about their baby's health and development.
 ### Material Used: ###
--Raspberry Pi zero W  
+-Raspberry Pi Model 2
 -Pi Camera  
--OpenPIR Motion Sensor  
--Sound Detector
-## PREVIEW: ##
+-MotionEye OS
+### App APK: ###
+
